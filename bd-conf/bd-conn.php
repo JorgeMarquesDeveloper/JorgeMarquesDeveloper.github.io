@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "SISCTEMP_BD";
+$dbname = "sisctemp_bd";
 
 // Criando a conexão com o banco de dados
 $conn = mysqli_connect($servername, $username, $password, $dbname);

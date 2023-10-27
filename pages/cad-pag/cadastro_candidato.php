@@ -230,7 +230,7 @@
                <!-- Encerramento de bloco -->
                <div class="col-md-7 col-lg-8">
                   <h5 class="mb-3">Dados pessoais</h5>
-                  <form class="needs-validation" novalidate method="post" action="../bd-conf/insert-caduser-bd.php">
+                  <form class="needs-validation" novalidate method="post" action="../../bd-conf/insert-caduser-bd.php" >
                      <div class="row g-3">
                         <div class="col-sm-12">
                            <label for="nomeCompleto" class="form-label">Nome Completo</label>
@@ -253,7 +253,10 @@
                         </div>
                         <div class="col-md-6">
                            <label for="nacionalidade" class="form-label">Nacionalidade</label>
-                           <input type="text" class="form-control" name="nacionalidade" placeholder="(País)" required>
+                           <select class="form-select" name="nacionalidade" required>
+                              <option value="">Selecione ...</option>
+                              <option value="Masculino">BRASILEIRO</option>
+                           </select>
                            <div class="invalid-feedback">
                               Please enter your shipping address.
                            </div>
@@ -293,14 +296,14 @@
                         </div>
                         <div class="col-md-6">
                            <label for="filiacaoPai" class="form-label">Filiação (Pai)</label>
-                           <input type="text" class="form-control" name="filiacaoPai" placeholder="(Cidade/UF)" required>
+                           <input type="text" class="form-control" name="filiacaoPai" placeholder="" required>
                            <div class="invalid-feedback">
                               Please enter your shipping address.
                            </div>
                         </div>
                         <div class="col-md-6">
                            <label for="filiacaoMae" class="form-label">Filiação (Mãe)</label>
-                           <input type="text" class="form-control" name="filiacaoMae" placeholder="(Cidade/UF)" required>
+                           <input type="text" class="form-control" name="filiacaoMae" placeholder="" required>
                            <div class="invalid-feedback">
                               Please enter your shipping address.
                            </div>
@@ -337,40 +340,40 @@
                         <hr class="my-4">
                         <h5 class="mb-3">Endereço</h5>
                         <div class="col-md-3">
-                           <label for="cep" class="form-label">Cep</label>
-                           <input type="text" class="form-control" name="cep"   id="cep" placeholder="" required>
-                           <div id="loading">
-                              <img src="loading.gif" alt="Carregando..." class="img-fluid">
-                              <p>Carregando...</p>
-                           </div>
+                        <label for="cep" class="form-label">Cep</label>
+                        <input type="text" class="form-control" name="cep" id="cepInput" placeholder="" required>
+                        <div id="loading" style="display: none;">
+                           <img src="loading.gif" alt="Carregando..." class="img-fluid">
+                           <p>Consultando CEP...</p>
+                        </div>
                         </div>
                         <div class="col-md-4">
-                           <label for="estado" class="form-label">Estado</label>
-                           <input type="text" class="form-control" name="estado" placeholder="" required>
-                           <div class="invalid-feedback">
-                              Please provide a valid state.
-                           </div>
+                        <label for="estado" class="form-label">Estado</label>
+                        <input type="text" class="form-control" name="estado" id="ufInput" placeholder="" required>
+                        <div class="invalid-feedback">
+                           Por favor, forneça um estado válido.
+                        </div>
                         </div>
                         <div class="col-md-5">
-                           <label for="cidade" class="form-label">Cidade</label>
-                           <input type="text" class="form-control" name="cidade" placeholder="" required>
-                           <div class="invalid-feedback">
-                              Zip code required.
-                           </div>
+                        <label for="cidade" class="form-label">Cidade</label>
+                        <input type text" class="form-control" name="cidade" id="cidadeInput" placeholder="" required>
+                        <div class="invalid-feedback">
+                           CEP é obrigatório.
+                        </div>
                         </div>
                         <div class="col-md-8">
-                           <label for="logradouro" class="form-label">Lagradouro <span class="text-body-secondary"></span></label>
-                           <input type="text" class="form-control" name="logradouro" placeholder="">
-                           <div class="invalid-feedback">
-                              Zip code required.
-                           </div>
+                        <label for="logradouro" class="form-label">Logradouro <span class="text-body-secondary"></span></label>
+                        <input type="text" class="form-control" name="logradouro" id="logradouroInput" placeholder="">
+                        <div class="invalid-feedback">
+                           CEP é obrigatório.
+                        </div>
                         </div>
                         <div class="col-md-4">
-                           <label for="bairro" class="form-label">Bairro<span class="text-body-secondary"></span></label>
-                           <input type="text" class="form-control" name="bairro" placeholder="">
-                           <div class="invalid-feedback">
-                              Zip code required.
-                           </div>
+                        <label for="bairro" class="form-label">Bairro<span class="text-body-secondary"></span></label>
+                        <input type="text" class="form-control" name="bairro" id="bairroInput" placeholder="">
+                        <div class="invalid-feedback">
+                           CEP é obrigatório.
+                        </div>
                         </div>
                         <hr class="my-4">
                         <h5 class="mb-3">Contatos</h5>
@@ -383,14 +386,14 @@
                         </div>
                         <div class="col-md-6">
                            <label for="telefoneContato" class="form-label">Telefone para Contato</label>
-                           <input type="text" class="form-control" name="telefoneContato" maxlength="15" required>
+                           <input type="text" id="telefone" class="form-control" name="telefoneContato" maxlength="15" required>
                            <div class="invalid-feedback">
                               Please enter your shipping address.
                            </div>
                         </div>
                         <div class="col-md-6">
                            <label for="telefoneRecados" class="form-label">Telefone para Recados</label>
-                           <input type="text" class="form-control" name="telefoneRecados" maxlength="15" placeholder="(Opcional)" required>
+                           <input type="text" class="form-control" name="telefoneRecados" maxlength="15" placeholder="(Opcional)" id="telefone" required>
                            <div class="invalid-feedback">
                               Please enter your shipping address.
                            </div>
@@ -399,7 +402,7 @@
                         <h5 class="mb-3">Tempo de serviço militar (Forças Armadas) até a data final da inscrição</h5>
                         <div class="col-12">
                            <label for="resposta" class="form-label">Possui tempo de serviço militar ? <span class="text-body-secondary"></span></label>
-                           <select class="form-select" name="resposta" required>
+                           <select class="form-select" name="tempoServicoMilitar" required>
                               <option value="0">Selecione ...</option>
                               <option value="sim">Sim</option>
                               <option value="nao">Não</option>
@@ -448,8 +451,36 @@
                               <label for="diasMilitar" class="form-label">Dias</label>
                               <select class="form-select" name="diasMilitar" required>
                                  <option value="0">Selecione ...</option>
-                                 <option value="sim">Sim</option>
-                                 <option value="nao">Não</option>
+                                 <option value="0">0</option>
+                                 <option value="1">1</option>
+                                 <option value="2">2</option>
+                                 <option value="3">3</option>
+                                 <option value="4">4</option>
+                                 <option value="5">5</option>
+                                 <option value="6">6</option>
+                                 <option value="7">7</option>
+                                 <option value="8">8</option>
+                                 <option value="9">9</option>
+                                 <option value="10">10</option>
+                                 <option value="11">11</option>
+                                 <option value="12">12</option>
+                                 <option value="13">13</option>
+                                 <option value="14">14</option>
+                                 <option value="15">15</option>
+                                 <option value="16">16</option>
+                                 <option value="17">17</option>
+                                 <option value="18">18</option>
+                                 <option value="19">19</option>
+                                 <option value="20">20</option>
+                                 <option value="21">21</option>
+                                 <option value="22">22</option>
+                                 <option value="23">23</option>
+                                 <option value="24">24</option>
+                                 <option value="25">25</option>
+                                 <option value="26">26</option>
+                                 <option value="27">27</option>
+                                 <option value="28">28</option>
+                                 <option value="29">29</option>
                               </select>
                               <div class="invalid-feedback">
                                  Please enter your shipping address.
@@ -470,122 +501,42 @@
       </div>
       <script src="https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js"></script>
       <script src="cad-pag.js"></script>
-      <!-- 
-         <script>
-           // Função para aplicar a máscara ao CPF
-           function formatCPF(cpf) {
-               cpf = cpf.replace(/\D/g, ''); // Remove caracteres não numéricos
-               cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4'); // Aplica a máscara
-               return cpf;
-           }
-         
-           // Adiciona um ouvinte de eventos ao campo de entrada
-           const cpfInput = document.getElementById('cpf');
-           cpfInput.addEventListener('input', function () {
-               this.value = formatCPF(this.value);
-           });
-         
-         </script>
-         
-          -->
       <script>
-         const respostaSelect = document.getElementById('resposta');
-         const camposAdicionais = document.getElementById('camposAdicionais');
+         // Função para aplicar a máscara de telefone
+         function mascaraTelefone(telefoneInput) {
+           // Remove caracteres não numéricos
+           let telefone = telefoneInput.value.replace(/\D/g, '');
          
-         respostaSelect.addEventListener('change', () => {
-             if (respostaSelect.value === 'sim') {
-                 camposAdicionais.style.display = 'block';
-             } else {
-                 camposAdicionais.style.display = 'none';
-             }
-         });
-      </script>
-      <script>
-         function formatarTelefone(input) {
-           const numeroLimpo = input.replace(/\D/g, '');
-           if (numeroLimpo.length === 11) {
-             return `(${numeroLimpo.slice(0, 2)}) ${numeroLimpo.slice(2, 7)}-${numeroLimpo.slice(7, 11)}`;
-           } else if (numeroLimpo.length === 10) {
-             return `(${numeroLimpo.slice(0, 2)}) ${numeroLimpo.slice(2, 6)}-${numeroLimpo.slice(6, 10)}`;
-           } else {
-             return numeroLimpo;
+           // Aplica a máscara
+           if (telefone.length <= 11) {
+             telefone = telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
+             telefoneInput.value = telefone;
            }
          }
          
-         document.getElementById('telefone').addEventListener('input', function () {
-           this.value = formatarTelefone(this.value);
+         // Adiciona um ouvinte de evento ao campo de telefone para chamar a função de máscara
+         const telefoneInput = document.getElementById('telefone');
+         telefoneInput.addEventListener('input', function () {
+           mascaraTelefone(telefoneInput);
          });
       </script>
       <script>
-         function isValidCPF(cpf) {
-           cpf = cpf.replace(/[^\d]/g, ''); // Remove caracteres não numéricos
+         // Função para aplicar a máscara de CPF
+         function mascaraCPF(cpfInput) {
+           // Remove caracteres não numéricos
+           let cpf = cpfInput.value.replace(/\D/g, '');
          
-           if (cpf.length !== 11) {
-             return false;
+           // Aplica a máscara
+           if (cpf.length <= 11) {
+             cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+             cpfInput.value = cpf;
            }
-         
-           let sum = 0;
-           let remainder;
-         
-           for (let i = 1; i <= 9; i++) {
-             sum += parseInt(cpf.substring(i - 1, i)) * (11 - i);
-           }
-         
-           remainder = (sum * 10) % 11;
-         
-           if ((remainder === 10) || (remainder === 11)) {
-             remainder = 0;
-           }
-         
-           if (remainder !== parseInt(cpf.substring(9, 10))) {
-             return false;
-           }
-         
-           sum = 0;
-         
-           for (let i = 1; i <= 10; i++) {
-             sum += parseInt(cpf.substring(i - 1, i)) * (12 - i);
-           }
-         
-           remainder = (sum * 10) % 11;
-         
-           if ((remainder === 10) || (remainder === 11)) {
-             remainder = 0;
-           }
-         
-           if (remainder !== parseInt(cpf.substring(10, 11))) {
-             return false;
-           }
-         
-           return true;
          }
          
-         const cpfInput = document.getElementById('cpfInput');
-         const errorMessage = document.getElementById('errorMessage');
-         
-         cpfInput.addEventListener('blur', function () {
-           let cpf = cpfInput.value;
-         
-           // Aplicar a máscara do CPF (formato: 999.999.999-99)
-           cpf = cpf.replace(/\D/g, ''); // Remove tudo que não for dígito
-           cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
-           cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
-           cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-         
-           cpfInput.value = cpf;
-         
-           // Limitar o campo a 14 caracteres (incluindo a máscara)
-           if (cpfInput.value.length > 14) {
-             cpfInput.value = cpfInput.value.slice(0, 14);
-           }
-         
-           const formattedCPF = cpf.replace(/[^\d]/g, ''); // Remove a máscara para a validação
-         
-           if (isValidCPF(formattedCPF)) {
-             errorMessage.textContent = '';
-           } else {
-             errorMessage.textContent = 'CPF inválido.';
-           }
+         // Adiciona um ouvinte de evento ao campo de CPF para chamar a função de máscara
+         const cpfInput = document.getElementById('cpf');
+         cpfInput.addEventListener('input', function () {
+           mascaraCPF(cpfInput);
          });
       </script>
       <!-- Script responsavel por gerar endero apos CEP -->
@@ -626,13 +577,12 @@
            }
          });
       </script>
-
-<script>
-    // Função para converter o texto em maiúsculas
-    function toUpperCase() {
-        var input = document.getElementById("nomeCompleto");
-        input.value = input.value.toUpperCase();
-    }
-</script>
+      <script>
+         // Função para converter o texto em maiúsculas
+         function toUpperCase() {
+             var input = document.getElementById("nomeCompleto");
+             input.value = input.value.toUpperCase();
+         }
+      </script>
    </body>
 </html>
