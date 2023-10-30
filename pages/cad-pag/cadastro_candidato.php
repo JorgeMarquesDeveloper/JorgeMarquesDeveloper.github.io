@@ -230,117 +230,119 @@
                <!-- Encerramento de bloco -->
                <div class="col-md-7 col-lg-8">
                   <h5 class="mb-3">Dados pessoais</h5>
-                  <form class="needs-validation" novalidate method="post" action="../../bd-conf/insert-caduser-bd.php" >
+                  <form class="needs-validation" novalidate method="post" action="../../bd-conf/insert-caduser-bd.php">
                      <div class="row g-3">
                         <div class="col-sm-12">
-                           <label for="nomeCompleto" class="form-label">Nome Completo</label>
-                           <input type="text" class="form-control" name="nomeCompleto" id="nomeCompleto" required oninput="toUpperCase()" placeholder="" value="" required>
-                           <div class="invalid-feedback">
-                              Insira o que é solicitado no campo.
-                           </div>
+                        <label for="nomeCompleto" class="form-label">Nome Completo</label>
+                        <input type="text" class="form-control" name="nomeCompleto" id="nomeCompleto" required oninput="toUpperCase()" placeholder="" value="" required>
+                        <div class="invalid-feedback">
+                           Por favor, insira o seu nome completo.
+                        </div>
                         </div>
                         <div class="col-sm-6">
-                           <label for="cpf" class="form-label">CPF</label>
-                           <input type="text" class="form-control" name="cpf" id="cpf" placeholder="" maxlength="14" required>
-                           <div id="messageBox"></div>
+                        <label for="cpf" class="form-label">CPF</label>
+                        <input type="text" class="form-control" name="cpf" id="cpf" placeholder="" maxlength="14" >
+                        <div class="invalid-feedback" id="cpf-feedback">
+                        </div>
                         </div>
                         <div class="col-sm-6">
-                           <label for="identidadeOrgaoExp" class="form-label">Identidade/Orgão Exp.</label>
-                           <input type="text" class="form-control" name="identidadeOrgaoExp" placeholder="" maxlength="14" required>
-                           <div class="invalid-feedback">
-                              Please enter a valid email address for shipping updates.
-                           </div>
+                        <label for="identidadeOrgaoExp" class="form-label">Identidade/Orgão Exp.</label>
+                        <input type="text" class="form-control" name="identidadeOrgaoExp" placeholder="" maxlength="14" required>
+                        <div class="invalid-feedback">
+                           Por favor, insira o seu número de identidade e órgão emissor.
+                        </div>
                         </div>
                         <div class="col-md-6">
-                           <label for="nacionalidade" class="form-label">Nacionalidade</label>
-                           <select class="form-select" name="nacionalidade" required>
-                              <option value="">Selecione ...</option>
-                              <option value="Masculino">BRASILEIRO</option>
-                           </select>
-                           <div class="invalid-feedback">
-                              Please enter your shipping address.
-                           </div>
+                        <label for="nacionalidade" class="form-label">Nacionalidade</label>
+                        <select class="form-select" name="nacionalidade"  required>
+                           <option value="">Selecione ...</option>
+                           <option value="Brasileiro">Brasileiro</option>
+                        </select>
+                        <div class="invalid-feedback">
+                           Por favor, selecione a sua nacionalidade.
+                        </div>
                         </div>
                         <div class="col-md-6">
-                           <label for="naturalidade" class="form-label">Naturalidade</label>
-                           <input type="text" class="form-control" name="naturalidade" placeholder="(Cidade/UF)" required>
-                           <div class="invalid-feedback">
-                              Please enter your shipping address.
-                           </div>
+                        <label for="naturalidade" class="form-label">Naturalidade</label>
+                        <select class="form-select" name="naturalidade" id="naturalidade" required>
+                           <option value="">Selecione uma cidade</option>
+                        </select>
+                        <div class="invalid-feedback">
+                           Por favor, insira a sua naturalidade (Cidade/UF).
+                        </div>
                         </div>
                         <div class="col-md-6">
-                           <label for="sexo" class="form-label">Sexo</label>
-                           <select class="form-select" name="sexo" required>
-                              <option value="">Selecione ...</option>
-                              <option value="Masculino">Masculino</option>
-                              <option value="Feminino">Feminino</option>
-                              <option value="Outro">Outro</option>
-                           </select>
-                           <div class="invalid-feedback">
-                              Please enter your shipping address.
-                           </div>
+                        <label for="sexo" class="form-label">Sexo</label>
+                        <select class="form-select" name="sexo" required>
+                           <option value="">Selecione ...</option>
+                           <option value="Masculino">Masculino</option>
+                           <option value="Feminino">Feminino</option>
+                           <option value="Outro">Outro</option>
+                        </select>
+                        <div class="invalid-feedback">
+                           Por favor, selecione o seu sexo.
+                        </div>
                         </div>
                         <div class="col-md-6">
-                           <label for="estadoCivil" class="form-label">Estado Civil</label>
-                           <select class="form-select" name="estadoCivil" required>
-                              <option value="">Selecione ...</option>
-                              <option value="Casado(a)">Casado(a)</option>
-                              <option value="Solteiro(a)">Solteiro(a)</option>
-                              <option value="União Estavel">União Estavel</option>
-                              <option value="Viuvo(a)">Viuvo(a)</option>
-                              <option value="Outro">Outro</option>
-                           </select>
-                           <div class="invalid-feedback">
-                              Please enter your shipping address.
-                           </div>
+                        <label for="estadoCivil" class="form-label">Estado Civil</label>
+                        <select class="form-select" name="estadoCivil" required>
+                           <option value="">Selecione ...</option>
+                           <option value="Casado(a)">Casado(a)</option>
+                           <option value="Solteiro(a)">Solteiro(a)</option>
+                           <option value="União Estável">União Estável</option>
+                           <option value="Viúvo(a)">Viúvo(a)</option>
+                           <option value="Outro">Outro</option>
+                        </select>
+                        <div class="invalid-feedback">
+                           Por favor, selecione o seu estado civil.
+                        </div>
                         </div>
                         <div class="col-md-6">
-                           <label for="filiacaoPai" class="form-label">Filiação (Pai)</label>
-                           <input type="text" class="form-control" name="filiacaoPai" placeholder="" required>
-                           <div class="invalid-feedback">
-                              Please enter your shipping address.
-                           </div>
+                        <label for="filiacaoPai" class="form-label">Filiação (Pai)</label>
+                        <input type="text" class="form-control" name="filiacaoPai" placeholder="" required>
+                        <div class="invalid-feedback">
+                           Por favor, insira o nome do seu pai.
+                        </div>
                         </div>
                         <div class="col-md-6">
-                           <label for="filiacaoMae" class="form-label">Filiação (Mãe)</label>
-                           <input type="text" class="form-control" name="filiacaoMae" placeholder="" required>
-                           <div class="invalid-feedback">
-                              Please enter your shipping address.
-                           </div>
+                        <label for="filiacaoMae" class="form-label">Filiação (Mãe)</label>
+                        <input type text" class="form-control" name="filiacaoMae" placeholder="" required>
+                        <div class="invalid-feedback">
+                           Por favor, insira o nome da sua mãe.
+                        </div>
                         </div>
                         <div class="col-md-4">
-                           <label class="form-label">Data de Nascimento</label>
-                           <input type="date" class="form-control" name="dataNascimento" required>
-                           <div class="invalid-feedback">
-                              Please enter your shipping address.
-                           </div>
+                        <label class="form-label">Data de Nascimento</label>
+                        <input type="date" class="form-control" name="dataNascimento" required>
+                        <div class="invalid-feedback">
+                           Por favor, insira a sua data de nascimento.
+                        </div>
                         </div>
                         <div class="col-md-4">
-                           <label class="form-label">Dependentes</label>
-                           <select name="numDependentes" class="form-select">
-                              <option value="">Selecione a opção</option>
-                              <option value="0">Não possuo dependentes</option>
-                              <option value="1">Possuo 1 dependente</option>
-                              <option value="2">Possuo 2 dependentes</option>
-                              <option value="3">Possuo 3 dependentes</option>
-                              <option value="4">Possuo 4 dependentes</option>
-                              <option value="5">Possuo 5 dependentes</option>
-                              <option value="6">Possuo 6 dependentes</option>
-                              <option value="7">Possuo 7 dependentes</option>
-                              <option value="8">Possuo 8 dependentes</option>
-                           </select>
+                        <label class="form-label">Dependentes</label>
+                        <select name="numDependentes" class="form-select" required>
+                           <option value="0">Não possuo dependentes</option>
+                           <option value="1">Possuo 1 dependente</option>
+                           <option value="2">Possuo 2 dependentes</option>
+                           <option value="3">Possuo 3 dependentes</option>
+                           <option value="4">Possuo 4 dependentes</option>
+                           <option value="5">Possuo 5 dependentes</option>
+                           <option value="6">Possuo 6 dependentes</option>
+                           <option value="7">Possuo 7 dependentes</option>
+                           <option value="8">Possuo 8 dependentes</option>
+                        </select>
                         </div>
                         <div class="col-md-4">
-                           <label for="nomeSocial" class="form-label">Nome Social</label>
-                           <input type="text" class="form-control" name="nomeSocial" placeholder="(Opcional)" required>
-                           <div class="invalid-feedback">
-                              Please enter your shipping address.
-                           </div>
+                        <label for="nomeSocial" class="form-label">Nome Social</label>
+                        <input type="text" class="form-control" name="nomeSocial" placeholder="(Opcional)" required>
+                        <div class="invalid-feedback">
+                           Por favor, insira o seu nome social (caso aplique).
+                        </div>
                         </div>
                         <hr class="my-4">
                         <h5 class="mb-3">Endereço</h5>
                         <div class="col-md-3">
-                        <label for="cep" class="form-label">Cep</label>
+                        <label for="cep" class="form-label">CEP</label>
                         <input type="text" class="form-control" name="cep" id="cepInput" placeholder="" required>
                         <div id="loading" style="display: none;">
                            <img src="loading.gif" alt="Carregando..." class="img-fluid">
@@ -356,138 +358,132 @@
                         </div>
                         <div class="col-md-5">
                         <label for="cidade" class="form-label">Cidade</label>
-                        <input type text" class="form-control" name="cidade" id="cidadeInput" placeholder="" required>
+                        <input type="text" class="form-control" name="cidade" id="cidadeInput" placeholder="" required>
                         <div class="invalid-feedback">
-                           CEP é obrigatório.
+                           Por favor, insira a cidade.
                         </div>
                         </div>
                         <div class="col-md-8">
-                        <label for="logradouro" class="form-label">Logradouro <span class="text-body-secondary"></span></label>
+                        <label for="logradouro" class="form-label">Logradouro</label>
                         <input type="text" class="form-control" name="logradouro" id="logradouroInput" placeholder="">
                         <div class="invalid-feedback">
-                           CEP é obrigatório.
+                           Por favor, insira o logradouro.
                         </div>
                         </div>
                         <div class="col-md-4">
-                        <label for="bairro" class="form-label">Bairro<span class="text-body-secondary"></span></label>
+                        <label for="bairro" class="form-label">Bairro</label>
                         <input type="text" class="form-control" name="bairro" id="bairroInput" placeholder="">
                         <div class="invalid-feedback">
-                           CEP é obrigatório.
+                           Por favor, insira o bairro.
                         </div>
                         </div>
                         <hr class="my-4">
                         <h5 class="mb-3">Contatos</h5>
                         <div class="col-12">
-                           <label for="email" class="form-label">Email <span class="text-body-secondary"></span></label>
-                           <input type="email" class="form-control" name="email" placeholder="you@example.com">
-                           <div class="invalid-feedback">
-                              Please enter a valid email address for shipping updates.
-                           </div>
+                        <input type="email" required class="form-control" name="email" placeholder="you@example.com">
+                        <div class="invalid-feedback">
+                           Insira um endereço de e-mail válido.
+                        </div>
                         </div>
                         <div class="col-md-6">
-                           <label for="telefoneContato" class="form-label">Telefone para Contato</label>
-                           <input type="text" id="telefone" class="form-control" name="telefoneContato" maxlength="15" required>
-                           <div class="invalid-feedback">
-                              Please enter your shipping address.
-                           </div>
+                        <label for="telefoneContato" class="form-label">Telefone para Contato</label>
+                        <input type="text" id="telefone" class="form-control" name="telefoneContato" maxlength="15" required>
+                        <div class="invalid-feedback">
+                           Por favor, insira um número de telefone válido para contato.
+                        </div>
                         </div>
                         <div class="col-md-6">
-                           <label for="telefoneRecados" class="form-label">Telefone para Recados</label>
-                           <input type="text" class="form-control" name="telefoneRecados" maxlength="15" placeholder="(Opcional)" id="telefone" required>
-                           <div class="invalid-feedback">
-                              Please enter your shipping address.
-                           </div>
+                        <label for="telefoneRecados" class="form-label">Telefone para Recados</label>
+                        <input type="text" class="form-control" name="telefoneRecados" maxlength="15" placeholder="(Opcional)" id="telefone">
                         </div>
                         <hr class="my-4">
                         <h5 class="mb-3">Tempo de serviço militar (Forças Armadas) até a data final da inscrição</h5>
                         <div class="col-12">
-                           <label for="resposta" class="form-label">Possui tempo de serviço militar ? <span class="text-body-secondary"></span></label>
-                           <select class="form-select" name="tempoServicoMilitar" required>
-                              <option value="0">Selecione ...</option>
-                              <option value="sim">Sim</option>
-                              <option value="nao">Não</option>
-                           </select>
+                        <label for="resposta" class="form-label">Possui tempo de serviço militar?</label>
+                        <select id="tempoServicoMilitar" class="form-select" name="tempoServicoMilitar" required>
+                           <option value="0">Selecione ...</option>
+                           <option value="sim">Sim</option>
+                           <option value="nao">Não</option>
+                        </select>
                         </div>
-                        <div id="camposAdicionais" class="row g-2">
-                           <div class="col-md-4">
+                        <div id="camposAdicionais" class="col-12" style="display: none;">
+                           <div class="col-md-12">
                               <label for="anosMilitar" class="form-label">Anos</label>
                               <select class="form-select" name="anosMilitar" required>
-                                 <option value="">Selecione quantos anos</option>
-                                 <option value="0">0</option>
-                                 <option value="1">1</option>
-                                 <option value="2">2</option>
-                                 <option value="3">3</option>
-                                 <option value="4">4</option>
-                                 <option value="5">5</option>
-                                 <option value="6">6</option>
-                                 <option value="7">7</option>
+                              <option value="0">Selecione quantos anos</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
                               </select>
                               <div class="invalid-feedback">
-                                 Please enter your shipping address.
+                              Por favor, selecione uma opção válida.
                               </div>
                            </div>
-                           <div class="col-md-4">
+                           <div class="col-md-12">
                               <label for="mesesMilitar" class="form-label">Meses</label>
                               <select class="form-select" name="mesesMilitar" required>
-                                 <option value="0">Selecione ...</option>
-                                 <option value="0">0</option>
-                                 <option value="1">1</option>
-                                 <option value="2">2</option>
-                                 <option value="3">3</option>
-                                 <option value="4">4</option>
-                                 <option value="5">5</option>
-                                 <option value="6">6</option>
-                                 <option value="7">7</option>
-                                 <option value="8">8</option>
-                                 <option value="9">9</option>
-                                 <option value="10">10</option>
-                                 <option value="11">11</option>
+                              <option value="0">Selecione ...</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                              <option value="10">10</option>
+                              <option value="11">11</option>
                               </select>
                               <div class="invalid-feedback">
-                                 Please enter your shipping address.
+                              Por favor, selecione uma opção válida.
                               </div>
                            </div>
-                           <div class="col-md-4">
+                           <div class="col-md-12">
                               <label for="diasMilitar" class="form-label">Dias</label>
                               <select class="form-select" name="diasMilitar" required>
-                                 <option value="0">Selecione ...</option>
-                                 <option value="0">0</option>
-                                 <option value="1">1</option>
-                                 <option value="2">2</option>
-                                 <option value="3">3</option>
-                                 <option value="4">4</option>
-                                 <option value="5">5</option>
-                                 <option value="6">6</option>
-                                 <option value="7">7</option>
-                                 <option value="8">8</option>
-                                 <option value="9">9</option>
-                                 <option value="10">10</option>
-                                 <option value="11">11</option>
-                                 <option value="12">12</option>
-                                 <option value="13">13</option>
-                                 <option value="14">14</option>
-                                 <option value="15">15</option>
-                                 <option value="16">16</option>
-                                 <option value="17">17</option>
-                                 <option value="18">18</option>
-                                 <option value="19">19</option>
-                                 <option value="20">20</option>
-                                 <option value="21">21</option>
-                                 <option value="22">22</option>
-                                 <option value="23">23</option>
-                                 <option value="24">24</option>
-                                 <option value="25">25</option>
-                                 <option value="26">26</option>
-                                 <option value="27">27</option>
-                                 <option value="28">28</option>
-                                 <option value="29">29</option>
+                              <option value="0">Selecione ...</option>
+                              <option value="0">0</option>
+                              <option value="1">1</option>
+                              <option value="2">2</option>
+                              <option value="3">3</option>
+                              <option value="4">4</option>
+                              <option value="5">5</option>
+                              <option value="6">6</option>
+                              <option value="7">7</option>
+                              <option value="8">8</option>
+                              <option value="9">9</option>
+                              <option value="10">10</option>
+                              <option value="11">11</option>
+                              <option value="12">12</option>
+                              <option value="13">13</option>
+                              <option value="14">14</option>
+                              <option value="15">15</option>
+                              <option value="16">16</option>
+                              <option value="17">17</option>
+                              <option value="18">18</option>
+                              <option value="19">19</option>
+                              <option value="20">20</option>
+                              <option value="21">21</option>
+                              <option value="22">22</option>
+                              <option value="23">23</option>
+                              <option value="24">24</option>
+                              <option value="25">25</option>
+                              <option value="26">26</option>
+                              <option value="27">27</option>
+                              <option value="28">28</option>
+                              <option value="29">29</option>
                               </select>
                               <div class="invalid-feedback">
-                                 Please enter your shipping address.
+                              Por favor, selecione uma opção válida.
                               </div>
                            </div>
                         </div>
-                     </div>
+      </div>
                </div>
             </div>
             <hr class="my-4">
@@ -520,6 +516,8 @@
            mascaraTelefone(telefoneInput);
          });
       </script>
+
+
       <script>
          // Função para aplicar a máscara de CPF
          function mascaraCPF(cpfInput) {
@@ -584,5 +582,138 @@
              input.value = input.value.toUpperCase();
          }
       </script>
+     <script>
+         const tempoServicoMilitarSelect = document.getElementById("tempoServicoMilitar");
+         const camposAdicionaisDiv = document.getElementById("camposAdicionais");
+
+         tempoServicoMilitarSelect.addEventListener("change", function () {
+            if (tempoServicoMilitarSelect.value === "sim") {
+            camposAdicionaisDiv.style.display = "block";
+            } else {
+            camposAdicionaisDiv.style.display = "none";
+            }
+         });
+      </script>
+      <script>
+         let previousCPF = ''; // Variável para armazenar o CPF anterior
+
+            document.getElementById('cpf').addEventListener('blur', function() {
+               const cpfInput = this.value.replace(/\D/g, ''); // Remove caracteres não numéricos do input
+               previousCPF = cpfInput;
+            });
+
+
+         document.getElementById('cpf').addEventListener('blur', function() {
+            const cpfInput = this.value.replace(/\D/g, ''); // Remove caracteres não numéricos do input
+            const cpfFeedback = document.getElementById('cpf-feedback');
+           
+            
+            if (cpfInput.length === 11) { // Verifica se o CPF tem 11 dígitos
+               if (isValidCPF(cpfInput)) {
+                     cpfFeedback.style.display = 'block';
+                     //cpfFeedback.style.bgcolor = 'green';
+                     cpfInput.style.color = 'green';
+                     cpfFeedback.textContent = 'CPF digitado é Válido '; // CPF válido, esconde a mensagem de feedback
+               } else {
+                  cpfFeedback.style.display = 'block';
+                  cpfFeedback.textContent = 'CPF digitado não é Válido '; // CPF inválido, exibe a mensagem de feedback
+               }
+            } else {
+               cpfFeedback.style.display = 'none'; // Não tem 11 dígitos, esconde a mensagem de feedback
+            }
+         });
+
+         function isValidCPF(cpf) {
+            // Remove caracteres não numéricos e verifica se há 11 dígitos
+            if (cpf.length !== 11) {
+               return false;
+            }
+
+            // Verifica se todos os dígitos são iguais, o que é inválido
+            if (/^(\d)\1{10}$/.test(cpf)) {
+               return false;
+            }
+
+            // Calcula e compara os dígitos verificadores
+            let sum = 0;
+            for (let i = 0; i < 9; i++) {
+               sum += parseInt(cpf.charAt(i)) * (10 - i);
+            }
+            let remainder = sum % 11;
+            let firstVerifier = (remainder < 2) ? 0 : 11 - remainder;
+
+            sum = 0;
+            for (let i = 0; i < 10; i++) {
+               sum += parseInt(cpf.charAt(i)) * (11 - i);
+            }
+            remainder = sum % 11;
+            let secondVerifier = (remainder < 2) ? 0 : 11 - remainder;
+
+            // Compara os dígitos verificadores calculados com os fornecidos
+            return firstVerifier === parseInt(cpf.charAt(9)) && secondVerifier === parseInt(cpf.charAt(10));
+         }
+         </script>
+
+// <script>
+        // Seleciona todos os campos de entrada que são obrigatórios (com o atributo 'required')
+     /*const requiredFields = document.querySelectorAll('input[required], select[required]');
+
+        // Adiciona um ouvinte de evento de 'input' a cada campo de entrada
+        requiredFields.forEach(field => {
+            field.addEventListener('input', validateForm);
+        });
+
+        function validateForm() {
+            let isValid = true;
+
+            // Verifica se cada campo obrigatório está preenchido
+            requiredFields.forEach(field => {
+                if (!field.value) {
+                    isValid = false;
+                }
+            });
+
+            // Ativa ou desativa o botão de envio com base na validação
+            const submitButton = document.getElementById('submit-button');
+            if (isValid) {
+                submitButton.removeAttribute('disabled');
+            } else {
+                submitButton.setAttribute('disabled', 'true');
+            }
+        }*/
+    </script>
+
+<script>
+        // Seleciona o campo de nome completo
+        const nomeCompletoField = document.getElementById('nomeCompleto');
+
+        // Adiciona um ouvinte de evento de 'input' ao campo de nome completo
+        nomeCompletoField.addEventListener('input', function () {
+            const nomeCompletoValue = nomeCompletoField.value;
+            const lettersOnlyValue = nomeCompletoValue.replace(/[^a-zA-ZÀ-ú\s]/g, '');
+
+            if (nomeCompletoValue !== lettersOnlyValue) {
+                nomeCompletoField.value = lettersOnlyValue;
+            }
+        });
+    </script>
+
+<script>
+        const naturalidadeSelect = document.getElementById('naturalidade');
+
+        // Faz uma requisição à API do IBGE para obter a lista de cidades
+        fetch('https://servicodados.ibge.gov.br/api/v1/localidades/municipios')
+            .then(response => response.json())
+            .then(data => {
+                data.forEach(city => {
+                    const option = document.createElement('option');
+                    option.value = city.nome;
+                    option.textContent = city.nome;
+                    naturalidadeSelect.appendChild(option);
+                });
+            })
+            .catch(error => console.error('Erro ao carregar cidades: ', error));
+    </script>
+
    </body>
 </html>
