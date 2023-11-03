@@ -1,66 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>SisCTemp | Log-in</title>
-    <link rel="icon" type="image/x-icon" href="" />
-    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&amp;display=swap" rel="stylesheet" />
-    <link href="styles-index/css/styles.css" rel="stylesheet" />
-</head>
+    <title>SisCTemp</title>
 
-<body>
-    <!-- Background Video-->
-    <video class="bg-video" playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
-        <source src="media/vd/mp4/bg-video.mp4" type="video/mp4" />
-    </video>
-    <!-- Masthead-->
-    <div class="masthead">
-        <form action="login-sisctemp.php" method="post">
-            <div class="col-12 my-auto">
-                <div class="masthead-content text-dark py-4 py-md-0">
-                    <h1 class="mb-3 my-1 text-white">SisCTemp</h1>
-                    <p class="mb-4 text-white">Sistema de Cadastramento de Militares Temporários.
-                    <div class="input-group input-group-newsletter">
-                        <input name="email" type="email" id="cpfInput" maxlength="14"class="form-control" placeholder="Insira seu CPF ..."
-                            aria-label="Enter email..." aria-describedby="basic-addon">
-                    </div>
-                    <div class="input-group input-group-newsletter py-1">
-                        <input name="senha" type="password" class="form-control" placeholder="Insira sua senha ..."
-                            aria-label="Insira sua Senha .." aria-describedby="basic-addon">
-                    </div>
-                    <div class="d-grid gap-2 y py-md-1">
-                        <button class="btn btn-warning" type="submit">   Log-in   </button>
-                        <a class="btn btn-outline-primary" role="button" href="pages/cad-pag/cadastro_candidato.php">Cadastra-se</a>
-                        <a class="btn btn-outline-success col-20 " role="button" >Esqueceu a senha ?</a>
-                    </div>
-                </div>    
-            </div>
-        </form>
-    </div>                 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/scripts.js"></script>
-    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-    <script>
-        // Função para aplicar a máscara ao CPF
-        function formatCPF(cpf) {
-            cpf = cpf.replace(/\D/g, ''); // Remove caracteres não numéricos
-            cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4'); // Aplica a máscara
-            return cpf;
+    <link rel="icon" type="image/png" href="favicon.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.rawgit.com/RobinHerbots/Inputmask/5.x/dist/jquery.inputmask.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(to right, #0a6300, #d2b000);
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100vh;
+        }
+        .login-container {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .login-box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: ; /* Centralizar conteúdo do login-box */
+        }
+        .logo-container {
+            text-align: center;
+        }
+        .logo {
+            max-width: 70px;
         }
 
-        // Adiciona um ouvinte de eventos ao campo de entrada
-        const cpfInput = document.getElementById('cpfInput');
-        cpfInput.addEventListener('input', function () {
-            this.value = formatCPF(this.value);
-        });
-    </script>
+        .footer {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container login-container">
+    <div class="col-md-4 login-box">
+        <div class="logo-container">
+            <img src="img/logo.png" alt="Logo" class="logo">
+        </div>
+        </br>
+        <h1 class="text-success text-center">SisCTemp</h1>
+        <form action="login.php" method="post">
+            <div class="form-group">
+                <label for="username">CPF:</label>
+                <input type="text" class="form-control cpf-mask" id="username" name="cpf" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" class="form-control" id="password" name="senha" required>
+            </div>
+            <button type="submit" class="btn btn-success btn-block">Login</button>
+        </form>
+        <div class="mt-2 text-center">
+            <a href="esqueceu_senha.php" class="text-success">Esqueceu a senha?</a>
+        </div>
+        <div class="mt-2 text-center">
+            <a href="cadastro.php" class="text-success">Novo Cadastro</a>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.cpf-mask').inputmask('999.999.999-99');
+    });
+</script>
 </body>
 </html>
