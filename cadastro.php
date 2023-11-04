@@ -42,8 +42,8 @@
     <div class="col-md-12 cadastro-box">
         
         <div class="py-5 text-center">
-               <img class=" mx-auto mb-4" src="logo.png" alt="" width="100" height="150">
-               <h2 class="text-warning">Cadastro no Sistema </h2>
+               <img class=" mx-auto mb-4" src="img/logo.png" alt="" width="100" height="150">
+               <h2 class="" style="color: #094c00;">Cadastro no Sistema </h2>
                <p class="lead">Preencha os campos abaixo com suas informações pessoais para criar sua conta.
                </p>
         </div>
@@ -51,7 +51,7 @@
             
                     <hr class="my-4">
                     <h5 class="mb-3">Dados pessoais</h5>
-                    <form action="cadastro_processar.php" method="post">
+                    <form action="cadastro_processar.php" method="post"  enctype="multipart/form-data">
                         <div class="form-group row">
                             
                             <div class="col-md-8">
@@ -178,6 +178,10 @@
                                 <label for="telefoneRecados">Telefone para Recados (Opcional):</label>
                                 <input type="text" class="form-control" id="telefoneRecados" name="telefoneRecados">
                             </div>
+                            <div class="col-md-12">
+                                <label for="foto">Foto (Obrigatorio):</label>
+                                <input type="file"class="form-control" name="imagem" id="imagem" accept="image/*">
+                            </div>
                         </div> 
                         <hr class="my-4">
                         <h5 class="mb-3 text-warning">Serviço Militar anterior</h5>
@@ -238,7 +242,7 @@
                             </div>
                         </div>
                         <div class="d-grid gap-2">
-                            <button class="btn btn-success mt-3" type="submit">Cadastrar</button>
+                            <button class="btn  mt-3" style="background-color: #094c00; color:white;" type="submit">Cadastrar</button>
                         </div>
                     </form>
                 </div>
@@ -253,25 +257,36 @@
 
 
 
+
 <script>
-         // Função para aplicar a máscara de telefone
-         function mascaraTelefone(telefoneInput) {
-           // Remove caracteres não numéricos
-           let telefone = telefoneInput.value.replace(/\D/g, '');
-         
-           // Aplica a máscara
-           if (telefone.length <= 11) {
-             telefone = telefone.replace(/(\d{2})(\d{5})(\d{4})/, '($1) $2-$3');
-             telefoneInput.value = telefone;
-           }
-         }
-         
-         // Adiciona um ouvinte de evento ao campo de telefone para chamar a função de máscara
-         const telefoneInput = document.getElementById('telefone');
-         telefoneInput.addEventListener('input', function () {
-           mascaraTelefone(telefoneInput);
-         });
-      </script>
+        // Máscara para o campo de telefone
+        document.getElementById('telefoneContato').addEventListener('input', function () {
+            var phone = this.value.replace(/\D/g, ''); // Remover caracteres não numéricos
+            if (phone.length > 11) {
+                phone = phone.slice(0, 11);
+            }
+
+            if (phone.length > 0) {
+                phone = '(' + phone.substring(0, 2) + ') ' + phone.substring(2, 7) + '-' + phone.substring(7, 11);
+            }
+
+            this.value = phone;
+        });
+
+        // Máscara para o campo de telefone de recados (opcional)
+        document.getElementById('telefoneRecados').addEventListener('input', function () {
+            var phone = this.value.replace(/\D/g, ''); // Remover caracteres não numéricos
+            if (phone.length > 11) {
+                phone = phone.slice(0, 11);
+            }
+
+            if (phone.length > 0) {
+                phone = '(' + phone.substring(0, 2) + ') ' + phone.substring(2, 7) + '-' + phone.substring(7, 11);
+            }
+
+            this.value = phone;
+        });
+    </script>
 
 
       <script>

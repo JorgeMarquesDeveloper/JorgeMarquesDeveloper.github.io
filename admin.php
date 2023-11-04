@@ -27,7 +27,7 @@
          display: flex;
          max-width: auto;
          margin: 20px;
-         background: linear-gradient(to right, #094000, #ffffff);
+         background: linear-gradient(to right, #084400, #ffffff);
          /*border: 1px solid #ddd;*/
          border-radius: 20px;
          }

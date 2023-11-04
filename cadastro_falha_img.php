@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sucesso no Cadastro</title>
+    <title>Falha no Cadastro</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -41,15 +41,13 @@
 <div class="container login-container">
     <div class="col-md-4 login-box">
         <div class="logo-container">
-            <img src="img/logo.png" alt="Logo" class="logo">
+            <img src="logo.png" alt="Logo" class="logo">
         </div>
-        <h1 class="text-success text-center">Sucesso</h1>
-        <p>Seu cadastro foi realizado com sucesso.</p>
+        <h1 class="text-danger text-center">Falha </h1>
+        <p>Ocorreu um erro durante o cadastro. Por favor, tente novamente.</p>
+        
         <div class="mt-2 text-center">
-            <a href="index.php" class="text-success">Log-in</a>
-        </div>
-        <div class="mt-2 text-center">
-            <a href="cadastro.php" class="text-success">Novo Cadastro</a>
+            <a href="cadastro.php" class="text-success">Refazer Cadastro</a>
         </div>
     </div>
 </div>

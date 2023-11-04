@@ -50,7 +50,7 @@
             <img src="img/logo.png" alt="Logo" class="logo">
         </div>
         </br>
-        <h1 class="text-success text-center">SisCTemp</h1>
+        <h1 class=" text-center" style="color: #094c00;">SisCTemp</h1>
         <form action="login.php" method="post">
             <div class="form-group">
                 <label for="username">CPF:</label>
@@ -60,13 +60,13 @@
                 <label for="password">Senha:</label>
                 <input type="password" class="form-control" id="password" name="senha" required>
             </div>
-            <button type="submit" class="btn btn-success btn-block">Login</button>
+            <button type="submit" class="btn  btn-block"style="background-color: #094c00; color:white;" >Login</button>
         </form>
         <div class="mt-2 text-center">
-            <a href="esqueceu_senha.php" class="text-success">Esqueceu a senha?</a>
+            <a href="esqueceu_senha.php" class="" style="color: #094c00;">Esqueceu a senha?</a>
         </div>
         <div class="mt-2 text-center">
-            <a href="cadastro.php" class="text-success">Novo Cadastro</a>
+            <a href="cadastro.php" style="color: #094c00;">Novo Cadastro</a>
         </div>
     </div>
 </div>
