@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Sucesso no Cadastro</title>
+    <title>Falha no requisição</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -43,15 +43,14 @@
         <div class="logo-container">
             <img src="img/logo.png" alt="Logo" class="logo">
         </div>
-        <h1 class="text-success text-center">Sucesso</h1>
-        <p>Seu cadastro foi realizado com sucesso.</p>
+        <h1 class="text-danger text-center">Falha na Solicitação</h1>
+        <p>Sua solicitação de atualização de senha não é mais válida. Por favor, faça uma nova solicitação.</p>
+        
         <div class="mt-2 text-center">
-            <a href="index.php" class="text-success">Log-in</a>
-        </div>
-        <div class="mt-2 text-center">
-            <a href="cadastro.php" class="text-success">Novo Cadastro</a>
+            <a href="esqueceu_senha.php" class="text-success">Nova Solicitação</a>
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>

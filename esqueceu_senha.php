@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>SisCTemp</title>
-
+    <title>Esqueci a Senha - SisCTemp</title>
     <link rel="icon" type="image/png" href="img/favicon.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -33,11 +32,11 @@
         }
         .logo-container {
             text-align: center;
+            padding: 20px;
         }
         .logo {
             max-width: 70px;
         }
-
         .footer {
             text-align: center;
         }
@@ -49,25 +48,22 @@
         <div class="logo-container">
             <img src="img/logo.png" alt="Logo" class="logo">
         </div>
-        </br>
-        <h1 class=" text-center" style="color: #094c00;">SisCTemp</h1>
-        <form action="login.php" method="post">
+        <h2 class="text-center" style="color: #094c00;">Esqueci a Senha</h2>
+        <form action="processar_esqueceu_senha.php" method="post">
             <div class="form-group">
-                <label for="username">CPF:</label>
-                <input type="text" class="form-control cpf-mask" id="username" name="cpf" required>
+                <label for="cpf">CPF:</label>
+                <input type="text" class="form-control cpf-mask" id="cpf" name="cpf" required>
             </div>
             <div class="form-group">
-                <label for="password">Senha:</label>
-                <input type="password" class="form-control" id="password" name="senha" required>
+                <label for="nome_mae">Nome da Mãe:</label>
+                <input type="text" class="form-control" id="nome_mae" name="nome_mae" required>
             </div>
-            <button type="submit" class="btn  btn-block"style="background-color: #094c00; color:white;" >Login</button>
+            <div class="form-group">
+                <label for="data_nascimento">Data de Nascimento:</label>
+                <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" required>
+            </div>
+            <button type="submit" class="btn btn-block" style="background-color: #094c00; color:white;">Verificar</button>
         </form>
-        <div class="mt-2 text-center">
-            <a href="esqueceu_senha.php" class="" style="color: #094c00;">Esqueceu a senha?</a>
-        </div>
-        <div class="mt-2 text-center">
-            <a href="cadastro.php" style="color: #094c00;">Novo Cadastro</a>
-        </div>
     </div>
 </div>
 <script>

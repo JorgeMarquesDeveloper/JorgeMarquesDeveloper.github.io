@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>SisCTemp</title>
-
+    <title>Nova Senha - SisCTemp</title>
     <link rel="icon" type="image/png" href="img/favicon.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -37,7 +36,6 @@
         .logo {
             max-width: 70px;
         }
-
         .footer {
             text-align: center;
         }
@@ -50,30 +48,22 @@
             <img src="img/logo.png" alt="Logo" class="logo">
         </div>
         </br>
-        <h1 class=" text-center" style="color: #094c00;">SisCTemp</h1>
-        <form action="login.php" method="post">
+        <h1 class="text-center" style="color: #094c00;">Nova Senha</h1>
+        <form action="nova_senha_processar.php" method="post">
             <div class="form-group">
-                <label for="username">CPF:</label>
-                <input type="text" class="form-control cpf-mask" id="username" name="cpf" required>
+                <label for="nova_senha">Nova Senha:</label>
+                <input type="password" class="form-control" id="nova_senha" name="nova_senha" required>
             </div>
             <div class="form-group">
-                <label for="password">Senha:</label>
-                <input type="password" class="form-control" id="password" name="senha" required>
+                <label for="confirmar_senha">Confirmar Senha:</label>
+                <input type="password" class="form-control" id="confirmar_senha" name="confirmar_senha" required>
             </div>
-            <button type="submit" class="btn  btn-block"style="background-color: #094c00; color:white;" >Login</button>
+            <button type="submit" class="btn btn-block" style="background-color: #094c00; color:white;">Redefinir Senha</button>
         </form>
-        <div class="mt-2 text-center">
-            <a href="esqueceu_senha.php" class="" style="color: #094c00;">Esqueceu a senha?</a>
-        </div>
-        <div class="mt-2 text-center">
-            <a href="cadastro.php" style="color: #094c00;">Novo Cadastro</a>
-        </div>
     </div>
 </div>
 <script>
-    $(document).ready(function () {
-        $('.cpf-mask').inputmask('999.999.999-99');
-    });
+    // Você pode adicionar qualquer script JavaScript necessário aqui
 </script>
 </body>
 </html>

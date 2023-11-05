@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
             } else {
                 // Login falhou
-                header("Location: cadastro_falha.php"); // Redirecione para a página de falha
+                header("Location: fail/login.php"); // Redirecione para a página de falha
                 exit();
             }
         } else {

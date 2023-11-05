@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="icon" type="image/png" href="img/favicon.ico">
     <title>Falha no Cadastro</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
@@ -42,13 +41,13 @@
 <div class="container login-container">
     <div class="col-md-4 login-box">
         <div class="logo-container">
-            <img src="logo.png" alt="Logo" class="logo">
+            <img src="../img/logo.png" alt="Logo" class="logo">
         </div>
-        <h1 class="text-danger text-center">Usuario Existente </h1>
-        <p>Esse CPF ja esta cadastrado por favor realize o cadastro com outro CPF</p>
+        <h2 class="text-danger text-center">Usuário Existente</h2>
+        <p>O CPF inserido já está cadastrado. Por favor, refaça o cadastro com um CPF diferente.</p>
         
         <div class="mt-2 text-center">
-            <a href="cadastro.php" class="text-success">Recuperar Senha</a>
+            <a href="../cadastro.php" class="text-success">Refazer Cadastro</a>
         </div>
     </div>
 </div>
