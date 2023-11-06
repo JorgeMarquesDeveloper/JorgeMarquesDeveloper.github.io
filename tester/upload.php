@@ -1,35 +1,27 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Verifique se um CPF foi fornecido
-    if (isset($_POST["cpf"]) && !empty($_POST["cpf"])) {
-        $cpf = $_POST["cpf"];
-        
-        // Diretório de destino para o upload
-        $upload_dir = '../uploads/';
+require 'Twilio/autoload.php'; // Carregue a biblioteca Twilio
 
-        // Nome da imagem com base no CPF
-        $image_name = $cpf . '.png'; // Altere a extensão conforme necessário
+use Twilio\Rest\Client;
 
-        // Verifique se o campo "imagem" foi enviado corretamente
-        if (isset($_FILES["imagem"]) && $_FILES["imagem"]["error"] == 0) {
-            // Verifique se o diretório de destino existe
-            if (!file_exists($upload_dir)) {
-                mkdir($upload_dir, 0777, true);
-            }
+// Credenciais da sua conta Twilio
+$accountSid = 'ACed74e3439e9c502e42cd32ebffcb3b59';
+$authToken = '5bf5a3650502db1b7f472b686cda0f68';
+// Inicialize o cliente Twilio
+$client = new Client($accountSid, $authToken);
 
-            // Tente mover o arquivo para o diretório de destino
-            if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $upload_dir . $image_name)) {
-                echo "Upload da imagem com sucesso.";
-            } else {
-                echo "O upload da imagem falhou.";
-            }
-        } else {
-            echo "O campo 'imagem' não foi enviado corretamente.";
-        }
-    } else {
-        echo "O CPF não foi fornecido.";
-    }
-} else {
-    echo "Acesso inválido.";
-}
-?>
+// Número de telefone do destinatário (formato: +1234567890)
+$recipientNumber = '+1234567890';
+
+// Mensagem a ser enviada
+$message = 'Olá! Esta é uma mensagem do Twilio.';
+
+// Envie a mensagem
+$message = $client->messages->create(
+    $recipientNumber,
+    [
+        'from' => 'whatsapp:+5583999785222', // Seu número do WhatsApp Business
+        'body' => $message
+    ]
+);
+
+echo 'Mensagem enviada com sucesso!';

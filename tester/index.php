@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Upload de Imagem</title>
+    <title>Cadastro</title>
 </head>
 <body>
-    <form action="upload.php" method="post" enctype="multipart/form-data">
-        <label for="cpf">CPF:</label>
-        <input type="text" name="cpf" id="cpf" required>
-        <br>
-        <label for="imagem">Imagem:</label>
-        <input type="file" name="imagem" id="imagem" accept="image/*" required>
-        <br>
-        <input type="submit" value="Enviar">
+    <h1>Cadastro</h1>
+    <form action="upload.php" method="post">
+        <label for="nome">Nome:</label>
+        <input type="text" name="nome" id="nome" required><br>
+        <label for="whatsapp">Número do WhatsApp:</label>
+        <input type="text" name="whatsapp" id="whatsapp" required><br>
+        <input type="submit" value="Cadastrar">
     </form>
 </body>
 </html>
