@@ -1,40 +1,45 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <title>SisCTemp</title>
-      <link rel="icon" type="image/png" href="img/favicon.ico">
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-      <!-- Custom fonts for this template-->
-      <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-      <link
-         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-         rel="stylesheet">
-      <!-- Custom styles for this template-->
-      <link href="css/sb-admin-2.min.css" rel="stylesheet">
-      <style>
-         body {
-         font-family: Arial, sans-serif;
-         background: linear-gradient(to right, #0a6300, #d2b000);
-         background-size: cover;
-         background-repeat: no-repeat;
-         margin: 0;
-         padding: 0;
-         display: flex;
-         justify-content: center;
-         }
-         .container {
-         display: flex;
-         max-width: auto;
-         margin: 20px;
-         width: 100%;
-         background: linear-gradient(to right, #084400, #ffffff);
-         /*border: 1px solid #ddd;*/
-         border-radius: 20px;
-         }
-      </style>
-   </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SisCTemp</title>
+    <link rel="icon" type="image/png" href="img/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #0a6300, #d2b000);
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin: 0
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            max-width: 100%;
+            margin: 40px;
+            background: linear-gradient(to right, #084400, #ffffff);
+            border-radius: 20px;
+        }
+
+        /* Adicione outras regras de estilo conforme necessário */
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
    <body>
       <?php
          session_start();
@@ -120,7 +125,7 @@
                <!-- Nav Item - Pages Collapse Menu -->
                <!-- Página Inicial -->
                <li class="nav-item">
-                  <a class="nav-link" href="pagina-inicial.html">
+                  <a class="nav-link" href="admin.php">
                   <i class="fas fa-fw fa-home"></i>
                   <span>Página Inicial</span>
                   </a>
@@ -145,7 +150,7 @@
                         <a class="collapse-item" href="documentos-obrigatorios.html">Documentos Obrigatórios</a>
                         <a class="collapse-item" href="curriculo.html">Currículo</a>
                         <a class="collapse-item" href="especialidade.html">Especialidade</a>
-                        <a class="collapse-item" href="usuario.html">Usuário</a>
+                        <a class="collapse-item" href="insert_user.php">Usuário</a>
                      </div>
                   </div>
                </li>
@@ -355,7 +360,8 @@
                                  <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
                                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                          Pending Requests
+                                          Atendimentos Pendentes
+
                                        </div>
                                        <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
                                     </div>
