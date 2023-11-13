@@ -42,7 +42,7 @@
 <div class="container login-container">
     <div class="col-md-4 login-box">
         <div class="logo-container">
-            <img src="img/logo.png" alt="Logo" class="logo">
+            <img src="../img/logo.png" alt="Logo" class="logo">
         </div>
         <h1 class="text-success text-center">Sucesso</h1>
         <p>Seu cadastro foi realizado com sucesso.</p>

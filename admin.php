@@ -11,23 +11,12 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #0a6300, #d2b000);
-            background-size: cover;
-            background-repeat: no-repeat;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
+       
 
         .container {
             display: flex;
             flex-direction: column;
             max-width: 100%;
-            max-height: 100vh; /* Defina a altura máxima do container para a altura da tela */
-            overflow-y: auto; /* Adicione uma barra de rolagem vertical quando necessário */
             margin: 40px;
             background: linear-gradient(to right, #084400, #ffffff);
             border-radius: 20px;
@@ -100,7 +89,6 @@
              }
          }
          ?>
-      <div class="container">
          <!-- Page Wrapper -->
          <div id="wrapper" >
             <!-- Sidebar -->
@@ -461,7 +449,7 @@
             <!-- End of Content Wrapper -->
          </div>
          <!-- End of Page Wrapper -->
-      </div>
+      
       <!-- Bootstrap core JavaScript-->
       <script src="vendor/jquery/jquery.min.js"></script>
       <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

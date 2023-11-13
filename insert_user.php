@@ -14,25 +14,7 @@
       <!-- Custom styles for this template-->
       <link href="css/sb-admin-2.min.css" rel="stylesheet">
       <style>
-           body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(to right, #0a6300, #d2b000);
-            background-size: cover;
-            background-repeat: no-repeat;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-        }
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            max-width: 100%;
-            margin: 40px;
-            background: linear-gradient(to right, #084400, #ffffff);
-            border-radius: 20px;
-        }
       </style>
    </head>
    <body>
@@ -93,7 +75,6 @@
              }
          }
          ?>
-      <div class="container">
       <!-- Page Wrapper -->
       <div id="wrapper" >
          <!-- Sidebar -->

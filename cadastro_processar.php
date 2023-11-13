@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     if ($conn->query($sql) === TRUE) {
                         // Redirecione para a página de sucesso
-                        header("Location: true/fvcadastro_sucesso.php");
+                        header("Location: true/cadastro_sucesso.php");
                     } else {
                         // Redirecione para a página de erro
                         header("Location: fail/cadastro.php");
