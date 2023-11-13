@@ -16,7 +16,7 @@
             background: linear-gradient(to right, #0a6300, #d2b000);
             background-size: cover;
             background-repeat: no-repeat;
-            margin: 0
+            margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
@@ -26,6 +26,8 @@
             display: flex;
             flex-direction: column;
             max-width: 100%;
+            max-height: 100vh; /* Defina a altura máxima do container para a altura da tela */
+            overflow-y: auto; /* Adicione uma barra de rolagem vertical quando necessário */
             margin: 40px;
             background: linear-gradient(to right, #084400, #ffffff);
             border-radius: 20px;
