@@ -525,21 +525,45 @@
              }
          });
       </script>
-      <script>
-         const naturalidadeSelect = document.getElementById('naturalidade');
-         
-         // Faz uma requisição à API do IBGE para obter a lista de cidades
-         fetch('https://servicodados.ibge.gov.br/api/v1/localidades/municipios')
-             .then(response => response.json())
-             .then(data => {
-                 data.forEach(city => {
-                     const option = document.createElement('option');
-                     option.value = city.nome;
-                     option.textContent = city.nome;
-                     naturalidadeSelect.appendChild(option);
-                 });
-             })
-             .catch(error => console.error('Erro ao carregar cidades: ', error));
-      </script>
+<script>
+    const localidadesSelect = document.getElementById('naturalidade');
+
+    // Faz uma requisição à API do IBGE para obter a lista de estados
+    fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados')
+        .then(response => response.json())
+        .then(estados => {
+            estados.forEach(estado => {
+                const optionEstado = document.createElement('option');
+                optionEstado.value = estado.sigla;
+                optionEstado.textContent = estado.nome;
+                localidadesSelect.appendChild(optionEstado);
+            });
+
+            // Adiciona um evento para carregar cidades ao selecionar um estado
+            localidadesSelect.addEventListener('change', () => {
+                const estadoSelecionado = localidadesSelect.value;
+                carregarCidadesPorEstado(estadoSelecionado);
+            });
+        })
+        .catch(error => console.error('Erro ao carregar estados: ', error));
+
+    // Função para carregar as cidades de um estado específico
+    function carregarCidadesPorEstado(estado) {
+        fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estado}/municipios`)
+            .then(response => response.json())
+            .then(cidades => {
+                const cidadesSelect = document.getElementById('localidades');
+                cidadesSelect.innerHTML = ''; // Limpa as opções anteriores
+
+                cidades.forEach(cidade => {
+                    const optionCidade = document.createElement('option');
+                    optionCidade.value = cidade.nome;
+                    optionCidade.textContent = cidade.nome;
+                    cidadesSelect.appendChild(optionCidade);
+                });
+            })
+            .catch(error => console.error('Erro ao carregar cidades: ', error));
+    }
+</script>
    </body>
 </html>

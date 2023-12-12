@@ -47,7 +47,7 @@
         <p>Sua solicitação de atualização de senha não é mais válida. Por favor, faça uma nova solicitação.</p>
         
         <div class="mt-2 text-center">
-            <a href="esqueceu_senha.php" class="text-success">Nova Solicitação</a>
+            <a href="../esqueceu_senha.php" class="text-success">Nova Solicitação</a>
         </div>
     </div>
 </div>

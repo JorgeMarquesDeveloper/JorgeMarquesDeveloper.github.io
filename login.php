@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Guarde o ID na sessão para uso posterior
                 $_SESSION["candidato_id"] = $idCandidato;
             
-                header("Location: admin.php"); // Redirecione para a página "admin.php"
+                header("Location: system.php"); // Redirecione para a página "admin.php"
                 exit();
             } else {
                 // Login falhou
