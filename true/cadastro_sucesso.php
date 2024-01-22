@@ -47,7 +47,7 @@
         <h1 class="text-success text-center">Sucesso</h1>
         <p>Seu cadastro foi realizado com sucesso.</p>
         <div class="mt-2 text-center">
-            <a href="index.php" class="text-success">Log-in</a>
+            <a href="../index.php" class="text-success">Log-in</a>
         </div>
         <div class="mt-2 text-center">
             <a href="cadastro.php" class="text-success">Novo Cadastro</a>

@@ -3,7 +3,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verifique se um CPF foi fornecido
     if (isset($_POST["cpf"]) && !empty($_POST["cpf"])) {
         $cpf = $_POST["cpf"];
-        
+
         // Conecte-se ao banco de dados
         $servername = "localhost";
         $username = "root";
@@ -15,8 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Erro na conexão com o banco de dados: " . $conn->connect_error);
         }
 
-        // Consulta SQL para verificar se o CPF já existe
-        $check_cpf_sql = "SELECT cpf FROM candidato WHERE cpf = '$cpf'";
+        // Consulta SQL para verificar se o CPF já existe em ambas as tabelas
+        $check_cpf_sql = "SELECT cpf FROM candidato WHERE cpf = '$cpf' UNION SELECT cpf FROM usuarios WHERE cpf = '$cpf'";
         $check_result = $conn->query($check_cpf_sql);
 
         if ($check_result->num_rows > 0) {
@@ -24,6 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: fail/cad_existente.php");
         } else {
             // O CPF não está cadastrado, continue com o processo de cadastro
+
             // Diretório de destino para o upload
             $upload_dir = 'uploads/';
 
@@ -59,11 +60,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $diasMilitar = $conn->real_escape_string($_POST["diasMilitar"]);
                     $senha = $conn->real_escape_string($_POST["senha"]);
 
-                    // Prepare a declaração SQL de inserção (incluindo o nome da imagem)
-                    $sql = "INSERT INTO candidato (nomeCompleto, cpf, identidadeOrgaoExp, nacionalidade, sexo, estadoCivil, filiacaoPai, filiacaoMae, dataNascimento, numDependentes, nomeSocial, cep, estado, cidade, logradouro, bairro, email, telefoneContato, telefoneRecados, tempoServicoMilitar, anosMilitar, mesesMilitar, diasMilitar, senha)
+                    // Prepare a declaração SQL de inserção na tabela 'candidato'
+                    $sql_candidato = "INSERT INTO candidato (nomeCompleto, cpf, identidadeOrgaoExp, nacionalidade, sexo, estadoCivil, filiacaoPai, filiacaoMae, dataNascimento, numDependentes, nomeSocial, cep, estado, cidade, logradouro, bairro, email, telefoneContato, telefoneRecados, tempoServicoMilitar, anosMilitar, mesesMilitar, diasMilitar, senha)
                         VALUES ('$nomeCompleto', '$cpf', '$identidadeOrgaoExp', '$nacionalidade', '$sexo', '$estadoCivil', '$filiacaoPai', '$filiacaoMae', '$dataNascimento', '$numDependentes', '$nomeSocial', '$cep', '$estado', '$cidade', '$logradouro', '$bairro', '$email', '$telefoneContato', '$telefoneRecados', '$tempoServicoMilitar', '$anosMilitar', '$mesesMilitar', '$diasMilitar', '$senha')";
 
-                    if ($conn->query($sql) === TRUE) {
+                    // Prepare a declaração SQL de inserção na tabela 'usuarios'
+                    $sql_usuario = "INSERT INTO usuarios (cpf, senha, tipo, nome) VALUES ('$cpf', '$senha', 'candidato','$nomeCompleto')";
+
+                    // Execute as declarações SQL
+                    if ($conn->query($sql_candidato) === TRUE && $conn->query($sql_usuario) === TRUE) {
                         // Redirecione para a página de sucesso
                         header("Location: true/cadastro_sucesso.php");
                     } else {
@@ -72,11 +77,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }
                 } else {
                     // Se o upload da imagem falhar, redirecione para a página de erro
-                    header("Location: cadastro.php");
+                    header("Location: fail/cadastro.php");
                 }
             } else {
                 // O campo "imagem" não foi enviado corretamente
-                header("Location: cadastro.php");
+                header("Location: fail/cadastro.php");
             }
         }
     } else {

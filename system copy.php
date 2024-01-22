@@ -110,7 +110,12 @@
                </a>
             </li>
             <!-- Minha Foto -->
-          
+            <li class="nav-item">
+               <a class="nav-link" href="minha-foto.html">
+               <i class="fas fa-fw fa-image"></i>
+               <span>Minha Foto</span>
+               </a>
+            </li>
             <!-- Cadastros -->
             <li class="nav-item">
                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCadastros"
@@ -225,7 +230,27 @@
                         </div>
                      </div>
                      <!-- Earnings (Monthly) Card Example -->
-                  
+                     <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card border-left-warning shadow h-100 py-2">
+                           <div class="card-body">
+                              <img src="img/cards/CET.jpg" alt="Imagem 1" style="width: 100%; height: 100%;">
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card border-left-warning shadow h-100 py-2">
+                           <div class="card-body">
+                              <img src="img/cards/STT.jpg" alt="Imagem 1" style="width: 100%; height: 100%;">
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card border-left-warning shadow h-100 py-2">
+                           <div class="card-body">
+                              <img src="img/cards/OTT.jpg" alt="Imagem 1" style="width: 100%; height: 100%;">
+                           </div>
+                        </div>
+                     </div>
                    
                   </div>
                   <!-- Content Row -->
@@ -266,9 +291,8 @@
       </div>
       <!-- End of Page Wrapper -->
       <!-- Bootstrap core JavaScript-->
-
-      <script src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/vendor/jquery/jquery.min.js"></script>
-      <script src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="vendor/jquery/jquery.min.js"></script>
+      <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
       <!-- Core plugin JavaScript-->
       <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
       <!-- Custom scripts for all pages-->
