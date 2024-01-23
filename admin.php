@@ -74,13 +74,13 @@
                  }
          
                  // Consulta SQL para obter o nome do candidato com base no ID
-                 $sql = "SELECT nomeCompleto, cpf FROM candidato WHERE id = $idCandidato";
+                 $sql = "SELECT nome, cpf FROM usuarios WHERE id = $idCandidato";
          
                  $result = $conn->query($sql);
          
                  if ($result->num_rows == 1) {
                      $row = $result->fetch_assoc();
-                     $nomeCandidato = $row["nomeCompleto"];
+                     $nomeCandidato = $row["nome"];
                      $cpf = $row["cpf"];
                  }
          

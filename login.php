@@ -1,55 +1,88 @@
 <?php
+
 session_start();
 
+// Conexão com o banco de dados
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "sisctemp_bd";
+
+// Conecte-se ao banco de dados
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verifique a conexão
+if ($conn->connect_error) {
+    die("Falha na conexão com o banco de dados: " . $conn->connect_error);
+}
+
+// Verifique se o formulário de login foi submetido
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Verifique se o CPF, senha e tipo foram fornecidos
-    if (isset($_POST["cpf"]) && isset($_POST["senha"])) {
-        $cpf = $_POST["cpf"];
-        $senha = $_POST["senha"];
+    $cpf = $_POST["cpf"];
+    $senha = $_POST["senha"];
 
-        // Conecte-se ao banco de dados
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "sisctemp_bd";
-        $conn = new mysqli($servername, $username, $password, $dbname);
+    // Verifique se os campos não estão em branco
+    if (!empty($cpf) && !empty($senha)) {
+        // Consulta SQL para verificar o login
+        $sql = "SELECT * FROM usuarios WHERE cpf = ? AND senha = ?";
+        
+        // Prepare a declaração SQL
+        $stmt = $conn->prepare($sql);
 
-        if ($conn->connect_error) {
-            die("Erro na conexão com o banco de dados: " . $conn->connect_error);
-        }
+        // Verifique se a declaração preparada foi bem-sucedida
+        if ($stmt) {
+            // Vincule os parâmetros
+            $stmt->bind_param("ss", $cpf, $senha);
 
-        // Consulta SQL para verificar o CPF, senha e tipo na tabela 'usuarios'
-        $login_query = "SELECT tipo FROM usuarios WHERE cpf = '$cpf' AND senha = '$senha'";
-        $result = $conn->query($login_query);
+            // Execute a consulta
+            $stmt->execute();
 
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $tipo = $row["tipo"];
+            // Obtenha o resultado
+            $result = $stmt->get_result();
 
-            // Verifique se o tipo é 'admin'
-            if ($tipo == "admin") {
+            // Verifique se encontrou um registro correspondente
+            if ($result->num_rows == 1) {
+                // Login bem-sucedido
+                $row = $result->fetch_assoc();
+                $tipo = $row["tipo"];
+
+                // Defina uma sessão como "logged_in"
                 $_SESSION["logged_in"] = true;
-                $_SESSION["admin"] = true;
-                header("Location: admin.php");
-                exit();
+
+                // Obtenha o ID do usuário
+                $idUsuario = $row["id"];
+
+                // Guarde o ID na sessão para uso posterior
+                $_SESSION["candidato_id"] = $idUsuario;
+
+                // Verifique o tipo e redirecione para a página apropriada
+                if ($tipo == "admin") {
+                    header("Location: admin.php");
+                    exit();
+                } elseif ($tipo == "candidato") {
+                    header("Location: system.php");
+                    exit();
+                } else {
+                    // Tipo desconhecido
+                    header("Location: fail/login.php");
+                    exit();
+                }
             } else {
-                // Tipo não é 'admin', redirecione para a página de erro
-                header("Location: fail/login.php");
+                // Login falhou
+                header("Location: fail/login.php"); // Redirecione para a página de falha
                 exit();
             }
         } else {
-            // Credenciais inválidas, redirecione para a página de erro
-            header("Location: fail/login.php");
-            exit();
+            echo "Erro na declaração preparada: " . $conn->error;
         }
+
+        // Feche a declaração preparada
+        $stmt->close();
     } else {
-        // Dados não fornecidos, redirecione para a página de erro
-        header("Location: fail/login.php");
-        exit();
+        echo "Por favor, preencha todos os campos.";
     }
-} else {
-    // Acesso inválido, redirecione para a página de erro
-    header("Location: fail/login.php");
-    exit();
 }
+
+// Feche a conexão com o banco de dados
+$conn->close();
 ?>
