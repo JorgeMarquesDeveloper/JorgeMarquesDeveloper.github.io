@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Personal - Start Bootstrap Template</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Custom Google font-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+    <!-- Custom Styles -->
+    <style>
+        /* ... (Código anterior) ... */
+
+        /* Card Styles */
+        .card {
+            background-color: #FFFF00; /* amarelo */
+            color: #000000; /* preto */
+        }
+
+        .card:hover {
+            background-color: #008000; /* verde ao passar o mouse */
+            color: #FFFFFF; /* branco */
+        }
+    </style>
+</head>
+<body class="d-flex flex-column h-100 bg-light">
+    <main class="flex-shrink-0">
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+            <div class="container px-5">
+                <a class="navbar-brand" href="index.html"><span class="fw-bolder text-success">Avaliador</span></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                        <li class="nav-item"><a class="nav-link" href="stt.html">STT</a></li>
+                        <li class="nav-item"><a class="nav-link" href="ott.html">OTT</a></li>
+                        <li class="nav-item"><a class="nav-link" href="cet.html">CET</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page Content-->
+        <div class="container px-5 my-5">
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">ott</span></h1>
+            </div>
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-11 col-xl-9 col-xxl-8">
+                    <!-- Elimination Reasons Section-->
+                    <section>
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <h2 class="text-primary fw-bolder mb-0">Motivos de Eliminação</h2>
+                        </div>
+                        
+                        <!-- Documentação Incompleta -->
+                        <div class="card shadow border-0 rounded-4 mb-5" id="docCard1">
+                            <div class="card-body p-5">
+                                <p>§20 do Art 184: Faltou anexar as certidões de nada consta nos aspectos financeiro e ético-disciplinar do conselho.</p>
+                                <button class="copy-button" onclick="copyToClipboard('docCard1')">Copiar Conteúdo</button>
+                                <span class="copy-message" id="copyMessageDoc1">Conteúdo copiado!</span>
+                            </div>
+                        </div>
+                        
+                        <div class="card shadow border-0 rounded-4 mb-5" id="docCard2">
+                            <div class="card-body p-5">
+                                <p>§22 do Art 184: Apresentação de Certidão de Nada Consta dos Conselhos incompleta, faltando aspecto ético-disciplinar.</p>
+                                <button class="copy-button" onclick="copyToClipboard('docCard2')">Copiar Conteúdo</button>
+                                <span class="copy-message" id="copyMessageDoc2">Conteúdo copiado!</span>
+                            </div>
+                        </div>
+
+                        <!-- Outros cards de Documentação Incompleta ... -->
+
+                        <!-- Experiência Profissional -->
+                        <div class="card shadow border-0 rounded-4 mb-5" id="expCard1">
+                            <div class="card-body p-5">
+                                <p>Contraria Art 94: Não aceitação de declarações como comprovação de experiência profissional.</p>
+                                <button class="copy-button" onclick="copyToClipboard('expCard1')">Copiar Conteúdo</button>
+                                <span class="copy-message" id="copyMessageExp1">Conteúdo copiado!</span>
+                            </div>
+                        </div>
+
+                        <!-- Outros cards de Experiência Profissional ... -->
+
+                        <!-- Tempo de Serviço Contraditório -->
+                        <div class="card shadow border-0 rounded-4 mb-5" id="tempoCard1">
+                            <div class="card-body p-5">
+                                <p>Contraria Art 91: Tempo de serviço antes da conclusão do curso não é considerado.</p>
+                                <button class="copy-button" onclick="copyToClipboard('tempoCard1')">Copiar Conteúdo</button>
+                                <span class="copy-message" id="copyMessageTempo1">Conteúdo copiado!</span>
+                            </div>
+                        </div>
+
+                        <!-- Outros cards de Tempo de Serviço Contraditório ... -->
+
+                        <!-- Contradições em Cursos -->
+                        <div class="card shadow border-0 rounded-4 mb-5" id="cursoCard1">
+                            <div class="card-body p-5">
+                                <p>Contraria Anexo R e Q: Cursos não estão previstos para pontuação na área de inscrição.</p>
+                                <button class="copy-button" onclick="copyToClipboard('cursoCard1')">Copiar Conteúdo</button>
+                                <span class="copy-message" id="copyMessageCurso1">Conteúdo copiado!</span>
+                            </div>
+                        </div>
+
+                        <!-- Outros cards de Contradições em Cursos ... -->
+
+                        <!-- Outros Motivos -->
+                        <div class="card shadow border-0 rounded-4 mb-5" id="outrosCard1">
+                            <div class="card-body p-5">
+                                <p>Contraria Art 103: Experiência como técnico nível médio não é aceita para cargo de nível superior.</p>
+                                <button class="copy-button" onclick="copyToClipboard('outrosCard1')">Copiar Conteúdo</button>
+                                <span class="copy-message" id="copyMessageOutros1">Conteúdo copiado!</span>
+                            </div>
+                        </div>
+
+                        <!-- Outros cards de Outros Motivos ... -->
+
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Footer-->
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+
+    <!-- Copy to Clipboard Script -->
+    <script>
+        function copyToClipboard(cardId) {
+            const cardContent = document.getElementById(cardId).innerText;
+            navigator.clipboard.writeText(cardContent).then(function () {
+                alert('Conteúdo copiado com sucesso!');
+            }).catch(function (err) {
+                console.error('Erro ao copiar o conteúdo: ', err);
+            });
+        }
+    </script>
+</body>
+</html>

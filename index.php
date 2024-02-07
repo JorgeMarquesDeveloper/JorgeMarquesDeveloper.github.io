@@ -1,90 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>SisCTemp</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>SSMR/7ª</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #333;
+      color: #fff;
+    }
 
-    <link rel="icon" type="image/png" href="img/favicon.ico">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="https://cdn.rawgit.com/RobinHerbots/Inputmask/5.x/dist/jquery.inputmask.min.js"></script>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            background: url('img/back-ground.jpg') no-repeat center center fixed;
-            background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .container {
+      text-align: center;
+    }
 
-        .login-container {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    h1 {
+      font-family: 'Impact', sans-serif;
+      font-size: 2.5em;
+      margin-bottom: 30px;
+    }
 
-        .login-box {
-            background-color: rgba(255, 255, 255, 0.7); /* Adicionando opacidade ao fundo */
-            border: 1px solid #ddd;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 0 10px rgba(0, 50, 0, 0.9);
-            text-align: ; /* Centralizar conteúdo do login-box */
-        }
+    .btn-military {
+      background-color: #4CAF50;
+      color: #fff;
+      border: 2px solid #4CAF50;
+      padding: 10px 20px;
+      font-size: 1.2em;
+      text-decoration: none;
+      display: inline-block;
+      margin: 10px;
+      border-radius: 5px;
+    }
 
-        .logo-container {
-            text-align: center;
-        }
+    .btn-military:hover {
+      background-color: #45a049;
+      border-color: #45a049;
+    }
 
-        .logo {
-            max-width: 70px;
-        }
-
-        .footer {
-            text-align: center;
-        }
-    </style>
+  </style>
 </head>
-
 <body>
-    <div class="container login-container">
-        <div class="col-md-4 login-box">
-            <div class="logo-container">
-                <img src="img/logo.png" alt="Logo" class="logo">
-            </div>
-            <br>
-            <h1 class="text-center" style="color: #094c00;">SisCTemp</h1>
-            <form action="login.php" method="post">
-                <div class="form-group">
-                    <label for="username">CPF:</label>
-                    <input type="text" class="form-control cpf-mask" id="username" name="cpf" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Senha:</label>
-                    <input type="password" class="form-control" id="password" name="senha" required>
-                </div>
-                <button type="submit" class="btn btn-block" style="background-color: #094c00; color:white;">Login</button>
-            </form>
-            <div class="mt-2 text-center">
-                <a href="esqueceu_senha.php" class="" style="color: #094c00;">Esqueceu a senha?</a>
-            </div>
-            <div class="mt-2 text-center">
-                <a href="cadastro.php" style="color: #094c00;">Novo Cadastro</a>
-            </div>
-        </div>
-    </div>
-    <script>
-        $(document).ready(function () {
-            $('.cpf-mask').inputmask('999.999.999-99');
-        });
-    </script>
-</body>
 
+<div class="container">
+  <h1>Selecione uma Opção</h1>
+  <div class="my-4">
+    <a href="avaliador" class="btn btn-military btn-lg mx-2">Avaliador</a>
+    <a href="sisctemp.php" class="btn btn-military btn-lg mx-2">Sisctemp</a>
+  </div>
+</div>
+
+</body>
 </html>

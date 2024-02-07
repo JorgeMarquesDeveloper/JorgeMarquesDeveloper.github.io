@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Personal - Start Bootstrap Template</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Custom Google font-->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@100;200;300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="css/styles.css" rel="stylesheet" />
+
+        <!-- Custom Styles -->
+        <style>
+            /* Navigation Bar */
+            .navbar-light {
+                background-color: #008000; /* verde */
+            }
+
+            .navbar-light .navbar-brand {
+                color: #3c00ff; /* amarelo */
+            }
+
+            .navbar-light .navbar-nav .nav-link {
+                color: #3c00ff; /* amarelo */
+            }
+
+            .navbar-light .navbar-nav .nav-link:hover {
+                color: #FFFFFF; /* branco */
+            }
+
+            /* Page Content */
+            body {
+                background-color: #F0F8FF; /* azul claro */
+            }
+
+            .text-primary {
+                color: #008000; /* verde */
+            }
+
+            .text-gradient {
+                background: linear-gradient(to right, #008000, #FFFF00); /* verde para amarelo */
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+            }
+
+            /* Card Styles */
+            .card {
+                background-color: #FFFF00; /* amarelo */
+                color: #000000; /* preto */
+            }
+
+            .card:hover {
+                background-color: #008000; /* verde ao passar o mouse */
+                color: #FFFFFF; /* branco */
+            }
+
+            /* Footer Styles */
+            footer {
+                background-color: #008000; /* verde */
+                color: #FFFF00; /* amarelo */
+            }
+
+            /* Footer Links */
+            footer a {
+                color: #FFFF00; /* amarelo */
+            }
+
+            footer a:hover {
+                color: #FFFFFF; /* branco */
+            }
+        </style>
+         <style>
+            /* ... Código anterior ... */
+    
+            /* Botão Estilizado */
+            button.copy-button {
+                background-color: #008000; /* verde */
+                color: #FFFF00; /* amarelo */
+                border: none;
+                padding: 10px 20px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+    
+            button.copy-button:hover {
+                background-color: #006400; /* verde mais escuro ao passar o mouse */
+            }
+    
+            /* Mensagem após Copiar */
+            .copy-message {
+                display: none;
+                color: #008000; /* verde */
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body class="d-flex flex-column h-100 bg-light">
+        <main class="flex-shrink-0">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+                <div class="container px-5">
+                    <a class="navbar-brand" href="index.html"><span class="fw-bolder text-success">Avaliador
+                    </span></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                            <li class="nav-item"><a class="nav-link" href="stt.html">STT</a></li>
+                            <li class="nav-item"><a class="nav-link" href="ott.html">OTT</a></li>
+                            <li class="nav-item"><a class="nav-link" href="cet.html">CET</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Page Content-->
+            <div class="container px-5 my-5">
+                <div class="text-center mb-5">
+                    <h1 class="display-5 fw-bolder mb-0"><span class="text-gradient d-inline">CET</span></h1>
+                </div>
+                <div class="row gx-5 justify-content-center">
+                    <div class="col-lg-11 col-xl-9 col-xxl-8">
+                        <!-- Experience Section-->
+                        <section>
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h2 class="text-primary fw-bolder mb-0">Causas de Eliminação</h2>
+                                <!-- Download resume button-->
+                                <!-- Note: Set the link href target to a PDF file within your project-->
+                               
+                            </div>
+                            <!-- Experience Card 1-->
+                            <!-- Card 1 -->
+                            <div class="card shadow border-0 rounded-4 mb-5" id="card1">
+                                <div class="card-body p-5">
+                                    <p>Eliminado §1º do Art 156 - Faltou anexar à frente e o verso do diploma do ensino fundamental.</p>
+                                    <button class="copy-button" onclick="copyToClipboard('card1')">Copiar Conteúdo</button>
+                                    <span class="copy-message" id="copyMessage1">Conteúdo copiado!</span>
+                                </div>
+                            </div>
+                        
+                            <!-- Card 2 -->
+                            <div class="card shadow border-0 rounded-4 mb-5" id="card2">
+                                <div class="card-body p-5">
+                                    <p>Eliminado pelos §1º e §7º do Art 156 -</p>
+                                    <ol>
+                                        <li>§1º Faltou anexar à frente e o verso do diploma do ensino fundamental;</li>
+                                        <li>§7º Faltou anexar à frente e o verso do certificado do Curso Profissionalizante com carga horária mínima. (Diploma de curso profissionalizante de Eletricista Instalador Predial de Baixa Tensão com carga horária mínima de 50 horas).</li>
+                                    </ol>
+                                    <button class="copy-button" onclick="copyToClipboard('card2')">Copiar Conteúdo</button>
+                                    <span class="copy-message" id="copyMessage2">Conteúdo copiado!</span>
+                                </div>
+                            </div>
+                        
+                            <!-- Card 3 -->
+                            <div class="card shadow border-0 rounded-4 mb-5" id="card3">
+                                <div class="card-body p-5">
+                                    <p>Eliminado §5º e 7º do Art 156 -</p>
+                                    <ol>
+                                        <li>§5º Apresentar diploma/certificado de formação não pertencente à área a qual o candidato está inscrito (Instalador Solar Fotoativo);</li>
+                                        <li>§7º Faltou anexar à frente e o verso do certificado do Curso Profissionalizante com carga horária mínima. (Não apresentou Diploma de curso profissionalizante de Eletricista Instalador Predial de Baixa Tensão com carga horária mínima de 50 horas).</li>
+                                    </ol>
+                                    <button class="copy-button" onclick="copyToClipboard('card3')">Copiar Conteúdo</button>
+                                    <span class="copy-message" id="copyMessage3">Conteúdo copiado!</span>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- Education Section-->
+                        
+                        <!-- Divider-->
+                        <div class="pb-5"></div>
+                        <!-- Skills Section-->
+                        <section>
+                            <!-- Skillset Card-->
+                        
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- Footer-->
+        <footer class="bg-white py-4 mt-auto">
+            <div class="container px-5">
+                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div class="col-auto"><div class="small m-0">Copyright &copy; Your Website 2023</div></div>
+                    <div class="col-auto">
+                        <a class="small" href="#!">Privacy</a>
+                        <span class="mx-1">&middot;</span>
+                        <a class="small" href="#!">Terms</a>
+                        <span class="mx-1">&middot;</span>
+                        <a class="small" href="#!">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+
+
+        <script>
+            function copyToClipboard(cardId) {
+                const cardContent = document.getElementById(cardId).innerText;
+                navigator.clipboard.writeText(cardContent).then(function () {
+                    alert('Conteúdo copiado com sucesso!');
+                }).catch(function (err) {
+                    console.error('Erro ao copiar o conteúdo: ', err);
+                });
+            }
+        </script>
+    </body>
+</html>

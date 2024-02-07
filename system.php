@@ -11,80 +11,66 @@
       <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
       <link href="css/sb-admin-2.min.css" rel="stylesheet">
       <style>
-      
          /* Adicione outras regras de estilo conforme necessário */
          img {
          max-width: 100%;
          height: auto;
          }
-
-
       </style>
    </head>
    <body>
       <?php
-         session_start();
+         require('bd_conect.php');
+            session_start();
+            
+            if(!isset($_SESSION['usuario_id'])) {
+                header("Location: index.php");
+                exit();
+            }
          
-         if(!isset($_SESSION['candidato_id'])) {
-             header("Location: index.php");
-             exit();
-         }
-
-         //if ($_SESSION["tipo"] !== "candidato") {
-         //   header("Location: fail/access_denied.php");
-         //   exit();
-        //}
-         
-         // Verifique se a variável de última atividade está definida
-         if (isset($_SESSION["last_activity"])) {
-             $inactive_time = 300; // Tempo de inatividade em segundos (60 segundos = 1 minuto)
-         
-             // Verifique se o tempo de inatividade excedeu o limite
-             if (time() - $_SESSION["last_activity"] > $inactive_time) {
-                 // Encerre a sessão
-                 session_unset();
-                 session_destroy();
-                 header("Location: index.php"); // Redirecione para a tela de login
-                 exit();
-             }
-         }
-         
-         // Atualize o último momento de atividade
-         $_SESSION["last_activity"] = time();
-         
-         if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
-             if (isset($_SESSION["candidato_id"])) {
-                 $idCandidato = $_SESSION["candidato_id"];
-         
-                 // Conecte-se ao banco de dados (substitua com suas configurações de conexão)
-                 $servername = "localhost";
-                 $username = "root";
-                 $password = "";
-                 $dbname = "sisctemp_bd";
-                 $cpf = "";
-         
-                 $conn = new mysqli($servername, $username, $password, $dbname);
-         
-                 if ($conn->connect_error) {
-                     die("Falha na conexão com o banco de dados: " . $conn->connect_error);
-                 }
-         
-                 // Consulta SQL para obter o nome do candidato com base no ID
-                 $sql = "SELECT nome, cpf FROM usuarios WHERE id = $idCandidato";
-         
-                 $result = $conn->query($sql);
-         
-                 if ($result->num_rows == 1) {
-                     $row = $result->fetch_assoc();
-                     $nomeCandidato = $row["nome"];
-                     $cpf = $row["cpf"];
-                 }
-         
-                 $conn->close();
-             }
-         }
-         ?>
-
+            //if ($_SESSION["tipo"] !== "candidato") {
+            //   header("Location: fail/access_denied.php");
+            //   exit();
+           //}
+            
+            // Verifique se a variável de última atividade está definida
+            if (isset($_SESSION["last_activity"])) {
+                $inactive_time = 300; // Tempo de inatividade em segundos (60 segundos = 1 minuto)
+            
+                // Verifique se o tempo de inatividade excedeu o limite
+                if (time() - $_SESSION["last_activity"] > $inactive_time) {
+                    // Encerre a sessão
+                    session_unset();
+                    session_destroy();
+                    header("Location: index.php"); // Redirecione para a tela de login
+                    exit();
+                }
+            }
+            
+            // Atualize o último momento de atividade
+            $_SESSION["last_activity"] = time();
+            
+            if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
+                if (isset($_SESSION["usuario_id"])) {
+                    $idCandidato = $_SESSION["usuario_id"];
+            
+                    // Conecte-se ao banco de dados (substitua com suas configurações de conexão)
+                   
+                    // Consulta SQL para obter o nome do candidato com base no ID
+                    $sql = "SELECT nome, cpf FROM usuarios WHERE id = $idCandidato";
+            
+                    $result = $conn->query($sql);
+            
+                    if ($result->num_rows == 1) {
+                        $row = $result->fetch_assoc();
+                        $nomeCandidato = $row["nome"];
+                        $cpf = $row["cpf"];
+                    }
+            
+                    $conn->close();
+                }
+            }
+            ?>
       <!-- Page Wrapper -->
       <div id="wrapper" >
          <!-- Sidebar -->
@@ -116,21 +102,19 @@
                </a>
             </li>
             <!-- Minha Foto -->
-          
             <!-- Cadastros -->
             <li class="nav-item">
                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCadastros"
                   aria-expanded="true" aria-controls="collapseCadastros">
                <i class="fas fa-fw fa-clipboard"></i>
-               <span>Cadastros</span>
+               <span>Meu Cadastro</span>
                </a>
                <div id="collapseCadastros" class="collapse" aria-labelledby="headingCadastros" data-parent="#accordionSidebar">
                   <div class="bg-white py-2 collapse-inner rounded">
-                     <h6 class="collapse-header">Opções de Cadastros:</h6>
-                     <a class="collapse-item" href="documentos-obrigatorios.html">Documentos Obrigatórios</a>
-                     <a class="collapse-item" href="curriculo.html">Currículo</a>
-                     <a class="collapse-item" href="especialidade.html">Especialidade</a>
-                     <a class="collapse-item" href="insert_user.php">Usuário</a>
+                     <h6 class="collapse-header">Opções de Cadastro</h6>
+                     <a class="collapse-item" href="system_exibir_cadastro.php">Meus dados</a>
+                     <a class="collapse-item" href="system_editar_cad.php">Editar Cadastro</a>
+                     <a class="collapse-item" href="especialidade.html">Alterar Senha</a>
                   </div>
                </div>
             </li>
@@ -164,7 +148,6 @@
                   <i class="fa fa-bars"></i>
                   </button>
                   <!-- Topbar Search -->
-                
                   <!-- Topbar Navbar -->
                   <ul class="navbar-nav ml-auto">
                      <!-- Nav Item - Search Dropdown (Visible Only XS) -->
@@ -186,9 +169,7 @@
                      </li>
                      <div class="topbar-divider d-none d-sm-block"></div>
                      <!-- Nav Item - User Information -->
-              
                      <li class="nav-item dropdown no-arrow">
-                  
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
@@ -234,33 +215,32 @@
                         </div>
                      </div>
                      <!-- Earnings (Monthly) Card Example -->
-                  
-                   
                   </div>
                   <!-- Content Row -->
                   <div class="row">
-                  <div class="col-xl-12 col-md-6 mb-4">
+                    
+                    
+                     <div class="col-xl-12 col-md-6 mb-4">
                         <div class="card border-left-danger shadow h-100 py-2">
                            <div class="card-body">
                               <div class="row no-gutters align-items-center">
                                  <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                       Pendências
+                                       Dados do candidato 
                                     </div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">identificadas</div>
                                  </div>
                                  <div class="col-auto">
-                                 <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
+                                    <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
                                  </div>
                               </div>
                            </div>
                         </div>
                      </div>
+         </div>
                      <!-- Area Chart -->
-                     
                      <!-- Pie Chart -->
                      <div class="col-xl-4 col-lg-5">
-                     
                      </div>
                   </div>
                   <!-- Content Row -->
@@ -275,7 +255,6 @@
       </div>
       <!-- End of Page Wrapper -->
       <!-- Bootstrap core JavaScript-->
-
       <script src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/vendor/jquery/jquery.min.js"></script>
       <script src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
       <!-- Core plugin JavaScript-->

@@ -1,19 +1,12 @@
 <?php
+
+require('bd_conect.php');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Verifique se um CPF foi fornecido
     if (isset($_POST["cpf"]) && !empty($_POST["cpf"])) {
         $cpf = $_POST["cpf"];
 
-        // Conecte-se ao banco de dados
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "sisctemp_bd";
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        if ($conn->connect_error) {
-            die("Erro na conexão com o banco de dados: " . $conn->connect_error);
-        }
+      
 
         // Consulta SQL para verificar se o CPF já existe em ambas as tabelas
         $check_cpf_sql = "SELECT cpf FROM candidato WHERE cpf = '$cpf' UNION SELECT cpf FROM usuarios WHERE cpf = '$cpf'";
@@ -65,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         VALUES ('$nomeCompleto', '$cpf', '$identidadeOrgaoExp', '$nacionalidade', '$sexo', '$estadoCivil', '$filiacaoPai', '$filiacaoMae', '$dataNascimento', '$numDependentes', '$nomeSocial', '$cep', '$estado', '$cidade', '$logradouro', '$bairro', '$email', '$telefoneContato', '$telefoneRecados', '$tempoServicoMilitar', '$anosMilitar', '$mesesMilitar', '$diasMilitar', '$senha')";
 
                     // Prepare a declaração SQL de inserção na tabela 'usuarios'
-                    $sql_usuario = "INSERT INTO usuarios (cpf, senha, tipo, nome) VALUES ('$cpf', '$senha', 'candidato','$nomeCompleto')";
+                    $sql_usuario = "INSERT INTO usuarios (cpf, senha, tipo_usuario, nome) VALUES ('$cpf', '$senha', 'candidato','$nomeCompleto')";
 
                     // Execute as declarações SQL
                     if ($conn->query($sql_candidato) === TRUE && $conn->query($sql_usuario) === TRUE) {
