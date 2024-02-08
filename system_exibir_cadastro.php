@@ -22,66 +22,45 @@
       </style>
    </head>
    <body id= "page-top">
-   <?php
-// Configuração para permitir sessões simultâneas em máquinas diferentes
-ini_set('session.cookie_samesite', 'None');
-ini_set('session.cookie_secure', true);
-ini_set('session.use_only_cookies', true);
-
-session_start();
-
-require('bd_conect.php');
-
-$row = "";
-
-if (!isset($_SESSION['usuario_id'])) {
-    header("Location: index.php");
-    exit();
-}
-
-// Verifique se a variável de última atividade está definida na sessão
-if (isset($_SESSION["last_activity"])) {
-    $inactive_time = 300; // Tempo de inatividade em segundos (60 segundos = 1 minuto)
-
-    // Verifique se o tempo de inatividade excedeu o limite
-    if (time() - $_SESSION["last_activity"] > $inactive_time) {
-        // Encerre a sessão
-        session_unset();
-        session_destroy();
-        header("Location: index.php"); // Redirecione para a tela de login
-        exit();
-    }
-}
-
-// Atualize o último momento de atividade na sessão
-$_SESSION["last_activity"] = time();
-
-if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
-    if (isset($_SESSION["usuario_id"])) {
-        $idCandidato = $_SESSION["usuario_id"];
-
-        // Consulta SQL para obter o nome do candidato com base no ID
-        $sql = "SELECT nome, cpf FROM usuarios WHERE id = $idCandidato";
-
-        $result = $conn->query($sql);
-
-        if ($result->num_rows == 1) {
-            $row = $result->fetch_assoc();
-            $nomeCandidato = $row["nome"];
-            $cpf = $row["cpf"];
-        }
-
-        // Após a autenticação bem-sucedida
-        session_regenerate_id(true);
-    }
-}
-
-$conn->close();
-?>
+      <?php
+      
+         session_start();
+         
+         require('bd_conect.php');
+         
+        
+         
+        
+         
+         // Atualize o último momento de atividade na sessão
+         $_SESSION["last_activity"] = time();
+         
+         if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
+             if (isset($_SESSION["usuario_id"])) {
+                 $idCandidato = $_SESSION["usuario_id"];
+         
+                 // Consulta SQL para obter o nome do candidato com base no ID
+                 $sql = "SELECT nome, cpf FROM usuarios WHERE id = $idCandidato";
+         
+                 $result = $conn->query($sql);
+         
+                 if ($result->num_rows == 1) {
+                     $row = $result->fetch_assoc();
+                     $nomeCandidato = $row["nome"];
+                     $cpf = $row["cpf"];
+                 }
+         
+                 // Após a autenticação bem-sucedida
+                 session_regenerate_id(true);
+             }
+         }
+         
+         $conn->close();
+         ?>
       <!-- Page Wrapper -->
       <div id="wrapper">
          <!-- Sidebar -->
-         <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #094c00;">
+         <ul class="navbar-nav sidebar sidebar-dark accordion fixed" id="accordionSidebar" style="background-color: #094c00;">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                <div class="sidebar-brand-icon ">
@@ -92,6 +71,8 @@ $conn->close();
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
             <!-- Heading -->
@@ -115,14 +96,33 @@ $conn->close();
                <span>Meu Cadastro</span>
                </a>
                <div id="collapseCadastros" class="collapse" aria-labelledby="headingCadastros" data-parent="#accordionSidebar">
-               <div class="bg-white py-2 collapse-inner rounded">
+                  <div class="bg-white py-2 collapse-inner rounded">
                      <h6 class="collapse-header">Opções de Cadastro</h6>
                      <a class="collapse-item" href="system_exibir_cadastro.php">Meus dados</a>
                      <a class="collapse-item" href="system_editar_cad.php">Editar Cadastro</a>
-                     <a class="collapse-item" href="especialidade.html">Alterar Senha</a>
+                     <a class="collapse-item" href="system_editar_cad.php">Alterar Senha</a>
+                     <a class="collapse-item" href="system_editar_cad.php">modificar Foto</a>
                   </div>
                </div>
+
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                    aria-expanded="true" aria-controls="collapsePages">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Especialidade</span>
+                </a>
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Opções de Cadastro</h6>
+                     <a class="collapse-item" href="system_exibir_cadastro.php">Realizar inscrição</a>
+                     <a class="collapse-item" href="system_editar_cad.php">Gerar Curriculo</a>
+                      
+                    </div>
+                </div>
+            </li>
+
+        
             <!-- Pesquisas -->
             <!-- Fale conosco -->
             <li class="nav-item">
@@ -180,7 +180,7 @@ $conn->close();
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $nomeCandidato; ?></span>
                         <img class="img-profile rounded-circle"
-                           id="user-image">
+                           id="usr-image">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -213,7 +213,8 @@ $conn->close();
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">Meus dados de Inscrição</div>
                                  </div>
                                  <div class="col-auto">
-                                    <img src="img/logo-eb.png" alt="Logo" style="width: 40px; height: 60px;">
+                                 <img class="img-profile rounded-circle"
+                           id="user-image" alt="Logo" style="width: 60px; height: 60px;">
                                  </div>
                               </div>
                            </div>
@@ -221,7 +222,7 @@ $conn->close();
                      </div>
                      <!-- Earnings (Monthly) Card Example -->
                      <!-- Content Row -->
-                     <div class="col-md-4 mb-4">
+                     <div class="col-md-6 mb-4">
                         <!-- Coluna 1 -->
                         <div class="card border-left-warning shadow h-100 py-2">
                            <div class="card-body">
@@ -235,13 +236,6 @@ $conn->close();
                                  <!-- Área PHP Coluna 1 -->
                                  <?php
                                     require('bd_conect.php');
-
-
-
-
-
-
-
                                     
                                     // Verificar se a sessão contém a ID do candidato
                                     if (isset($_SESSION['usuario_id'])) {
@@ -257,8 +251,9 @@ $conn->close();
                                         if ($result->num_rows == 1) {
                                             $row = $result->fetch_assoc();
                                     
-                                            // Exibir as informações
-                                            echo '<div class="col-md-12">';
+                                            // Exibir as informações em uma grade usando Bootstrap
+                                            echo '<div class="row">';
+                                            echo '<div class="col-md-6">';
                                             echo '<p><strong>Numero de inscrição:</strong> ' . $row['id'] . '</p>';
                                             echo '<p><strong>Nome Completo:</strong> ' . $row['nomeCompleto'] . '</p>';
                                             echo '<p><strong>CPF:</strong> ' . $row['cpf'] . '</p>';
@@ -266,6 +261,9 @@ $conn->close();
                                             echo '<p><strong>Nacionalidade:</strong> ' . $row['nacionalidade'] . '</p>';
                                             echo '<p><strong>Sexo:</strong> ' . $row['sexo'] . '</p>';
                                             echo '<p><strong>Estado Civil:</strong> ' . $row['estadoCivil'] . '</p>';
+                                            echo '</div>';
+                                            
+                                            echo '<div class="col-md-6">';
                                             echo '<p><strong>Filiação Pai:</strong> ' . $row['filiacaoPai'] . '</p>';
                                             echo '<p><strong>Telefone de Contato:</strong> ' . $row['telefoneContato'] . '</p>';
                                             echo '<p><strong>Telefone de Recados:</strong> ' . $row['telefoneRecados'] . '</p>';
@@ -274,6 +272,7 @@ $conn->close();
                                             echo '<p><strong>Número de Dependentes:</strong> ' . $row['numDependentes'] . '</p>';
                                             echo '<p><strong>Nome Social:</strong> ' . $row['nomeSocial'] . '</p>';
                                             echo '<p><strong>E-Mail:</strong> ' . $row['email'] . '</p>';
+                                            echo '</div>';
                                             echo '</div>';
                                         } else {
                                             echo "Candidato não encontrado.";
@@ -290,7 +289,7 @@ $conn->close();
                            </div>
                         </div>
                      </div>
-                     <div class="col-md-4 mb-4">
+                     <div class="col-md-3 mb-4">
                         <!-- Coluna 2 -->
                         <div class="card border-left-warning shadow h-100 py-2">
                            <div class="card-body">
@@ -321,7 +320,7 @@ $conn->close();
                            </div>
                         </div>
                      </div>
-                     <div class="col-md-4 mb-4">
+                     <div class="col-md-3 mb-4">
                         <!-- Coluna 2 -->
                         <div class="card border-left-warning shadow h-100 py-2">
                            <div class="card-body">
@@ -338,8 +337,7 @@ $conn->close();
                                     
                                     
                                     
-                                    echo '<p><strong>Telefone de Contato:</strong> ' . $row['telefoneContato'] . '</p>';
-                                    echo '<p><strong>Telefone de Recados:</strong> ' . $row['telefoneRecados'] . '</p>';
+                                    
                                     echo '<p><strong>Tempo de Serviço Militar:</strong> ' . ($row['tempoServicoMilitar'] ? "Sim" : "Não") . '</p>';
                                     echo '<p><strong>Anos Militar:</strong> ' . $row['anosMilitar'] . '</p>';
                                     echo '<p><strong>Meses Militar:</strong> ' . $row['mesesMilitar'] . '</p>';
@@ -351,56 +349,22 @@ $conn->close();
                            </div>
                         </div>
                      </div>
-
-
-
-
-
-
-
                   </div>
-
-
-
                </div>
             </div>
             <!-- Area Chart -->
             <!-- Pie Chart -->
-            
-
-        
-         <!-- Content Row -->
-      </div>
-      <!-- /.container-fluid -->
+            <!-- Content Row -->
+         </div>
+         <!-- /.container-fluid -->
       </div>
       <!-- End of Main Content -->
       <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-       
-      <!-- End of Footer -->
-      </div>
+
       <!-- End of Content Wrapper -->
       </div>
       <!-- End of Page Wrapper -->
       <!-- Bootstrap core JavaScript-->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       <script src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/vendor/jquery/jquery.min.js"></script>
       <script src="https://startbootstrap.github.io/startbootstrap-sb-admin-2/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
       <!-- Core plugin JavaScript-->

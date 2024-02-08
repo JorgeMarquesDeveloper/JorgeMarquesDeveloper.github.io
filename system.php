@@ -8,6 +8,7 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
       <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+      <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
       <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
       <link href="css/sb-admin-2.min.css" rel="stylesheet">
       <style>
@@ -114,7 +115,22 @@
                      <h6 class="collapse-header">Opções de Cadastro</h6>
                      <a class="collapse-item" href="system_exibir_cadastro.php">Meus dados</a>
                      <a class="collapse-item" href="system_editar_cad.php">Editar Cadastro</a>
-                     <a class="collapse-item" href="especialidade.html">Alterar Senha</a>
+                     <a class="collapse-item" href="system_editar_cad.php">Alterar Senha</a>
+                     <a class="collapse-item" href="system_editar_cad.php">modificar Foto</a>
+                  </div>
+               </div>
+            </li>
+            <li class="nav-item">
+               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                  aria-expanded="true" aria-controls="collapsePages">
+               <i class="fas fa-fw fa-folder"></i>
+               <span>Especialidade</span>
+               </a>
+               <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                  <div class="bg-white py-2 collapse-inner rounded">
+                     <h6 class="collapse-header">Opções de Cadastro</h6>
+                     <a class="collapse-item" href="system_exibir_cadastro.php">Realizar inscrição</a>
+                     <a class="collapse-item" href="system_editar_cad.php">Gerar Curriculo</a>
                   </div>
                </div>
             </li>
@@ -197,8 +213,8 @@
                   <!-- Content Row -->
                   <div class="row">
                      <!-- Earnings (Monthly) Card Example -->
-                     <div class="col-xl-12 col-md-6 mb-4">
-                        <div class="card border-left-warning shadow h-100 py-2">
+                     <div class="col-xl-12 col-md-6 mb-4" >
+                        <div class="card border-left-warning shadow h-100 py-2" >
                            <div class="card-body">
                               <div class="row no-gutters align-items-center">
                                  <div class="col mr-2">
@@ -215,20 +231,18 @@
                         </div>
                      </div>
                      <!-- Earnings (Monthly) Card Example -->
-                  </div>
-                  <!-- Content Row -->
-                  <div class="row">
-                    
-                    
-                     <div class="col-xl-12 col-md-6 mb-4">
-                        <div class="card border-left-danger shadow h-100 py-2">
+                     <!-- Content Row -->
+                     <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
                            <div class="card-body">
                               <div class="row no-gutters align-items-center">
                                  <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
-                                       Dados do candidato 
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1" >
+                                       Noticias 
                                     </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">identificadas</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                      
+                                    </div>
                                  </div>
                                  <div class="col-auto">
                                     <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
@@ -237,21 +251,60 @@
                            </div>
                         </div>
                      </div>
-         </div>
-                     <!-- Area Chart -->
-                     <!-- Pie Chart -->
-                     <div class="col-xl-4 col-lg-5">
+                     <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                           <div class="card-body">
+                              <div class="row no-gutters align-items-center">
+                                 <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                       Noticias 
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                      
+                                    </div>
+                                 </div>
+                                 <div class="col-auto">
+                                    <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
                      </div>
+                     <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                           <div class="card-body">
+                              <div class="row no-gutters align-items-center">
+                                 <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                       Noticias 
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                      
+                                    </div>
+                                 </div>
+                                 <div class="col-auto">
+                                    <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     
                   </div>
-                  <!-- Content Row -->
                </div>
-               <!-- /.container-fluid -->
             </div>
-            <!-- End of Main Content -->
-            <!-- Footer -->
-            <!-- End of Footer -->
+            <!-- Area Chart -->
+            <!-- Pie Chart -->
          </div>
-         <!-- End of Content Wrapper -->
+         <!-- Content Row -->
+      </div>
+      <!-- /.container-fluid -->
+      </div>
+      <!-- End of Main Content -->
+      <!-- Footer -->
+      <!-- End of Footer -->
+      </div>
+      <!-- End of Content Wrapper -->
       </div>
       <!-- End of Page Wrapper -->
       <!-- Bootstrap core JavaScript-->
