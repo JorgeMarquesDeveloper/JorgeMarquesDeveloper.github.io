@@ -1,3 +1,31 @@
+<?php
+
+
+require('db.php'); 
+// Arquivo: contador_cadastros.php
+// Inclui o código de conexão ao banco de dados
+
+// Consulta SQL para contar os cadastros
+$sql = "SELECT COUNT(*) as total_cadastros FROM ficha_01";
+
+$resultado = $conn->query($sql);
+
+if ($resultado) {
+    // Obtém o resultado da contagem
+    $dados = $resultado->fetch_assoc();
+    $total_cadastros = $dados['total_cadastros'];
+} else {
+    $total_cadastros = "Erro na consulta: " . $conexao->error;
+}
+
+// Fecha a conexão com o banco de dados
+$conn->close();
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -85,7 +113,7 @@
             <i class="fas fa-fw fa-cog"></i>
             <span>Components</span>
         </a>
-        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Area de Cadastro</h6>
                 <a class="collapse-item" href="ficha_01.php">Sócio Demográfico</a>
@@ -158,13 +186,13 @@
                     <div class="row">
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col-xl-3 col-md-12 mb-4">
-                            <div class="card shadow h-100 py-2">
+                        <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Earnings (Monthly)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                                Pacientes Cadastrados</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total_cadastros; ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -214,24 +242,7 @@
             <i class="fas fa-angle-up"></i>
         </a>
         <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.html">Logout</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+      
     </div>
     <!-- End of Page Wrapper -->
 

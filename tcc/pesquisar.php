@@ -51,71 +51,62 @@
       <div id="wrapper">
          <!-- Sidebar -->
          <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
-    <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin.php">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">TCR<sup></sup></div>
-    </a>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider my-0">
-
-    <!-- Nav Item - Dashboard -->
-    
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Interface
-    </div>
-
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Components</span>
-        </a>
-        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Area de Cadastro</h6>
-                <a class="collapse-item" href="ficha_01.php">Sócio Demográfico</a>
-                <a class="collapse-item" href="ficha_02.php">Teleatendimento</a>
-                <a class="collapse-item" href="ficha_03.php">Avaliação de Edmonton </a>
-                <a class="collapse-item" href="ficha_04.php">Avaliação da teleconsulta </a>
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin.php">
+               <div class="sidebar-brand-icon rotate-n-15">
+                  <i class="fas fa-laugh-wink"></i>
+               </div>
+               <div class="sidebar-brand-text mx-3">TCR<sup></sup></div>
+            </a>
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+            <!-- Nav Item - Dashboard -->
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <!-- Heading -->
+            <div class="sidebar-heading">
+               Interface
             </div>
-        </div>
-    </li>
-
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Utilities</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Ferramentas</h6>
-                <a class="collapse-item" href="pesquisar.php">Pesquisar ID</a>
-                <a class="collapse-item" href="relatorio_indv_01.php">Relatorio Individual</a>
-                <a class="collapse-item" href="index.php">Sair</a>
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                  aria-expanded="true" aria-controls="collapseTwo">
+               <i class="fas fa-fw fa-cog"></i>
+               <span>Components</span>
+               </a>
+               <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                  <div class="bg-white py-2 collapse-inner rounded">
+                     <h6 class="collapse-header">Area de Cadastro</h6>
+                     <a class="collapse-item" href="ficha_01.php">Sócio Demográfico</a>
+                     <a class="collapse-item" href="ficha_02.php">Teleatendimento</a>
+                     <a class="collapse-item" href="ficha_03.php">Avaliação de Edmonton </a>
+                     <a class="collapse-item" href="ficha_04.php">Avaliação da teleconsulta </a>
+                  </div>
+               </div>
+            </li>
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                  aria-expanded="true" aria-controls="collapseUtilities">
+               <i class="fas fa-fw fa-wrench"></i>
+               <span>Utilities</span>
+               </a>
+               <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+                  data-parent="#accordionSidebar">
+                  <div class="bg-white py-2 collapse-inner rounded">
+                     <h6 class="collapse-header">Ferramentas</h6>
+                     <a class="collapse-item" href="pesquisar.php">Pesquisar ID</a>
+                     <a class="collapse-item" href="relatorio_indv_01.php">Relatorio Individual</a>
+                     <a class="collapse-item" href="index.php">Sair</a>
+                  </div>
+               </div>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <div class="text-center d-none d-md-inline">
+               <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
-        </div>
-    </li>
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <div class="text-center d-none d-md-inline">
-                <button class="rounded-circle border-0" id="sidebarToggle"></button>
-            </div>
-</ul>
+         </ul>
          <!-- Content Wrapper -->
          <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
@@ -127,82 +118,136 @@
                   <i class="fa fa-bars"></i>
                   </button>
                   <!-- Topbar Search -->
-                 
                   <!-- Topbar Navbar -->
-               
                </nav>
                <!-- End of Topbar -->
                <!-- Begin Page Content -->
                <div class="container-fluid">
                   <!-- Page Heading -->
                   <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                   </div>
+                  </div>
                   <!-- Content Row -->
                   <div class="row">
                      <!-- Earnings (Monthly) Card Example -->
                      <div class="col-xl-12 col-md-12 mb-4">
-                        <div class="card shadow h-100 py-2">
+                        <div class="card border-left-success shadow h-100 py-2">
                            <div class="card-body">
                               <div class="row no-gutters align-items-center">
                                  <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    Pacientes Cadastrados
-                                                                     </div>
-                                   
-                                                                     <form action="pesquisar.php" method="POST">
-            <div class="form-group">
-                <label for="search_term">Digite o nome para buscar:</label>
-                <input type="text" class="form-control" id="search_term" name="search_term" required>
-            </div>
-            <button type="submit" class="btn btn-success">Buscar</button>
-        </form>
-
+                                       Pesquisar Pacientes
+                                    </div>
+                                    <form action="" method="POST">
+                                       <div class="form-group">
+                                          <label for="search_term">Digite o nome para buscar:</label>
+                                          <input type="text" class="form-control" id="search_term" name="search_term" required>
+                                       </div>
+                                       <button type="submit" class="btn btn-success">Buscar</button>
+                                    </form>
                                  </div>
-                                 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-12 col-md-12 mb-4">
+                        <div class="card border-left-success shadow h-100 py-2">
+                           <div class="card-body">
+                              <div class="row no-gutters align-items-center">
+                                 <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                       Resultado da pesquisa
+                                    </div>
+                                    <?php
+                                       require('db.php'); 
+                                       
+                                       if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                          $search_term = mysqli_real_escape_string($conn, $_POST["search_term"]);
+                                       
+                                          // Consulta SQL modificada para verificar pendências em diferentes tabelas
+                                          $sql = "
+                                              SELECT 
+                                                  f1.id, f1.nome,
+                                                  CASE WHEN f2.id IS NOT NULL THEN 'Realizada' ELSE 'Pendente' END AS tem_pendencias_ficha_04,
+                                                  CASE WHEN f3.id IS NOT NULL THEN 'Realizada' ELSE 'Pendente' END AS tem_pendencias_ficha_03,
+                                                  CASE WHEN ft.id IS NOT NULL THEN 'Realizada' ELSE 'Pendente' END AS tem_pendencias_ficha_teleatendimento
+                                              FROM ficha_01 f1
+                                              LEFT JOIN ficha_04 f2 ON f1.id = f2.id
+                                              LEFT JOIN ficha_03 f3 ON f1.id = f3.id
+                                              LEFT JOIN ficha_teleatendimento ft ON f1.id = ft.id
+                                              WHERE f1.nome LIKE '%$search_term%'
+                                          ";
+                                       
+                                          $result = $conn->query($sql);
+                                       
+                                          if ($result->num_rows > 0) {
+                                              echo "<table class='table table-bordered'>";
+                                              echo "<tr><th>ID</th><th>Nome</th><th>Pendências Ficha 02</th><th>Pendências Ficha 03</th><th>Pendências Ficha Teleatendimento</th></tr>";
+                                       
+                                              while ($row = $result->fetch_assoc()) {
+                                                  echo "<tr>";
+                                                  echo "<td>" . $row["id"] . "</td>";
+                                                  echo "<td>" . $row["nome"] . "</td>";
+                                                  
+                                                  echo "<td>" . $row["tem_pendencias_ficha_04"] . "</td>";
+                                                  echo "<td>" . $row["tem_pendencias_ficha_03"] . "</td>";
+                                                  echo "<td>" . $row["tem_pendencias_ficha_teleatendimento"] . "</td>";
+                                                  echo "</tr>";
+                                              }
+                                       
+                                              echo "</table>";
+                                          } else {
+                                              echo "<p>Nenhum resultado encontrado.</p>";
+                                          }
+                                       }
+                                       
+                                       $conn->close();
+                                       ?>
+                                 </div>
                               </div>
                            </div>
                         </div>
                      </div>
                   </div>
-                  <!-- Content Row -->
-               </div>
-               <!-- /.container-fluid -->
-            </div>
-            <!-- End of Main Content -->
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-               <div class="container my-auto">
-                  <div class="text-center">
-                     <span>Copyright &copy; Your Website 2021</span>
-                  </div>
-               </div>
-            </footer>
-            <!-- End of Footer -->
-         </div>
-         <!-- End of Content Wrapper -->
-         <!-- Scroll to Top Button-->
-         <a class="scroll-to-top rounded" href="#page-top">
-         <i class="fas fa-angle-up"></i>
-         </a>
-         <!-- Logout Modal-->
-         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog" role="document">
-               <div class="modal-content">
-                  <div class="modal-header">
-                     <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                     <span aria-hidden="true">×</span>
-                     </button>
-                  </div>
-                  <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                  <div class="modal-footer">
-                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                     <a class="btn btn-primary" href="login.html">Logout</a>
-                  </div>
+                  <!-- Resultados da Busca -->
                </div>
             </div>
+         <!-- Content Row -->
+      <!-- /.container-fluid -->
+      <!-- End of Main Content -->
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+         <div class="container my-auto">
+            <div class="text-center">
+               <span>Copyright &copy; Your Website 2021</span>
+            </div>
          </div>
+      </footer>
+      <!-- End of Footer -->
+      </div>
+      <!-- End of Content Wrapper -->
+      <!-- Scroll to Top Button-->
+      <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+      </a>
+      <!-- Logout Modal-->
+      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+         <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                  </button>
+               </div>
+               <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+               <div class="modal-footer">
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                  <a class="btn btn-primary" href="login.html">Logout</a>
+               </div>
+            </div>
+         </div>
+      </div>
       </div>
       <!-- End of Page Wrapper -->
       <!-- Bootstrap core JavaScript-->

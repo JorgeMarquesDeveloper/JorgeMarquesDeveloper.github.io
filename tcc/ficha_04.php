@@ -137,7 +137,7 @@
                   <!-- Content Row -->
                   <div class="row">
                      <div class="col-xl-12 col-md-6 mb-4">
-                        <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card border-left-success shadow h-100 py-2">
                            <div class="card-body">
                               <div class="row no-gutters align-items-center">
                                  <div class="col mr-2">
@@ -154,14 +154,18 @@
                      </div>
                      <!-- Earnings (Monthly) Card Example -->
                      <div class="col-xl-12 col-md-12 mb-4">
-                        <div class="card shadow h-100 py-2">
+                        <div class="card border-left-success shadow h-100 py-2">
                            <div class="card-body">
                               <div class="row no-gutters align-items-center">
                                  <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                        Informações Gerais
                                     </div>
-                                    <form action="ficha_04_processar.php" method="post">
+                                    
+                                 </div>
+                                 
+                              </div>
+                              <form action="ficha_04_processar.php" method="post">
                                        <div class="form-group">
                                           <label for="pacienteId">ID do Paciente:</label>
                                           <input type="text" class="form-control" id="pacienteId" name="pacienteId">
@@ -211,8 +215,6 @@
                                        <!-- Botão de envio -->
                                        <button type="submit" class="btn btn-primary">Enviar</button>
                                     </form>
-                                 </div>
-                              </div>
                            </div>
                         </div>
                      </div>

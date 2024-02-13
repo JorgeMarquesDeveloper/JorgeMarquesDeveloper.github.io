@@ -80,7 +80,7 @@
             <i class="fas fa-fw fa-cog"></i>
             <span>Components</span>
         </a>
-        <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseTwo" class="collapse " aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Area de Cadastro</h6>
                 <a class="collapse-item" href="ficha_01.php">Sócio Demográfico</a>
@@ -146,7 +146,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Formulário Do Perfil Sócio Demográfico</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Formulário do Perfil Sócio Demográfico</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -157,7 +157,7 @@
                         </div>
                      <!-- Earnings (Monthly) Card Example -->
                      <div class="col-xl-12 col-md-12 mb-4">
-                        <div class="card shadow h-100 py-2">
+                        <div class="card border-left-success shadow h-100 py-2">
                            <div class="card-body">
                               <div class="row no-gutters align-items-center">
                                  <div class="col mr-2">
@@ -301,11 +301,11 @@
             <!-- End of Main Content -->
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
-               <div class="container my-auto">
-                  <div class="text-center">
-                     <span>Copyright &copy; Your Website 2021</span>
-                  </div>
-               </div>
+                <div class="container my-auto">
+                    <div class="text-center">
+                        <span>TCR &copy; Whaniza Sulana Costa Silva</span>
+                    </div>
+                </div>
             </footer>
             <!-- End of Footer -->
          </div>
