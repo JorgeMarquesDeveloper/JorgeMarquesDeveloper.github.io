@@ -53,8 +53,8 @@
          <ul class="navbar-nav  sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #65b22e;">
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin.php">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+        <div class="sidebar-brand-icon ">
+        <i class="fas fa-user-nurse"></i>
         </div>
         <div class="sidebar-brand-text mx-3">TCR<sup></sup></div>
     </a>
@@ -165,11 +165,11 @@
                                        
                                        <div class="form-group">
                                           <label for="pacienteId">ID do Paciente:</label>
-                                          <input type="text" class="form-control" id="pacienteId" name="pacienteId">
+                                          <input type="number" class="form-control" id="pacienteId" name="pacienteId" required>
                                        </div>
                                        <div class="form-group">
-                                          <label for="pacienteId">HIPÓTESE DIAGNÓSTICA:</label>
-                                          <input type="text" class="form-control" id="pacienteId" name="hipdiagnostica">
+                                          <label for="pacienteId">Hipótese Diagnóstica:</label>
+                                          <input type="text" class="form-control" id="pacienteId" name="hipdiagnostica" required oninput="this.value = this.value.toUpperCase()">
                                        </div>
                                        <div class="form-group">
                                           <label for="data_ultima_consulta">Data da última consulta:</label>
@@ -187,25 +187,25 @@
                                        <div class="form-group">
                                           <label for="alteracao_significativa">Alguma alteração significativa:</label>
                                           <div class="form-check">
-                                             <input type="radio" class="form-check-input" id="alteracao_significativa_nao" name="alteracao_significativa" value="Não" checked>
+                                             <input type="radio" class="form-check-input" id="alteracao_significativa_nao" name="alteracao_significativa" value="Não" checked required>
                                              <label class="form-check-label" for="alteracao_significativa_nao">Não</label>
                                           </div>
                                           <div class="form-check">
-                                             <input type="radio" class="form-check-input" id="alteracao_significativa_sim" name="alteracao_significativa" value="Sim">
+                                             <input type="radio" class="form-check-input" id="alteracao_significativa_sim" name="alteracao_significativa" value="Sim" required>
                                              <label class="form-check-label" for="alteracao_significativa_sim">Sim, qual?</label>
-                                             <input type="text" class="form-control" id="alteracao_significativa_descricao" name="alteracao_significativa_descricao">
+                                             <input type="text" class="form-control" id="alteracao_significativa_descricao" name="alteracao_significativa_descricao" required oninput="this.value = this.value.toUpperCase()">
                                           </div>
                                        </div>
                                        <div class="form-group">
                                           <label for="esteve_spa">Esteve no SPA desde a última consulta:</label>
                                           <div class="form-check">
-                                             <input type="radio" class="form-check-input" id="esteve_spa_nao" name="esteve_spa" value="Não" checked>
+                                             <input type="radio" class="form-check-input" id="esteve_spa_nao" name="esteve_spa" value="Não" checked required>
                                              <label class="form-check-label" for="esteve_spa_nao">Não</label>
                                           </div>
                                           <div class="form-check">
-                                             <input type="radio" class="form-check-input" id="esteve_spa_sim" name="esteve_spa" value="Sim">
+                                             <input type="radio" class="form-check-input" id="esteve_spa_sim" name="esteve_spa" value="Sim" required>
                                              <label class="form-check-label" for="esteve_spa_sim">Sim, motivo:</label>
-                                             <input type="text" class="form-control" id="esteve_spa_motivo" name="esteve_spa_motivo">
+                                             <input type="text" class="form-control" id="esteve_spa_motivo" name="esteve_spa_motivo" required oninput="this.value = this.value.toUpperCase()">
                                           </div>
                                        </div>
                                        <div class="form-group">
@@ -217,7 +217,7 @@
                                           <div class="form-check">
                                              <input type="radio" class="form-check-input" id="esteve_internado_sim" name="esteve_internado" value="Sim">
                                              <label class="form-check-label" for="esteve_internado_sim">Sim, motivo:</label>
-                                             <input type="text" class="form-control" id="esteve_internado_motivo" name="esteve_internado_motivo">
+                                             <input type="text" class="form-control" id="esteve_internado_motivo" name="esteve_internado_motivo" required oninput="this.value = this.value.toUpperCase()">
                                           </div>
                                        </div>
                                        <!-- Seção 2: Sintomas -->
@@ -325,46 +325,46 @@
                                        <h5>Observações</h5>
                                        <div class="form-group">
                                           <label for="observacoes">Observações:</label>
-                                          <textarea class="form-control" id="observacoes" name="observacoes" rows="3"></textarea>
+                                          <textarea class="form-control" id="observacoes" name="observacoes" rows="3" required oninput="this.value = this.value.toUpperCase()"></textarea>
                                        </div>
                                        <!-- Seção 4: Função Vesicointestinal -->
                                        <h5>Função Vesicointestinal</h5>
                                        <div class="form-group">
                                           <label for="diurese">Diurese:</label>
-                                          <input type="text" class="form-control" id="diurese" name="diurese">
+                                          <input type="text" class="form-control" id="diurese" name="diurese" required oninput="this.value = this.value.toUpperCase()">
                                        </div>
                                        <div class="form-group">
                                           <label for="evacuacao">Evacuação:</label>
-                                          <input type="text" class="form-control" id="evacuacao" name="evacuacao">
+                                          <input type="text" class="form-control" id="evacuacao" name="evacuacao" required oninput="this.value = this.value.toUpperCase()">
                                        </div>
                                        <div class="form-group">
                                           <label for="ferida">Possui alguma ferida?</label>
                                           <div class="form-check">
-                                             <input type="radio" class="form-check-input" id="ferida_nao" name="ferida" value="Não" checked>
+                                             <input type="radio" class="form-check-input" id="ferida_nao" name="ferida" value="Não" checked required>
                                              <label class="form-check-label" for="ferida_nao">Não</label>
                                           </div>
                                           <div class="form-check">
-                                             <input type="radio" class="form-check-input" id="ferida_sim" name="ferida" value="Sim">
+                                             <input type="radio" class="form-check-input" id="ferida_sim" name="ferida" value="Sim" required>
                                              <label class="form-check-label" for="ferida_sim">Sim</label>
                                           </div>
                                           <div class="form-group">
                                              <label for="local_ferida">Local:</label>
-                                             <input type="text" class="form-control" id="local_ferida" name="local_ferida">
+                                             <input type="text" class="form-control" id="local_ferida" name="local_ferida" required oninput="this.value = this.value.toUpperCase()">
                                           </div>
                                        </div>
                                        <div class="form-group">
                                           <label for="sangramento">Algum episódio de sangramento?</label>
                                           <div class="form-check">
-                                             <input type="radio" class="form-check-input" id="sangramento_nao" name="sangramento" value="Não" checked>
+                                             <input type="radio" class="form-check-input" id="sangramento_nao" name="sangramento" value="Não" checked required>
                                              <label class="form-check-label" for="sangramento_nao">Não</label>
                                           </div>
                                           <div class="form-check">
-                                             <input type="radio" class="form-check-input" id="sangramento_sim" name="sangramento" value="Sim">
+                                             <input type="radio" class="form-check-input" id="sangramento_sim" name="sangramento" value="Sim" required>
                                              <label class="form-check-label" for="sangramento_sim">Sim</label>
                                           </div>
                                           <div class="form-group">
                                              <label for="local_sangramento">Local:</label>
-                                             <input type="text" class="form-control" id="local_sangramento" name="local_sangramento">
+                                             <input type="text" class="form-control" id="local_sangramento" name="local_sangramento" required oninput="this.value = this.value.toUpperCase()">
                                           </div>
                                        </div>
                                        <div class="form-group">
@@ -383,11 +383,11 @@
                                        <div class="form-group">
                                           <label for="contato_realizado_com">Contato telefônico realizado com:</label>
                                           <div class="form-check">
-                                             <input type="radio" class="form-check-input" id="contato_paciente" name="contato_realizado_com" value="Paciente" checked>
+                                             <input type="radio" class="form-check-input" id="contato_paciente" name="contato_realizado_com" value="Paciente" checked required>
                                              <label class="form-check-label" for="contato_paciente">Paciente</label>
                                           </div>
                                           <div class="form-check">
-                                             <input type="radio" class="form-check-input" id="contato_familiar" name="contato_realizado_com" value="Familiar">
+                                             <input type="radio" class="form-check-input" id="contato_familiar" name="contato_realizado_com" value="Familiar" required>
                                              <label class="form-check-label" for="contato_familiar">Familiar</label>
                                           </div>
                                        </div>
@@ -411,7 +411,7 @@
                                           </div>
                                        </div>
                                        <!-- Adicione outras seções conforme necessário -->
-                                       <button type="submit" class="btn btn-primary">Enviar</button>
+                                       <button type="submit" class="btn btn-block btn-success" style="background-color: #65b22e;">Enviar</button>
                                     </form>
                                  </div>
                               </div>

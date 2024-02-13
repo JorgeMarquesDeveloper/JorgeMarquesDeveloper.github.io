@@ -1,5 +1,18 @@
 <!-- Codigo PHP-->
 
+<?php
+session_start();
+
+// Verifique se o usuário está logado
+if (!isset($_SESSION["logged_in"]) || $_SESSION["logged_in"] !== true) {
+    // Se não estiver logado, redirecione para a página de login
+    header("Location: index.php");
+    exit();
+}
+
+// Restante do seu código PHP continua aqui
+?>
+
 
 <?php
    require('db.php'); 
@@ -188,8 +201,9 @@ $conn->close();
       <ul class="navbar-nav  sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #65b22e;">
          <!-- Sidebar - Brand -->
          <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin.php">
-            <div class="sidebar-brand-icon rotate-n-15">
-               <i class="fas fa-laugh-wink"></i>
+            <div class="sidebar-brand-icon ">
+               <i class="fas fa-user-nurse"></i>
+               
             </div>
             <div class="sidebar-brand-text mx-3">TCR<sup></sup></div>
          </a>
@@ -276,41 +290,42 @@ $conn->close();
                               <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total_cadastros; ?></div>
                            </div>
                            <div class="col-auto">
-                              <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                              <i class="fas fa-heart fa-2x text-gray-300"></i>
+                              
                            </div>
                         </div>
                      </div>
                   </div>
                </div>
                <div class="col-xl-3 col-md-12 mb-4">
-                  <div class="card border-left-warning shadow h-100 py-2">
+                  <div class="card border-left-success shadow h-100 py-2">
                      <div class="card-body">
                         <div class="row no-gutters align-items-center">
                            <div class="col mr-2">
                               <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                 Pacientes 
+                                 Fase da Pesquisa 
                               </div>
-                              <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total_cadastros; ?></div>
+                              <div class="h5 mb-0 font-weight-bold text-gray-800">Coleta de Dados</div>
                            </div>
                            <div class="col-auto">
-                              <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                              <i class="fas fa-receipt fa-2x text-gray-300"></i>
                            </div>
                         </div>
                      </div>
                   </div>
                </div>
                <div class="col-xl-3 col-md-12 mb-4">
-                  <div class="card border-left-danger shadow h-100 py-2">
+                  <div class="card border-left-dark shadow h-100 py-2">
                      <div class="card-body">
                         <div class="row no-gutters align-items-center">
                            <div class="col mr-2">
-                              <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                              <div class="text-xs font-weight-bold text-link text-uppercase mb-1">
                                  Novidades
                               </div>
-                              <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total_cadastros; ?></div>
+                              <div class="h5 mb-0 font-weight-bold text-gray-800">Sempre ser Feliz</div>
                            </div>
                            <div class="col-auto">
-                              <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                              <i class="fas fa-notes-medical fa-2x text-gray-300"></i>
                            </div>
                         </div>
                      </div>

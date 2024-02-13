@@ -54,7 +54,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin.php">
                <div class="sidebar-brand-icon rotate-n-15">
-                  <i class="fas fa-laugh-wink"></i>
+               <i class="fas fa-user-nurse"></i>
                </div>
                <div class="sidebar-brand-text mx-3">TCR<sup></sup></div>
             </a>
@@ -186,9 +186,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<tr>
             <th>ID</th>
             <th>Nome</th>
-            <th>Pendências Ficha 02</th>
-            <th>Pendências Ficha 03</th>
-            <th>Pendências Ficha Teleatendimento</th>
+            <th>Avaliação de Edmonton</th>
+            <th>Avaliação da Teleconsulta</th>
+            <th>Teleatendimento</th>
             <th>Status </th>
             <th>Excluir Ficha</th>
         </tr>";

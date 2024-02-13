@@ -55,7 +55,7 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin.php">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+        <i class="fas fa-user-nurse"></i>
         </div>
         <div class="sidebar-brand-text mx-3">TCR<sup></sup></div>
     </a>
@@ -143,7 +143,7 @@
                                  <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                     </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">Ficha Para Teleatendimento</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">Avaliação de Edmonton</div>
                                  </div>
                                  <div class="col-auto">
                                     <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -164,69 +164,69 @@
                                     <form action="ficha_03_processar.php" method="POST">
                                        <div class="form-group">
                                           <label for="pacienteId">ID do Paciente:</label>
-                                          <input type="text" class="form-control" id="pacienteId" name="pacienteId">
+                                          <input type="number" class="form-control" id="pacienteId" name="pacienteId">
                                        </div>
                                        <!-- Dor -->
                                        <div class="form-group">
                                           <label for="dor">Dor:</label>
-                                          <input type="range" class="form-control-range range-slider" id="dor" name="dor" min="0" max="10" step="1">
+                                          <input type="range" class="form-control-range range-slider" id="dor" name="dor" min="0" max="10" step="1" required>
                                           <span class="range-label">Valor selecionado: <span id="dorValue">0</span></span>
                                        </div>
                                        <!-- Cansaço -->
                                        <div class="form-group">
                                           <label for="cansaco">Cansaço:</label>
-                                          <input type="range" class="form-control-range range-slider" id="cansaco" name="cansaco" min="0" max="10" step="1">
+                                          <input type="range" class="form-control-range range-slider" id="cansaco" name="cansaco" min="0" max="10" step="1" required>
                                           <span class="range-label">Valor selecionado: <span id="cansacoValue">0</span></span>
                                        </div>
                                        <!-- Sonolência -->
                                        <div class="form-group">
                                           <label for="sonolencia">Sonolência:</label>
-                                          <input type="range" class="form-control-range range-slider" id="sonolencia" name="sonolencia" min="0" max="10" step="1">
+                                          <input type="range" class="form-control-range range-slider" id="sonolencia" name="sonolencia" min="0" max="10" step="1" required>
                                           <span class="range-label">Valor selecionado: <span id="sonolenciaValue">0</span></span>
                                        </div>
                                        <!-- Náusea -->
                                        <div class="form-group">
                                           <label for="nausea">Náusea:</label>
-                                          <input type="range" class="form-control-range range-slider" id="nausea" name="nausea" min="0" max="10" step="1">
+                                          <input type="range" class="form-control-range range-slider" id="nausea" name="nausea" min="0" max="10" step="1" required>
                                           <span class="range-label">Valor selecionado: <span id="nauseaValue">0</span></span>
                                        </div>
                                        <!-- Falta de Apetite -->
                                        <div class="form-group">
                                           <label for="faltaApetite">Falta de Apetite:</label>
-                                          <input type="range" class="form-control-range range-slider" id="faltaApetite" name="faltaApetite" min="0" max="10" step="1">
+                                          <input type="range" class="form-control-range range-slider" id="faltaApetite" name="faltaApetite" min="0" max="10" step="1" required>
                                           <span class="range-label">Valor selecionado: <span id="faltaApetiteValue">0</span></span>
                                        </div>
                                        <!-- Falta de Ar -->
                                        <div class="form-group">
                                           <label for="faltaAr">Falta de Ar:</label>
-                                          <input type="range" class="form-control-range range-slider" id="faltaAr" name="faltaAr" min="0" max="10" step="1">
+                                          <input type="range" class="form-control-range range-slider" id="faltaAr" name="faltaAr" min="0" max="10" step="1" required>
                                           <span class="range-label">Valor selecionado: <span id="faltaArValue">0</span></span>
                                        </div>
                                        <!-- Depressão -->
                                        <div class="form-group">
                                           <label for="depressao">Depressão:</label>
-                                          <input type="range" class="form-control-range range-slider" id="depressao" name="depressao" min="0" max="10" step="1">
+                                          <input type="range" class="form-control-range range-slider" id="depressao" name="depressao" min="0" max="10" step="1" required>
                                           <span class="range-label">Valor selecionado: <span id="depressaoValue">0</span></span>
                                        </div>
                                        <!-- Ansiedade -->
                                        <div class="form-group">
                                           <label for="ansiedade">Ansiedade:</label>
-                                          <input type="range" class="form-control-range range-slider" id="ansiedade" name="ansiedade" min="0" max="10" step="1">
+                                          <input type="range" class="form-control-range range-slider" id="ansiedade" name="ansiedade" min="0" max="10" step="1" required>
                                           <span class="range-label">Valor selecionado: <span id="ansiedadeValue">0</span></span>
                                        </div>
                                        <!-- Bem-Estar/Mal-Estar -->
                                        <div class="form-group">
                                           <label for="bemEstar">Bem-Estar/Mal-Estar:</label>
-                                          <input type="range" class="form-control-range range-slider" id="bemEstar" name="bemEstar" min="0" max="10" step="1">
+                                          <input type="range" class="form-control-range range-slider" id="bemEstar" name="bemEstar" min="0" max="10" step="1"required>
                                           <span class="range-label">Valor selecionado: <span id="bemEstarValue">0</span></span>
                                        </div>
                                        <!-- Outro problema -->
                                        <div class="form-group">
                                           <label for="outroProblema">Outro problema (prisão de ventre, etc.):</label>
-                                          <input type="text" class="form-control" id="outroProblema" name="outroProblema">
+                                          <input type="text" class="form-control" id="outroProblema" name="outroProblema" required oninput="this.value = this.value.toUpperCase()">
                                        </div>
                                        <!-- Botão de envio -->
-                                       <button type="submit" class="btn btn-primary">Enviar</button>
+                                       <button type="submit" class="btn btn-block btn-success" style="background-color: #65b22e;">Enviar</button>
                                     </form>
                                  </div>
                               </div>

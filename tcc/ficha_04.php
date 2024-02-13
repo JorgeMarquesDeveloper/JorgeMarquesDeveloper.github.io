@@ -55,7 +55,7 @@
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin.php">
         <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+        <i class="fas fa-user-nurse"></i>
         </div>
         <div class="sidebar-brand-text mx-3">TCR<sup></sup></div>
     </a>
@@ -143,7 +143,7 @@
                                  <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                     </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">Avaliação do acompanhamento por teleconsulta </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">Avaliação do Acompanhamento por Teleconsulta </div>
                                  </div>
                                  <div class="col-auto">
                                     <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -213,7 +213,7 @@
                                           }
                                           ?>
                                        <!-- Botão de envio -->
-                                       <button type="submit" class="btn btn-primary">Enviar</button>
+                                       <button type="submit" class="btn btn-block btn-success" style="background-color: #65b22e;">Enviar</button>
                                     </form>
                            </div>
                         </div>

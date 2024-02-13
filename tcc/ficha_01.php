@@ -53,8 +53,8 @@
          <ul class="navbar-nav  sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #65b22e;">
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin.php">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+        <div class="sidebar-brand-icon ">
+        <i class="fas fa-user-nurse"></i>
         </div>
         <div class="sidebar-brand-text mx-3">TCR<sup></sup></div>
     </a>
@@ -168,8 +168,7 @@
                                        <!-- Campo Nome -->
                                        <div class="form-group">
                                           <label for="nome">Nome:</label>
-                                          <input type="text" class="form-control" id="nome" name="nome" required>
-                                       </div>
+                                          <input type="text" class="form-control" id="nome" name="nome" required oninput="this.value = this.value.toUpperCase()">                                       </div>
                                        <!-- Campo Idade -->
                                        <div class="form-group">
                                           <label for="idade">Idade:</label>
@@ -285,7 +284,7 @@
                                           </select>
                                        </div>
                                        <!-- Adicione os outros campos do formulário da mesma forma -->
-                                       <button type="submit" class="btn btn-success text-center">Enviar</button>
+                                       <button type="submit" class="btn btn-block btn-success" style="background-color: #65b22e;">Enviar</button>
                                     </form>
                                  </div>
                                  
