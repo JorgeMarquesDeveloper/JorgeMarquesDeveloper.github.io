@@ -28,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $forca_motora = $_POST["forca-motora"];
 
     // SQL para inserir os dados no banco
-    $sql = "INSERT INTO formulario (nome, idade, sexo, escolaridade, renda, procedencia, tempo_deslocamento, tipo_transporte, passagem_estadia_refeicao, cuidador, forca_motora)
+    $sql = "INSERT INTO ficha_01 (nome, idade, sexo, escolaridade, renda, procedencia, tempo_deslocamento, tipo_transporte, passagem_estadia_refeicao, cuidador, forca_motora)
             VALUES ('$nome', '$idade', '$sexo', '$escolaridade', '$renda', '$procedencia', '$tempo_deslocamento', '$tipo_transporte', '$passagem_estadia_refeicao', '$cuidador', '$forca_motora')";
 
 if ($conn->query($sql) === TRUE) {
