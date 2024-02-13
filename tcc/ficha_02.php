@@ -143,7 +143,7 @@
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 </div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Ficha para Teleatendimento</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Teleatendimento</div>
                                         </div>
                                         <div class="col-auto">
                                         <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
@@ -166,6 +166,10 @@
                                        <div class="form-group">
                                           <label for="pacienteId">ID do Paciente:</label>
                                           <input type="text" class="form-control" id="pacienteId" name="pacienteId">
+                                       </div>
+                                       <div class="form-group">
+                                          <label for="pacienteId">HIPÓTESE DIAGNÓSTICA:</label>
+                                          <input type="text" class="form-control" id="pacienteId" name="hipdiagnostica">
                                        </div>
                                        <div class="form-group">
                                           <label for="data_ultima_consulta">Data da última consulta:</label>

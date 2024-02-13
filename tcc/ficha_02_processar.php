@@ -10,6 +10,8 @@ require('db.php');
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Seção 1: Informações Gerais
     $id_paciente = $_POST["pacienteId"];
+    $hipdig = $_POST["hipdiagnostica"];
+    
     $data_ultima_consulta = $_POST["data_ultima_consulta"];
     $kps_ultima_consulta = $_POST["kps_ultima_consulta"];
     $kps_telefonico = $_POST["kps_telefonico"];
@@ -55,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             esteve_internado_motivo, dor, dispneia, sonolencia, nauseas, confusao_mental, vomito, 
             observacoes, diurese, evacuacao, ferida, local_ferida, sangramento, local_sangramento, 
             febre_respiratoria, contato_realizado_com, conduta_estavel, conduta_estavel_material_acabando, 
-            conduta_sintomas_descontrolados, conduta_necessidade_avaliacao_presencial)
+            conduta_sintomas_descontrolados, conduta_necessidade_avaliacao_presencial,hip_diagnostica)
             VALUES 
             ('$id_paciente','$data_ultima_consulta', '$kps_ultima_consulta', '$kps_telefonico', '$alteracao_significativa', 
             '$alteracao_significativa_descricao', '$esteve_spa', '$esteve_spa_motivo', '$esteve_internado', 
@@ -63,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             '$vomito', '$observacoes', '$diurese', '$evacuacao', '$ferida', '$local_ferida', '$sangramento', 
             '$local_sangramento', '$febre_respiratoria', '$contato_realizado_com', '$conduta_estavel', 
             '$conduta_estavel_material_acabando', '$conduta_sintomas_descontrolados', 
-            '$conduta_necessidade_avaliacao_presencial')";
+            '$conduta_necessidade_avaliacao_presencial','$hipdig')";
 
 if ($conn->query($sql) === TRUE) {
     header("Location: sucesso_cadastro.php");
