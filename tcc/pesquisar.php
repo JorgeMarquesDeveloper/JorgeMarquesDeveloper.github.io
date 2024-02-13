@@ -3,7 +3,7 @@
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Opções</title>
+      <title>TCR | Pesquisar Paciente</title>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
       <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
       <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -50,7 +50,7 @@
    <body>
       <div id="wrapper">
          <!-- Sidebar -->
-         <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+         <ul class="navbar-nav  sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #65b22e;">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin.php">
                <div class="sidebar-brand-icon rotate-n-15">
@@ -69,38 +69,40 @@
             </div>
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                  aria-expanded="true" aria-controls="collapseTwo">
-               <i class="fas fa-fw fa-cog"></i>
-               <span>Components</span>
-               </a>
-               <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                  <div class="bg-white py-2 collapse-inner rounded">
-                     <h6 class="collapse-header">Area de Cadastro</h6>
-                     <a class="collapse-item" href="ficha_01.php">Sócio Demográfico</a>
-                     <a class="collapse-item" href="ficha_02.php">Teleatendimento</a>
-                     <a class="collapse-item" href="ficha_03.php">Avaliação de Edmonton </a>
-                     <a class="collapse-item" href="ficha_04.php">Avaliação da teleconsulta </a>
-                  </div>
-               </div>
-            </li>
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                  aria-expanded="true" aria-controls="collapseUtilities">
-               <i class="fas fa-fw fa-wrench"></i>
-               <span>Utilities</span>
-               </a>
-               <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                  data-parent="#accordionSidebar">
-                  <div class="bg-white py-2 collapse-inner rounded">
-                     <h6 class="collapse-header">Ferramentas</h6>
-                     <a class="collapse-item" href="pesquisar.php">Pesquisar ID</a>
-                     <a class="collapse-item" href="relatorio_indv_01.php">Relatorio Individual</a>
-                     <a class="collapse-item" href="index.php">Sair</a>
-                  </div>
-               </div>
-            </li>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Minhas Fichas</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Area de Cadastro</h6>
+                <a class="collapse-item" href="ficha_01.php">Sócio Demográfico</a>
+                <a class="collapse-item" href="ficha_02.php">Teleatendimento</a>
+                <a class="collapse-item" href="ficha_03.php">Avaliação de Edmonton </a>
+                <a class="collapse-item" href="ficha_04.php">Avaliação da teleconsulta </a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+            aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="fas fa-fw fa-wrench"></i>
+            <span>Relatórios</span>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Ferramentas</h6>
+                <a class="collapse-item" href="pesquisar.php">Pesquisar ID</a>
+                <a class="collapse-item" href="relatorio_indv_01.php">Relatorio Individual</a>
+                <a class="collapse-item" href="index.php">Sair</a>
+            </div>
+        </div>
+    </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
             <div class="text-center d-none d-md-inline">
@@ -158,50 +160,124 @@
                                        Resultado da pesquisa
                                     </div>
                                     <?php
-                                       require('db.php'); 
-                                       
-                                       if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                          $search_term = mysqli_real_escape_string($conn, $_POST["search_term"]);
-                                       
-                                          // Consulta SQL modificada para verificar pendências em diferentes tabelas
-                                          $sql = "
-                                              SELECT 
-                                                  f1.id, f1.nome,
-                                                  CASE WHEN f2.id IS NOT NULL THEN 'Realizada' ELSE 'Pendente' END AS tem_pendencias_ficha_04,
-                                                  CASE WHEN f3.id IS NOT NULL THEN 'Realizada' ELSE 'Pendente' END AS tem_pendencias_ficha_03,
-                                                  CASE WHEN ft.id IS NOT NULL THEN 'Realizada' ELSE 'Pendente' END AS tem_pendencias_ficha_teleatendimento
-                                              FROM ficha_01 f1
-                                              LEFT JOIN ficha_04 f2 ON f1.id = f2.id
-                                              LEFT JOIN ficha_03 f3 ON f1.id = f3.id
-                                              LEFT JOIN ficha_teleatendimento ft ON f1.id = ft.id
-                                              WHERE f1.nome LIKE '%$search_term%'
-                                          ";
-                                       
-                                          $result = $conn->query($sql);
-                                       
-                                          if ($result->num_rows > 0) {
-                                              echo "<table class='table table-bordered'>";
-                                              echo "<tr><th>ID</th><th>Nome</th><th>Pendências Ficha 02</th><th>Pendências Ficha 03</th><th>Pendências Ficha Teleatendimento</th></tr>";
-                                       
-                                              while ($row = $result->fetch_assoc()) {
-                                                  echo "<tr>";
-                                                  echo "<td>" . $row["id"] . "</td>";
-                                                  echo "<td>" . $row["nome"] . "</td>";
-                                                  
-                                                  echo "<td>" . $row["tem_pendencias_ficha_04"] . "</td>";
-                                                  echo "<td>" . $row["tem_pendencias_ficha_03"] . "</td>";
-                                                  echo "<td>" . $row["tem_pendencias_ficha_teleatendimento"] . "</td>";
-                                                  echo "</tr>";
-                                              }
-                                       
-                                              echo "</table>";
-                                          } else {
-                                              echo "<p>Nenhum resultado encontrado.</p>";
-                                          }
-                                       }
-                                       
-                                       $conn->close();
-                                       ?>
+require('db.php'); 
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $search_term = mysqli_real_escape_string($conn, $_POST["search_term"]);
+
+    // Consulta SQL modificada para verificar pendências em diferentes tabelas
+    $sql = "
+        SELECT 
+            f1.id, f1.nome,
+            CASE WHEN f2.id IS NOT NULL THEN 'Realizada' ELSE 'Pendente' END AS tem_pendencias_ficha_04,
+            CASE WHEN f3.id IS NOT NULL THEN 'Realizada' ELSE 'Pendente' END AS tem_pendencias_ficha_03,
+            CASE WHEN ft.id IS NOT NULL THEN 'Realizada' ELSE 'Pendente' END AS tem_pendencias_ficha_teleatendimento
+        FROM ficha_01 f1
+        LEFT JOIN ficha_04 f2 ON f1.id = f2.id
+        LEFT JOIN ficha_03 f3 ON f1.id = f3.id
+        LEFT JOIN ficha_teleatendimento ft ON f1.id = ft.id
+        WHERE f1.nome LIKE '%$search_term%'
+    ";
+
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        echo "<table class='table table-bordered text-center' >";
+        echo "<tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Pendências Ficha 02</th>
+            <th>Pendências Ficha 03</th>
+            <th>Pendências Ficha Teleatendimento</th>
+            <th>Status </th>
+            <th>Excluir Ficha</th>
+        </tr>";
+
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>" . $row["id"] . "</td>";
+            echo "<td>" . $row["nome"] . "</td>";
+
+          
+
+            // Link para resolver pendência na Ficha 03
+            echo "<td>";
+            if ($row["tem_pendencias_ficha_03"] == 'Pendente') {
+                echo "<a href='ficha_03.php' class='btn btn-warning btn-sm'>Pendente</a>";
+            } else {
+               echo "<i class='fas fa-thumbs-up text-success'></i>
+               <a href='ficha_03_excluir.php?id=" . $row["id"] . "' class='btn btn-danger btn-sm'>
+               <i class='fas fa-trash-alt'></i> 
+           </a>
+               
+               
+               "
+               
+               
+               
+               ;
+            }
+            echo "</td>";
+
+            // Link para resolver pendência na Ficha 04
+            echo "<td>";
+            if ($row["tem_pendencias_ficha_04"] == 'Pendente') {
+               echo "<a href='ficha_04.php' class='btn btn-warning btn-sm'>Pendente</a>";            } else {
+                  echo "<i class='fas fa-thumbs-up text-success'></i>
+                  <a href='ficha_04_excluir.php?id=" . $row["id"] . "' class='btn btn-danger btn-sm'>
+                  <i class='fas fa-trash-alt'></i> 
+              </a>
+                  
+                  
+                  "
+                  
+                  
+                  
+                  ;
+
+            }
+            echo "</td>";
+
+            // Link para resolver pendência na Ficha de Teleatendimento
+            echo "<td>";
+            if ($row["tem_pendencias_ficha_teleatendimento"] == 'Pendente') {
+               echo "<a href='ficha_02.php' class='btn btn-warning btn-sm'>Pendente</a>";            } else {
+                  echo "<i class='fas fa-thumbs-up text-success'></i>
+                  <a href='ficha_02_excluir.php?id=" . $row["id"] . "' class='btn btn-danger btn-sm'>
+                  <i class='fas fa-trash-alt'></i> 
+              </a>
+                  
+                  
+                  "
+                  
+                  
+                  
+                  ;
+                  
+               }
+            echo "</td>";
+
+            // Adicione a coluna para o status de pendência
+            $statusPendencia = ($row["tem_pendencias_ficha_04"] == 'Pendente' || $row["tem_pendencias_ficha_03"] == 'Pendente' || $row["tem_pendencias_ficha_teleatendimento"] == 'Pendente' ? 'Pendente' : "<i class='fas fa-thumbs-up text-success'></i>");
+            echo "<td>$statusPendencia</td>";              
+
+
+            // Botões para excluir uma ficha específica
+            echo "<td><form action='excluir_fichas_total.php' method='post'><input type='hidden' name='id' value='" . $row["id"] . "'><button type='submit' class='btn btn-danger btn-sm'>Excluir Ficha</button></form></td>";
+
+            echo "</tr>";
+        }
+
+        echo "</table>";
+    } else {
+        echo "<p>Nenhum resultado encontrado.</p>";
+    }
+}
+
+$conn->close();
+?>
+
+
                                  </div>
                               </div>
                            </div>
@@ -216,12 +292,12 @@
       <!-- End of Main Content -->
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
-         <div class="container my-auto">
-            <div class="text-center">
-               <span>Copyright &copy; Your Website 2021</span>
-            </div>
-         </div>
-      </footer>
+                <div class="container my-auto">
+                    <div class="text-center">
+                        <span>TCR &copy; Whaniza Sulana Costa Silva</span>
+                    </div>
+                </div>
+            </footer>
       <!-- End of Footer -->
       </div>
       <!-- End of Content Wrapper -->

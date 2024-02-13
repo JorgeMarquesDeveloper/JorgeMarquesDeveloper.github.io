@@ -3,11 +3,14 @@
    <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>TCR |Relatorio Individual </title>
+      <title>TCR | Relatorio Individual </title>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
       <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
       <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
       <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+      <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+
       <style>
          body {
          background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(9, 121, 29, 0.8267682072829132) 29%, rgba(0, 0, 0, 1) 100%);
@@ -46,12 +49,15 @@
          padding: 40px;
          }
       </style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+      <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
    </head>
    <body>
       <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
       <div id="wrapper">
          <!-- Sidebar -->
-         <ul class="navbar-nav bg-gradient-success sidebar sidebar-dark accordion" id="accordionSidebar">
+         <ul class="navbar-nav  sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #65b22e;">
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin.php">
                <div class="sidebar-brand-icon rotate-n-15">
@@ -70,38 +76,39 @@
             </div>
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                  aria-expanded="true" aria-controls="collapseTwo">
-               <i class="fas fa-fw fa-cog"></i>
-               <span>Components</span>
-               </a>
-               <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                  <div class="bg-white py-2 collapse-inner rounded">
-                     <h6 class="collapse-header">Area de Cadastro</h6>
-                     <a class="collapse-item" href="ficha_01.php">Sócio Demográfico</a>
-                     <a class="collapse-item" href="ficha_02.php">Teleatendimento</a>
-                     <a class="collapse-item" href="ficha_03.php">Avaliação de Edmonton </a>
-                     <a class="collapse-item" href="ficha_04.php">Avaliação da teleconsulta </a>
-                  </div>
-               </div>
-            </li>
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-               <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                  aria-expanded="true" aria-controls="collapseUtilities">
-               <i class="fas fa-fw fa-wrench"></i>
-               <span>Utilities</span>
-               </a>
-               <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                  data-parent="#accordionSidebar">
-                  <div class="bg-white py-2 collapse-inner rounded">
-                     <h6 class="collapse-header">Ferramentas</h6>
-                     <a class="collapse-item" href="pesquisar.php">Pesquisar ID</a>
-                     <a class="collapse-item" href="relatorio_indv_01.php">Relatorio Individual</a>
-                     <a class="collapse-item" href="index.php">Sair</a>
-                  </div>
-               </div>
-            </li>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
+            aria-expanded="true" aria-controls="collapseTwo">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Minhas Fichas</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Area de Cadastro</h6>
+                <a class="collapse-item" href="ficha_01.php">Sócio Demográfico</a>
+                <a class="collapse-item" href="ficha_02.php">Teleatendimento</a>
+                <a class="collapse-item" href="ficha_03.php">Avaliação de Edmonton </a>
+                <a class="collapse-item" href="ficha_04.php">Avaliação da teleconsulta </a>
+            </div>
+        </div>
+    </li>
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+            aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="fas fa-fw fa-wrench"></i>
+            <span>Relatórios</span>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Ferramentas</h6>
+                <a class="collapse-item" href="pesquisar.php">Pesquisar ID</a>
+                <a class="collapse-item" href="relatorio_indv_01.php">Relatorio Individual</a>
+                <a class="collapse-item" href="index.php">Sair</a>
+            </div>
+        </div>
+    </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
             <div class="text-center d-none d-md-inline">
@@ -159,6 +166,8 @@
                                              <input type="text" class="form-control" id="pacienteId" name="pacienteId">
                                           </div>
                                           <button type="submit" class="btn btn-success">Enviar</button>
+                                          <button type="button" class="btn btn-primary" id="imprimirRelatorio">Imprimir Relatório</button>
+
                                        </form>
                                     </div>
                                  </div>
@@ -237,7 +246,7 @@
                               <div class="row no-gutters align-items-center">
                                  <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                       Ficha 02
+                                    Teleatendimento
                                     </div>
                                     <div class="h5 mb-0 font-weight-normal text-gray-800">
                                     </div>
@@ -258,7 +267,10 @@
                                                // Exibir os resultados em uma tabela
                                                echo "<table class='table'>";
                                                while ($row = $result->fetch_assoc()) {
+                                                echo "<tr><td>Hipótese Diagnóstica </td><td>" . $row['hip_diagnostica'] . "</td></tr>";
+
                                                    echo "<tr><td>Data da última consulta</td><td>" . $row['data_ultima_consulta'] . "</td></tr>";
+
                                                    echo "<tr><td>KPS da última consulta</td><td>" . $row['kps_ultima_consulta'] . "</td></tr>";
                                                    echo "<tr><td>KPS telefônico</td><td>" . $row['kps_telefonico'] . "</td></tr>";
                                                    echo "<tr><td>Alteração significativa</td><td>" . $row['alteracao_significativa'] . "</td></tr>";
@@ -311,7 +323,7 @@
                               <div class="row no-gutters align-items-center">
                                  <div class="col mr-2">
                                     <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                       Ficha 03                                    
+                                    Avaliação de Edmonton                                   
                                     </div>
                                     <div class="h5 mb-0 font-weight-normal text-gray-800">
                                     </div>
@@ -326,7 +338,6 @@
                                            // Exibir os resultados em uma tabela
                                            echo "<table class='table'>";
                                            while ($row = $result->fetch_assoc()) {
-                                               echo "<tr><td>ID</td><td>" . $row['id'] . "</td></tr>";
                                                echo "<tr><td>Dor</td><td>" . $row['dor'] . "</td></tr>";
                                                echo "<tr><td>Cansaço</td><td>" . $row['cansaco'] . "</td></tr>";
                                                echo "<tr><td>Sonolência</td><td>" . $row['sonolencia'] . "</td></tr>";
@@ -354,54 +365,71 @@
                         </div>
                      </div>
                      <div class="col-xl-12 col-md-6 mb-4">
-                        <div class="card border-left-success shadow h-100 py-2">
-                           <div class="card-body">
-                              <div class="row no-gutters align-items-center">
-                                 <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                       Ficha 04
-                                    </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                       <?php
-                                          // Substitua as informações de conexão conforme necessário
-                                          require('db.php');
-                                          
-                                          $sql = "SELECT * FROM ficha_04 WHERE id = $id";
-                                          $result = $conn->query($sql);
-                                          
-                                          // Verificar se há resultados
-                                          if ($result->num_rows > 0) {
-                                              // Exibir os resultados
-                                              echo "<h2 class='mb-3'>Dados da Ficha 04</h2>";
-                                          
-                                              while ($row = $result->fetch_assoc()) {
-                                                  // Exibir os dados conforme necessário
-                                                  echo "<p class='mb-1'><strong>ID:</strong> " . $row['id'] . "</p>";
-                                                  echo "<p class='mb-1'><strong>Iniciais:</strong> " . $row['iniciais'] . "</p>";
-                                                  echo "<p class='mb-1'><strong>Data de Nascimento:</strong> " . $row['data_nascimento'] . "</p>";
-                                                  echo "<p class='mb-1'><strong>Data de Hoje:</strong> " . $row['data_hoje'] . "</p>";
-                                          
-                                                  // Exibir respostas para as perguntas
-                                                  echo "<h5 class='mt-3 mb-2'>Respostas para Perguntas</h5>";
-                                                  for ($i = 1; $i <= 13; $i++) {
-                                                      echo "<p class='mb-1'><strong>Pergunta $i:</strong> " . $row['pergunta' . $i] . "</p>";
-                                                  }
-                                          
-                                                  echo "<hr>"; // Adicionar uma linha divisória entre os conjuntos de resultados
-                                              }
-                                          } else {
-                                              echo "<p class='text-danger'>ID não fornecido.</p>";
-                                          }
-                                          
-                                          // Fechar a conexão com o banco de dados
-                                          $conn->close();
-                                          ?>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
+    <div class="card border-left-success shadow h-100 py-2">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                    Avaliação da teleconsulta
+                    </div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                       
+                    </div>
+                    <?php
+// Substitua as informações de conexão conforme necessário
+require('db.php');
+
+$sql = "SELECT * FROM ficha_04 WHERE id = $id";
+$result = $conn->query($sql);
+
+// Verificar se há resultados
+if ($result->num_rows > 0) {
+    // Exibir os resultados em uma tabela
+    echo "<table class='table'>";
+    while ($row = $result->fetch_assoc()) {
+        // Exibir os dados conforme necessário
+        echo "<tr><th>Iniciais</th><td>" . $row['iniciais'] . "</td></tr>";
+        echo "<tr><th>Data de Nascimento</th><td>" . $row['data_nascimento'] . "</td></tr>";
+        echo "<tr><th>Data de Hoje</th><td>" . $row['data_hoje'] . "</td></tr>";
+
+        // Exibir respostas para as perguntas
+        echo "<tr><th colspan='2' class='text-center'>Respostas para Perguntas</th></tr>";
+        $perguntas = array(
+            "Você teve dificuldade para compreender as orientações prestadas?",
+            "Você sentiu dificuldade para participar da teleconsulta?",
+            "Você precisou de ajuda para se conectar ao WhatsApp?",
+            "As consultas interferiram positivamente na sua vida familiar?",
+            "O acompanhamento semanal proporcionou maior autonomia nas AVDs?",
+            "O acompanhamento semanal ajudou no manejo dos medicamentos?",
+            "As orientações fornecidas ajudaram a lidar com os sintomas clínicos (caso tenha surgido) nos últimos dias?",
+            "O acompanhamento de enfermagem semanal forneceu algum suporte emocional a você ou a seu cuidador?",
+            "As teleconsultas forneceram maior educação em saúde no seu tratamento para você e sua família?",
+            "Na sua opinião, as consultas a distância te deixaram mais seguro no tratamento?",
+            "Na sua opinião, um acompanhamento a distância ajuda a reduzir gastos para você e sua família?",
+            "Na sua opinião, as consultas a distância ajudam a reduzir o tempo de deslocamento ao hospital?",
+            "Na sua opinião, o acompanhamento a distância pela enfermagem foi útil?"
+        );
+
+        for ($i = 0; $i < count($perguntas); $i++) {
+            echo "<tr><th>{$perguntas[$i]}</th><td>" . $row['pergunta' . ($i + 1)] . "</td></tr>";
+        }
+    }
+    echo "</table>";
+
+} else {
+    echo "<p class='text-danger'>ID não fornecido.</p>";
+}
+
+// Fechar a conexão com o banco de dados
+$conn->close();
+?>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
                   </div>
                </div>
             
@@ -411,12 +439,12 @@
          <!-- End of Main Content -->
          <!-- Footer -->
          <footer class="sticky-footer bg-white">
-            <div class="container my-auto">
-               <div class="text-center">
-                  <span>Copyright &copy; Your Website 2021</span>
-               </div>
-            </div>
-         </footer>
+                <div class="container my-auto">
+                    <div class="text-center">
+                        <span>TCR &copy; Whaniza Sulana Costa Silva</span>
+                    </div>
+                </div>
+            </footer>
          <!-- End of Footer -->
       
       <!-- End of Content Wrapper -->
@@ -467,5 +495,23 @@
              }
          });
       </script>
+
+<script>
+   $(document).ready(function() {
+      // Adicionar evento de clique ao botão "Imprimir Relatório"
+      $("#imprimirRelatorio").on("click", function() {
+         // Oculta o botão "Imprimir Relatório" durante o processo de impressão
+         $(this).prop('disabled', true);
+
+         // Exibir tela de impressão
+         window.print();
+
+         // Habilita novamente o botão "Imprimir Relatório"
+         $("#imprimirRelatorio").prop('disabled', false);
+      });
+   });
+</script>
+
+
    </body>
 </html>

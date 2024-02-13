@@ -1,18 +1,6 @@
 <?php
 // Verifique se o formulário foi enviado
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Conecte ao banco de dados (substitua com suas próprias credenciais)
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "project001";
-
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    // Verifique a conexão
-    if ($conn->connect_error) {
-        die("Falha na conexão com o banco de dados: " . $conn->connect_error);
-    }
+require('db.php'); 
 
     // Recupere os valores do formulário
     $nome = $_POST["nome"];
@@ -40,5 +28,5 @@ if ($conn->query($sql) === TRUE) {
 }
 
     $conn->close();
-}
+
 ?>

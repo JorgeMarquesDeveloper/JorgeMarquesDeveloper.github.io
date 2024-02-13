@@ -17,12 +17,12 @@
       <!-- Custom styles for this page -->
       <style>
          .bg-gradient-primary {
-         background: green;
+            background: linear-gradient(90deg, rgba(101,178,46,1) 0%, rgba(178,185,0,1) 100%, rgba(151,203,0,0.6194852941176471) 100%);
          background-repeat: no-repeat;
          background-attachment: fixed;
          }
          .bg-login-image {
-         background-image: url('path/to/your/image.jpg'); /* Substitua pelo caminho da sua imagem */
+         background-image: url(''); /* Substitua pelo caminho da sua imagem */
          background-size: cover;
          background-position: center;
          }
@@ -81,7 +81,7 @@
                                        <label class="custom-control-label" for="customCheck">Remember Me</label>
                                     </div>
                                  </div>
-                                 <button type="submit" class="btn btn-success btn-user btn-block">
+                                 <button type="submit" class="btn btn-success btn-user btn-block" style="">
                                  Login
                                  </button>
                                  <hr>
