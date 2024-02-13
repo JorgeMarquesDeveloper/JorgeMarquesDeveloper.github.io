@@ -1,9 +1,10 @@
+<!-- Codigo PHP-->
+
+
 <?php
    require('db.php'); 
-   // Arquivo: contador_cadastros.php
-   // Inclui o código de conexão ao banco de dados
    
-   // Consulta SQL para contar os cadastros
+ 
    $sql = "SELECT COUNT(*) as total_cadastros FROM ficha_01";
    
    $resultado = $conn->query($sql);
@@ -13,58 +14,129 @@
        $dados = $resultado->fetch_assoc();
        $total_cadastros = $dados['total_cadastros'];
    } else {
-       $total_cadastros = "Erro na consulta: " . $conexao->error;
+       $total_cadastros = "Erro na consulta: " . $conn->error;
    }
    
-   // Fecha a conexão com o banco de dados
+   $conn->close();
+   ?>
+<?php
+   require('db.php'); 
+   
+   // Verifica se a tabela existe
+   
+   
+   // Consulta SQL para contar pessoas em cada faixa etária
+   $sql_contagem = "SELECT
+       SUM(CASE WHEN idade = '18-29' THEN 1 ELSE 0 END) AS faixa_18_29,
+       SUM(CASE WHEN idade = '30-49' THEN 1 ELSE 0 END) AS faixa_30_49,
+       SUM(CASE WHEN idade = '50-59' THEN 1 ELSE 0 END) AS faixa_50_59,
+       SUM(CASE WHEN idade = '60-79' THEN 1 ELSE 0 END) AS faixa_60_79,
+       SUM(CASE WHEN idade = '80-mais' THEN 1 ELSE 0 END) AS faixa_80_mais
+       FROM ficha_01";
+   
+   // Executa a consulta
+   $resultado_contagem = $conn->query($sql_contagem);
+   
+   if ($resultado_contagem !== false) {
+       // Obtém o resultado da contagem
+       $linha_contagem = $resultado_contagem->fetch_assoc();
+   
+       // Atualiza a tabela grafic_idade_pess
+       
+          $faixaEtaria18_29 = $linha_contagem['faixa_18_29'];
+          $faixaEtaria30_49 = $linha_contagem['faixa_30_49'];
+          $faixaEtaria50_59 = $linha_contagem['faixa_50_59'];
+          $faixaEtaria60_79 = $linha_contagem['faixa_60_79'];
+          $faixaEtaria80_mais =$linha_contagem['faixa_80_mais'];
+   
+       // Executa a atualização
+      
+   
+   } else {
+       echo "Erro na contagem: " . $conn->error;
+   }
+   
+   // Fecha a conexão com o banco de dados após a atualização
    $conn->close();
    ?>
 
-<?php
 
-require('db.php'); 
 
-// Verifica se a tabela existe
-$tableExists = $conn->query("SHOW TABLES LIKE 'grafic_idade_pess'")->num_rows > 0;
-
-if (!$tableExists) {
-    // Cria a tabela caso não exista
-    $createTableQuery = "CREATE TABLE grafic_idade_pess (
-        `18-29` INT,
-        `30-49` INT,
-        `50-59` INT,
-        `60-79` INT,
-        `80-mais` INT
-    )";
-
-    $result = $conn->query($createTableQuery);
-}
-// Fecha a conexão com o banco de dados
-$conn->close();
-?>
 
 <?php
 require('db.php'); 
 
-// Consulta SQL específica para sua tabela
-$resultado = $conn->query("SELECT `18-29`, `30-49`, `50-59`, `60-79`, `80-mais` FROM grafic_idade_pess");
+// Consulta SQL para contar o número de registros para cada gênero
+$sql_contagem_genero = "SELECT 
+    SUM(CASE WHEN sexo = 'Masculino' THEN 1 ELSE 0 END) AS total_masculino,
+    SUM(CASE WHEN sexo = 'Feminino' THEN 1 ELSE 0 END) AS total_feminino
+    FROM ficha_01";
 
-if ($resultado->num_rows > 0) {
-    // Obter o primeiro (e esperado único) resultado, pois se trata de uma tabela com uma única linha
-    $linha = $resultado->fetch_assoc();
+// Executa a consulta
+$resultado_contagem_genero = $conn->query($sql_contagem_genero);
 
-    // Armazenar cada valor em variáveis PHP individuais
-    $faixaEtaria18_29 = (int)$linha['18-29'];
-    $faixaEtaria30_49 = (int)$linha['30-49'];
-    $faixaEtaria50_59 = (int)$linha['50-59'];
-    $faixaEtaria60_79 = (int)$linha['60-79'];
-    $faixaEtaria80_mais = (int)$linha['80-mais'];
+if ($resultado_contagem_genero !== false) {
+    // Obtém o resultado da contagem
+    $linha_contagem_genero = $resultado_contagem_genero->fetch_assoc();
+
+    // Armazena os resultados nas variáveis PHP
+    $total_masculino = (int)$linha_contagem_genero['total_masculino'];
+    $total_feminino = (int)$linha_contagem_genero['total_feminino'];
+
+  
+} else {
+    echo "Erro na contagem de gênero: " . $conn->error;
 }
 
 $conn->close();
 ?>
 
-   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
    <head>
@@ -228,12 +300,12 @@ $conn->close();
                   </div>
                </div>
                <div class="col-xl-3 col-md-12 mb-4">
-                  <div class="card border-left-warning shadow h-100 py-2">
+                  <div class="card border-left-danger shadow h-100 py-2">
                      <div class="card-body">
                         <div class="row no-gutters align-items-center">
                            <div class="col mr-2">
-                              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                 Pacientes Cadastrados
+                              <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                 Novidades
                               </div>
                               <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total_cadastros; ?></div>
                            </div>
@@ -250,9 +322,11 @@ $conn->close();
                         <div class="row no-gutters align-items-center">
                            <div class="col mr-2">
                               <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                 Earnings (Monthly)
+                                 Hora Atual
                               </div>
-                              <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                              <div class="h5 mb-0 font-weight-bold text-gray-800">
+                              <div id="relogio"></div>
+                              </div>
                            </div>
                            <div class="col-auto">
                               <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -263,7 +337,7 @@ $conn->close();
                </div>
             </div>
             <div class="row">
-               <div class="col-xl-6 col-lg-7">
+               <div class="col-xl-7 col-lg-7">
                   <!-- Área do Gráfico -->
                   <div class="card shadow mb-4">
                      <div class="card-header py-3">
@@ -274,14 +348,14 @@ $conn->close();
                      </div>
                   </div>
                </div>
-               <div class="col-xl-6 col-lg-7">
+               <div class="col-xl-5 col-lg-7">
                   <!-- Área do Gráfico -->
                   <div class="card shadow mb-4">
                      <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-warning">Faixas Etárias da Pesquisa</h6>
+                        <h6 class="m-0 font-weight-bold text-warning">Generos </h6>
                      </div>
                      <div class="card-body">
-                        <canvas id="gap_01"></canvas>
+                        <canvas id="gap_02"></canvas>
                      </div>
                   </div>
                </div>
@@ -341,5 +415,131 @@ $conn->close();
          // Cria o gráfico
          var myChart = new Chart(ctx, config);
       </script>
+
+<script>
+    // Configurações do gráfico de pizza para gênero
+    var genderConfig = {
+        type: 'doughnut',
+        data: {
+            labels: ['Masculino', 'Feminino'],
+            datasets: [{
+                data: [<?php echo $total_masculino; ?>, <?php echo $total_feminino; ?>],
+                backgroundColor: ['rgba(101,178,46, 0.5)', 'rgba(255, 0, 0, 0.5)'],
+                borderColor: ['rgba(101,178,46, 1)', 'rgba(255, 0, 0, 1)'],
+                borderWidth: 1
+            }]
+        },
+        options: {}
+    };
+
+    // Obtém o contexto do canvas para o gráfico de gênero
+    var genderCtx = document.getElementById('gap_02').getContext('2d');
+
+    // Cria o gráfico de pizza para gênero
+    var genderChart = new Chart(genderCtx, genderConfig);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+function atualizarRelogio() {
+    var agora = new Date();
+    var horas = agora.getHours();
+    var minutos = agora.getMinutes();
+    var segundos = agora.getSeconds();
+
+    horas = formatarNumero(horas);
+    minutos = formatarNumero(minutos);
+    segundos = formatarNumero(segundos);
+
+    var horaAtual = horas + ":" + minutos + ":" + segundos;
+
+    document.getElementById("relogio").innerHTML = horaAtual;
+}
+
+function formatarNumero(numero) {
+    return numero < 10 ? "0" + numero : numero;
+}
+
+// Atualiza o relógio a cada segundo
+setInterval(atualizarRelogio, 1000);
+
+// Chama a função inicialmente para exibir o horário imediatamente
+atualizarRelogio();
+</script>
+
+
+
+
+
+
+
+
+
    </body>
 </html>
