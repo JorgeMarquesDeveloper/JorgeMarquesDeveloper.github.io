@@ -15,32 +15,56 @@
    } else {
        $total_cadastros = "Erro na consulta: " . $conexao->error;
    }
+   
+   // Fecha a conexão com o banco de dados
+   $conn->close();
+   ?>
 
+<?php
 
-   $sql = "SELECT
-           SUM(CASE WHEN idade = '18-29' THEN 1 ELSE 0 END) AS faixa_18_29,
-           SUM(CASE WHEN idade = '30-49' THEN 1 ELSE 0 END) AS faixa_30_49,
-           SUM(CASE WHEN idade = '50-59' THEN 1 ELSE 0 END) AS faixa_50_59,
-           SUM(CASE WHEN idade = '60-79' THEN 1 ELSE 0 END) AS faixa_60_79,
-           SUM(CASE WHEN idade = '80-mais' THEN 1 ELSE 0 END) AS faixa_80_mais
-        FROM ficha_01";
+require('db.php'); 
 
-$resultado = $conn->query($sql);
+// Verifica se a tabela existe
+$tableExists = $conn->query("SHOW TABLES LIKE 'grafic_idade_pess'")->num_rows > 0;
 
-// Verificar se a consulta foi bem-sucedida
-if ($resultado) {
-    $dados = $resultado->fetch_assoc();
+if (!$tableExists) {
+    // Cria a tabela caso não exista
+    $createTableQuery = "CREATE TABLE grafic_idade_pess (
+        `18-29` INT,
+        `30-49` INT,
+        `50-59` INT,
+        `60-79` INT,
+        `80-mais` INT
+    )";
 
-    // Converter os resultados em formato JSON
-} else {
-    echo "Erro na consulta: " . $conn->error;
+    $result = $conn->query($createTableQuery);
 }
-
-// Fechar a conexão
+// Fecha a conexão com o banco de dados
 $conn->close();
 ?>
+
+<?php
+require('db.php'); 
+
+// Consulta SQL específica para sua tabela
+$resultado = $conn->query("SELECT `18-29`, `30-49`, `50-59`, `60-79`, `80-mais` FROM grafic_idade_pess");
+
+if ($resultado->num_rows > 0) {
+    // Obter o primeiro (e esperado único) resultado, pois se trata de uma tabela com uma única linha
+    $linha = $resultado->fetch_assoc();
+
+    // Armazenar cada valor em variáveis PHP individuais
+    $faixaEtaria18_29 = (int)$linha['18-29'];
+    $faixaEtaria30_49 = (int)$linha['30-49'];
+    $faixaEtaria50_59 = (int)$linha['50-59'];
+    $faixaEtaria60_79 = (int)$linha['60-79'];
+    $faixaEtaria80_mais = (int)$linha['80-mais'];
+}
+
+$conn->close();
+?>
+
    
-  
 <!DOCTYPE html>
 <html lang="pt-br">
    <head>
@@ -48,6 +72,7 @@ $conn->close();
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>TCR | Admin</title>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
       <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
       <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
       <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -147,134 +172,120 @@ $conn->close();
       </ul>
       <!-- Content Wrapper -->
       <div id="content-wrapper" class="d-flex flex-column">
-         <!-- Main Content -->
-         <div id="content">
-            <!-- Topbar -->
-            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-               <!-- Sidebar Toggle (Topbar) -->
-               <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-               <i class="fa fa-bars"></i>
-               </button>
-               <!-- Topbar Search -->
-               <!-- Topbar Navbar -->
-            </nav>
-            <!-- End of Topbar -->
-            <!-- Begin Page Content -->
-            <div class="container-fluid">
-               <!-- Page Heading -->
-               <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                  <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-               </div>
-               <!-- Content Row -->
-               <div class="row">
-                  <!-- Earnings (Monthly) Card Example -->
-                  <div class="col-xl-3 col-md-12 mb-4">
-                     <div class="card border-left-warning shadow h-100 py-2">
-                        <div class="card-body">
-                           <div class="row no-gutters align-items-center">
-                              <div class="col mr-2">
-                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                    Pacientes Cadastrados
-                                 </div>
-                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total_cadastros; ?></div>
-                              </div>
-                              <div class="col-auto">
-                                 <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-xl-3 col-md-12 mb-4">
-                     <div class="card border-left-warning shadow h-100 py-2">
-                        <div class="card-body">
-                           <div class="row no-gutters align-items-center">
-                              <div class="col mr-2">
-                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                    Pacientes 
-                                 </div>
-                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total_cadastros; ?></div>
-                              </div>
-                              <div class="col-auto">
-                                 <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-xl-3 col-md-12 mb-4">
-                     <div class="card border-left-warning shadow h-100 py-2">
-                        <div class="card-body">
-                           <div class="row no-gutters align-items-center">
-                              <div class="col mr-2">
-                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                    Pacientes Cadastrados
-                                 </div>
-                                 <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total_cadastros; ?></div>
-                              </div>
-                              <div class="col-auto">
-                                 <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-xl-3 col-md-6 mb-4">
-                     <div class="card border-left-primary shadow h-100 py-2">
-                        <div class="card-body">
-                           <div class="row no-gutters align-items-center">
-                              <div class="col mr-2">
-                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    Earnings (Monthly)
-                                 </div>
-                                 <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
-                              </div>
-                              <div class="col-auto">
-                                 <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="row">
-                  <div class="col-xl-6 col-lg-7">
-                     <!-- Area Chart -->
-                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                           <h6 class="m-0 font-weight-bold text-primary">Area Chart</h6>
-                        </div>
-                        <div class="card-body">
-                           <div class="chart-area">
-                              <canvas id="myAreaChart"></canvas>
-                           </div>
-                           <hr>
-                           
-                        </div>
-                     </div>
-                </div>
-                <div class="col-xl-6 col-lg-7">
-                     <!-- Bar Chart -->
-                     <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                           <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
-                        </div>
-                        <div class="card-body">
-                           <div class="chart-bar">
-                              <canvas id="myChart"></canvas>
-                           </div>
-                           <hr>
-                        
-                        </div>
-                     </div>
-                  </div>
-                </div>
-                  <!-- Content Row -->
-               </div>
-               <!-- /.container-fluid -->
+      <!-- Main Content -->
+      <div id="content">
+         <!-- Topbar -->
+         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+            <!-- Sidebar Toggle (Topbar) -->
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+            </button>
+            <!-- Topbar Search -->
+            <!-- Topbar Navbar -->
+         </nav>
+         <!-- End of Topbar -->
+         <!-- Begin Page Content -->
+         <div class="container-fluid">
+            <!-- Page Heading -->
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+               <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
             </div>
-            <!-- End of Main Content -->
-            <!-- Footer -->
+            <!-- Content Row -->
+            <div class="row">
+               <!-- Earnings (Monthly) Card Example -->
+               <div class="col-xl-3 col-md-12 mb-4">
+                  <div class="card border-left-warning shadow h-100 py-2">
+                     <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                           <div class="col mr-2">
+                              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                 Pacientes Cadastrados
+                              </div>
+                              <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total_cadastros; ?></div>
+                           </div>
+                           <div class="col-auto">
+                              <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-3 col-md-12 mb-4">
+                  <div class="card border-left-warning shadow h-100 py-2">
+                     <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                           <div class="col mr-2">
+                              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                 Pacientes 
+                              </div>
+                              <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total_cadastros; ?></div>
+                           </div>
+                           <div class="col-auto">
+                              <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-3 col-md-12 mb-4">
+                  <div class="card border-left-warning shadow h-100 py-2">
+                     <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                           <div class="col mr-2">
+                              <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                 Pacientes Cadastrados
+                              </div>
+                              <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $total_cadastros; ?></div>
+                           </div>
+                           <div class="col-auto">
+                              <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card border-left-primary shadow h-100 py-2">
+                     <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                           <div class="col mr-2">
+                              <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                 Earnings (Monthly)
+                              </div>
+                              <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                           </div>
+                           <div class="col-auto">
+                              <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-xl-6 col-lg-7">
+                  <!-- Área do Gráfico -->
+                  <div class="card shadow mb-4">
+                     <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-warning">Faixas Etárias da Pesquisa</h6>
+                     </div>
+                     <div class="card-body">
+                        <canvas id="gap_01"></canvas>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-7">
+                  <!-- Área do Gráfico -->
+                  <div class="card shadow mb-4">
+                     <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-warning">Faixas Etárias da Pesquisa</h6>
+                     </div>
+                     <div class="card-body">
+                        <canvas id="gap_01"></canvas>
+                     </div>
+                  </div>
+               </div>
+            </div>
             <footer class="sticky-footer bg-white">
                <div class="container my-auto">
                   <div class="text-center">
@@ -300,36 +311,35 @@ $conn->close();
       <!-- Custom scripts for all pages-->
       <script src="js/sb-admin-2.min.js"></script>
       <!-- Page level plugins -->
-      <script src="vendor/chart.js/Chart.min.js"></script>
       <!-- Page level custom scripts -->
-      <script src="js/demo/chart-pie-demo.js"></script>
-
-
       <script>
-         google.charts.load('current', {'packages':['corechart']});
-         google.charts.setOnLoadCallback(desenharGrafico);
-
-         function desenharGrafico(dados) {
-            var data = google.visualization.arrayToDataTable([
-               ['Faixa Etária', 'Número de Pessoas'],
-               ['18-29',10 ],
-               ['30-49', 15],
-               ['50-59',2],
-               ['60-79', 3],
-               ['80-mais', 4]
-            ]);
-
-            var options = {
-               title: 'Distribuição por Faixa Etária',
-               colors: ['#4e73df', '#2e59d9', '#36b9cc', '#1cc88a', '#858796']
-            };
-
-            var chart = new google.visualization.ColumnChart(document.getElementById('myChart'));
-            chart.draw(data, options);
-         }
-
+         // Configurações do gráfico
+         var config = {
+             type: 'bar',
+             data: {
+                 labels: ['18-29', '30-49', '50-59', '60-79', '80-mais'],
+                 datasets: [{
+                     label: 'Quantidade de Pessoas por Faixa Etária',
+                     data: [<?php echo $faixaEtaria18_29; ?>, <?php echo $faixaEtaria30_49; ?>, <?php echo $faixaEtaria50_59; ?>, <?php echo $faixaEtaria60_79; ?>, <?php echo $faixaEtaria80_mais; ?>],
+                     backgroundColor: 'rgba(101,178,46, 0.5)',
+                     borderColor: 'rgba(101,178,46, 1)',
+                     borderWidth: 1
+                 }]
+             },
+             options: {
+                 scales: {
+                     y: {
+                         beginAtZero: false
+                     }
+                 }
+             }
+         };
+         
+         // Obtém o contexto do canvas
+         var ctx = document.getElementById('gap_01').getContext('2d');
+         
+         // Cria o gráfico
+         var myChart = new Chart(ctx, config);
       </script>
    </body>
-
-  
 </html>
