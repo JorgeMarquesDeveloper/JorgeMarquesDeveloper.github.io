@@ -228,9 +228,9 @@
                            <div class="card-body">
                               <div class="row no-gutters align-items-center">
                                  <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                       Dados Pessoais
-                                    </div>
+                                    
+                                    <h5 class="mb-3  mb-1" style="color: #094c00;">Dados Pessoais</h5>
+                                    
                                     <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                                  </div>
                                  <!-- Área PHP Coluna 1 -->
@@ -308,8 +308,8 @@
                                           <input type="text" class="form-control" id="nomeSocial" name="nomeSocial" value="<?php echo htmlspecialchars($row['nomeSocial']); ?>">
                                        </div>
                                     </div>
-                                    <hr class="my-4">
-                                    <h5 class="mb-3">Dados pessoais</h5>
+                                    <hr class="my-4"style="color: #094c00;">
+                                    <h5 class="mb-3">Endereço</h5>
                                     <div class="form-group row">
                                        <!-- Dados de Endereço -->
                                        <div class="col-md-4">
@@ -406,6 +406,14 @@
                   </div>
                </div>
             </div>
+            <footer class="sticky-footer bg-white">
+               <div class="container my-auto">
+                  <div class="copyright text-center my-auto">
+                     <span>SSMR/7ªRM - SisCTemp 2024</span>
+                  </div>
+                 
+               </div>
+            </footer>
          </div>
          <!-- Area Chart -->
          <!-- Pie Chart -->

@@ -77,7 +77,7 @@
          <!-- Sidebar -->
          <ul class="navbar-nav sidebar sidebar-dark accordion fixed" id="accordionSidebar" style="background-color: #094c00;">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="system.php">
                <div class="sidebar-brand-icon ">
                   <img src="img/logo.png" alt="Logo" style="width: 30px; height: 40px;">
                </div>
@@ -129,7 +129,7 @@
                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                   <div class="bg-white py-2 collapse-inner rounded">
                      <h6 class="collapse-header">Opções de Cadastro</h6>
-                     <a class="collapse-item" href="system_exibir_cadastro.php">Realizar inscrição</a>
+                     <a class="collapse-item" href="system_cad_esp.php">Realizar inscrição</a>
                      <a class="collapse-item" href="system_editar_cad.php">Gerar Curriculo</a>
                   </div>
                </div>
@@ -233,15 +233,33 @@
                      <!-- Earnings (Monthly) Card Example -->
                      <!-- Content Row -->
                      <div class="col-xl-4 col-md-6 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                           <div class="card-body">
+                              <div class="row no-gutters align-items-center">
+                                 <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1" >
+                                       Fase atual do processo  
+                                    </div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                       Avaliação Curricular 
+                                    </div>
+                                 </div>
+                                 <div class="col-auto">
+                                    <i class="fa fa-person fa-2x" aria-hidden="true"></i>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-4 col-md-6 mb-4">
                         <div class="card border-left-success shadow h-100 py-2">
                            <div class="card-body">
                               <div class="row no-gutters align-items-center">
                                  <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1" >
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                        Noticias 
                                     </div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                      
                                     </div>
                                  </div>
                                  <div class="col-auto">
@@ -260,7 +278,6 @@
                                        Noticias 
                                     </div>
                                     <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                      
                                     </div>
                                  </div>
                                  <div class="col-auto">
@@ -270,29 +287,17 @@
                            </div>
                         </div>
                      </div>
-                     <div class="col-xl-4 col-md-6 mb-4">
-                        <div class="card border-left-success shadow h-100 py-2">
-                           <div class="card-body">
-                              <div class="row no-gutters align-items-center">
-                                 <div class="col mr-2">
-                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                       Noticias 
-                                    </div>
-                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                      
-                                    </div>
-                                 </div>
-                                 <div class="col-auto">
-                                    <i class="fa fa-bell fa-2x" aria-hidden="true"></i>
-                                 </div>
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                     
                   </div>
                </div>
             </div>
+            <footer class="sticky-footer bg-white">
+               <div class="container my-auto">
+                  <div class="copyright text-center my-auto">
+                     <span>SSMR/7ªRM - SisCTemp 2024</span>
+                  </div>
+                 
+               </div>
+            </footer>
             <!-- Area Chart -->
             <!-- Pie Chart -->
          </div>

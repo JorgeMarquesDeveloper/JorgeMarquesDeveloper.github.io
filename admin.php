@@ -93,7 +93,7 @@
             <!-- Sidebar -->
             <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #094c00;">
                <!-- Sidebar - Brand -->
-               <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+               <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin.php">
                   <div class="sidebar-brand-icon ">
                      <img src="img/logo.png" alt="Logo" style="width: 30px; height: 40px;">
                   </div>
