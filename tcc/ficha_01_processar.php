@@ -15,7 +15,7 @@ $cuidador = $_POST["cuidador"];
 $forca_motora = $_POST["forca-motora"];
 
 // SQL para verificar se o paciente já existe
-$checkDuplicateSql = "SELECT * FROM ficha_01 WHERE nome = '$nome' AND idade = '$idade' OR sexo = '$sexo'";
+$checkDuplicateSql = "SELECT * FROM ficha_01 WHERE nome = '$nome' AND idade = '$idade'";
 $result = $conn->query($checkDuplicateSql);
 
 if ($result->num_rows > 0) {

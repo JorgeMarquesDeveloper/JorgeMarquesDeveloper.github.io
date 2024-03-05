@@ -106,6 +106,39 @@ $conn->close();
 
 
 
+<?php
+   require('db.php'); 
+   
+   // Consulta SQL para contar pessoas em cada faixa salarial
+   $sql_contagem_salario = "SELECT
+       SUM(CASE WHEN renda = 'Menos que 1 salário' THEN 1 ELSE 0 END) AS menos_que_1_salario,
+       SUM(CASE WHEN renda = '1 a 2 salários' THEN 1 ELSE 0 END) AS salario_1_a_2,
+       SUM(CASE WHEN renda = '2 a 3 salários' THEN 1 ELSE 0 END) AS salario_2_a_3,
+       SUM(CASE WHEN renda = 'Mais de 3 salários' THEN 1 ELSE 0 END) AS mais_de_3_salarios
+       FROM ficha_01";
+   
+   // Executa a consulta
+   $resultado_contagem_salario = $conn->query($sql_contagem_salario);
+   
+   if ($resultado_contagem_salario !== false) {
+       // Obtém o resultado da contagem
+       $linha_contagem_salario = $resultado_contagem_salario->fetch_assoc();
+   
+       // Atualiza a tabela ou realiza outras operações com os resultados
+       $menos_que_1_salario = $linha_contagem_salario['menos_que_1_salario'];
+       $salario_1_a_2 = $linha_contagem_salario['salario_1_a_2'];
+       $salario_2_a_3 = $linha_contagem_salario['salario_2_a_3'];
+       $mais_de_3_salarios = $linha_contagem_salario['mais_de_3_salarios'];
+   
+       // Faça o que precisar com os resultados (pode ser a atualização de uma tabela ou a construção de um gráfico)
+       
+   } else {
+       echo "Erro na contagem de salários: " . $conn->error;
+   }
+   
+   // Fecha a conexão com o banco de dados após a consulta
+   $conn->close();
+?>
 
 
 
@@ -374,6 +407,17 @@ $conn->close();
                      </div>
                   </div>
                </div>
+               <div class="col-xl-5 col-lg-7">
+                  <!-- Área do Gráfico -->
+                  <div class="card shadow mb-4">
+                     <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-warning">Faixas Salariais</h6>
+                     </div>
+                     <div class="card-body">
+                        <canvas id="chart_salary"></canvas>
+                     </div>
+                  </div>
+               </div>
             </div>
             <footer class="sticky-footer bg-white">
                <div class="container my-auto">
@@ -452,6 +496,38 @@ $conn->close();
 
     // Cria o gráfico de pizza para gênero
     var genderChart = new Chart(genderCtx, genderConfig);
+</script>
+
+<script>
+    // Configurações do gráfico de linhas para faixa salarial
+    var salaryConfig = {
+        type: 'line',
+        data: {
+            labels: ['Menos que 1 salário', '1 a 2 salários', '2 a 3 salários', 'Mais de 3 salários'],
+            datasets: [{
+                label: 'Número de pessoas',
+                data: [<?php echo $menos_que_1_salario; ?>, <?php echo $salario_1_a_2; ?>, <?php echo $salario_2_a_3; ?>, <?php echo $mais_de_3_salarios; ?>],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 2,
+                pointBackgroundColor: 'rgba(54, 162, 235, 1)',
+                pointRadius: 5
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    };
+
+    // Obtém o contexto do canvas para o gráfico de linhas
+    var salaryCtx = document.getElementById('chart_salary').getContext('2d');
+
+    // Cria o gráfico de linhas para faixa salarial
+    var salaryChart = new Chart(salaryCtx, salaryConfig);
 </script>
 
 

@@ -228,7 +228,7 @@
                                     Sistema de cadastramento de militares Temporarios
                                  </div>
                                  <div class="h5 mb-0 font-weight-bold text-gray-800">Oficial Técnico
-                                    Temporário - Experiência Profissional
+                                    Temporário - Curso Complementares Anexo R
                                  </div>
                               </div>
                               <div class="col-auto">
@@ -250,13 +250,14 @@
                                     </div>
                                  </div>
                               </div>
-                              <form onsubmit="submitForm(event)">
+                              <form  method="post" action="system_ott_cad_curso_comp_anxr_insert.php"  enctype="multipart/form-data">
                               <div class="mb-3">
                                 <label for="nomeCurso" class="form-label">Nome do Curso Complementar:</label>
                                 <select class="form-control" id="nomeCurso" name="nomeCurso">
                                 <option value="">Selecione...</option>
                                     <?php
                                    require("../bd_conect.php");
+                                   $opc= 0 ;
 
                                     // Consulta SQL para obter os cursos
                                     $sql = "SELECT nome_curso FROM curso_comp_anxr";
@@ -265,6 +266,7 @@
                                     // Gera as opções do select
                                     while ($row = $result->fetch_assoc()) {
                                         echo "<option value='" . $row['nome_curso'] . "'>" . $row['nome_curso'] . "</option>";
+                                        
                                     }
 
                                     // Fecha a conexão
@@ -280,7 +282,7 @@
                                          require("../bd_conect.php");
 
                                     // Consulta SQL para obter as cargas horárias
-                                    $sql = "SELECT carga_horaria FROM curso_comp_anxr";
+                                    $sql = "SELECT carga_horaria FROM curso_comp_anxr" ;
                                     $result = $conn->query($sql);
 
                                     // Gera as opções do select

@@ -216,6 +216,9 @@
                <div class="d-sm-flex align-items-center justify-content-between mb-4">
                </div>
                <!-- Content Row -->
+
+
+               
                <div class="row">
                   <!-- Earnings (Monthly) Card Example -->
                   <div class="col-xl-12 col-md-6 mb-4">
@@ -238,6 +241,7 @@
                         </div>
                      </div>
                   </div>
+                  
                   <div class="col-xl-12 col-md-6 mb-4">
                      <div class="card border-left-warning shadow h-100 py-2">
                         <div class="card-body">
@@ -249,22 +253,22 @@
                                  </div>
                               </div>
                            </div>
-                           <form>
+                           <form  method="post" action="system_ott_cad_exp_prof_insert.php"  enctype="multipart/form-data">
                               <div class="mb-3">
                                  <label for="descricao" class="form-label">Descrição da Experiência Profissional:</label>
-                                 <textarea class="form-control" id="descricao" rows="4" placeholder="Digite a descrição da sua experiência profissional"></textarea>
+                                 <textarea class="form-control" name="descricao" id="descricao" rows="4" placeholder="Digite a descrição da sua experiência profissional"></textarea>
                               </div>
                               <div class="mb-3">
                                  <label for="dataInicio" class="form-label">Data de Início:</label>
-                                 <input type="date" class="form-control" id="dataInicio">
+                                 <input type="date" class="form-control" name="dataInicio" id="dataInicio">
                               </div>
                               <div class="mb-3">
                                  <label for="dataFim" class="form-label">Data de Fim:</label>
-                                 <input type="date" class="form-control" id="dataFim">
+                                 <input type="date" class="form-control"name="dataFim" id="dataFim">
                               </div>
                               <div class="mb-3">
                                  <label for="anexo" class="form-label">Anexo (Documento que comprova a experiência profissional):</label>
-                                 <input type="file" class="form-control" id="anexo">
+                                 <input type="file" class="form-control" name="anexo" id="anexo">
                               </div>
                               <button type="submit" class="btn btn-block btn-outline-success">Cadastrar</button>
                            </form>
@@ -275,6 +279,32 @@
                   <!-- Earnings (Monthly) Card Example -->
                   <!-- Content Row -->
                </div>
+
+               <div class="row">
+               <div class="col-xl-6 col-md-6 mb-4">
+                     <div class="card border-left-link shadow h-100 py-2" >
+
+                        <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                        <a href="system_ott_esp_cad.php" class="btn btn-outline-primary"><< Retornar</a>
+                        </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-xl-6 col-md-6 mb-4">
+                     <div class="card border-left-link shadow h-100 py-2" >
+                     <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                        <a href="" class="btn btn-outline-warning">Avançar >></a>
+                        </div>
+                        </div>
+                       
+                     </div>
+                  </div>
+               </div>
+            
+
+
             </div>
             <footer class="sticky-footer bg-white">
                <div class="container my-auto">

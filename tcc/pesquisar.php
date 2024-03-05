@@ -146,6 +146,13 @@
                                        </div>
                                        <button type="submit" class="btn btn-success">Buscar</button>
                                     </form>
+                                    <form action="" method="POST">
+                                       <div class="form-group">
+                                          
+                                          <input type="hidden" class="form-control" id="search_term" name="search_term" value="" >
+                                       </div>
+                                       <button type="submit" class="btn btn-success">Todos os Cadastrados</button>
+                                    </form>
                                  </div>
                               </div>
                            </div>

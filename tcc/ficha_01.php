@@ -5,7 +5,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>TCR | Sócio Demográfico</title>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-      <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+      <script src="https://kit.fontawesome.com/d69c879e10.js" crossorigin="anonymous"></script>
       <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
       <link href="css/sb-admin-2.min.css" rel="stylesheet">
       <style>
@@ -173,11 +173,11 @@
                                        <div class="form-group">
                                           <label for="idade">Idade:</label>
                                           <select class="form-control" id="idade" name="idade" required>
-                                             <option value="18-29">18 a 29 anos</option>
-                                             <option value="30-49">30 a 49 anos</option>
-                                             <option value="50-59">50 a 59 anos</option>
-                                             <option value="60-79">60 a 79 anos</option>
-                                             <option value="80-mais">80 anos ou mais</option>
+                                             <option value="18 a 29 anos">18 a 29 anos</option>
+                                             <option value="30 a 49 anos">30 a 49 anos</option>
+                                             <option value="50 a 59 anos">50 a 59 anos</option>
+                                             <option value="60 a 79 anos">60 a 79 anos</option>
+                                             <option value="80 anos ou mais">80 anos ou mais</option>
                                           </select>
                                        </div>
                                        <!-- Campo Sexo -->
@@ -196,61 +196,61 @@
                                        <div class="form-group">
                                           <label for="escolaridade">Escolaridade:</label>
                                           <select class="form-control" id="escolaridade" name="escolaridade" required>
-                                          <option value="analfabeto">Analfabeto</option>
-                                          <option value="fundamental">Fundamental</option>
-                                             <option value="medio">Médio</option>
-                                             <option value="superior">Superior</option>
-                                             <option value="pos-graduacao">Pós-graduação</option>
+                                          <option value="Analfabeto">Analfabeto</option>
+                                          <option value="Fundamental">Fundamental</option>
+                                             <option value="Médio">Médio</option>
+                                             <option value="Superior">Superior</option>
+                                             <option value="Pós-graduação">Pós-graduação</option>
                                           </select>
                                        </div>
                                        <!-- Campo Renda Familiar -->
                                        <div class="form-group">
                                           <label for="renda">Renda Familiar:</label>
                                           <select class="form-control" id="renda" name="renda" required>
-                                             <option value="menos-1">Menos que 1 salário</option>
-                                             <option value="1-2">1 a 2 salários</option>
-                                             <option value="2-3">2 a 3 salários</option>
-                                             <option value="mais-3">Mais de 3 salários</option>
+                                             <option value="Menos que 1 salário">Menos que 1 salário</option>
+                                             <option value="1 a 2 salários">1 a 2 salários</option>
+                                             <option value="2 a 3 salários">2 a 3 salários</option>
+                                             <option value="Mais de 3 salários">Mais de 3 salários</option>
                                           </select>
                                        </div>
                                        <!-- Campo Procedência -->
                                        <div class="form-group">
                                           <label for="procedencia">Procedência:</label>
                                           <select class="form-control" id="procedencia" name="procedencia" required>
-                                             <option value="recife">Região metropolitana do Recife</option>
-                                             <option value="mata">Zona da Mata</option>
-                                             <option value="agreste">Agreste</option>
-                                             <option value="sertao">Sertão</option>
+                                             <option value="Região metropolitana do Recife">Região metropolitana do Recife</option>
+                                             <option value="Zona da Mata">Zona da Mata</option>
+                                             <option value="Agreste">Agreste</option>
+                                             <option value="Sertão">Sertão</option>
                                           </select>
                                        </div>
                                        <!-- Campo Tempo de Deslocamento -->
                                        <div class="form-group">
                                           <label for="tempo-deslocamento">Tempo de Deslocamento:</label>
                                           <select class="form-control" id="tempo-deslocamento" name="tempo-deslocamento" required>
-                                             <option value="menos-1h">Menos que 1h</option>
-                                             <option value="1h-2h">1h a 2h</option>
+                                             <option value="Menos que 1h">Menos que 1h</option>
+                                             <option value="1h a 2h">1h a 2h</option>
                                              <option value="2h-5h">2h a 5h</option>
-                                             <option value="mais-5h">Mais que 5h</option>
+                                             <option value="Mais que 5h">Mais que 5h</option>
                                           </select>
                                        </div>
                                        <!-- Campo Tipo de Transporte -->
                                        <div class="form-group">
                                           <label for="tipo-transporte">Tipo de Transporte:</label>
                                           <select class="form-control" id="tipo-transporte" name="tipo-transporte" required>
-                                             <option value="tfd">TFD</option>
-                                             <option value="carro-proprio">Carro próprio</option>
-                                             <option value="carro-alugado">Carro alugado</option>
-                                             <option value="ambulancia">Ambulância</option>
-                                             <option value="outros">Outros</option>
+                                             <option value="TFD">TFD</option>
+                                             <option value="Carro próprio">Carro próprio</option>
+                                             <option value="Carro alugado">Carro alugado</option>
+                                             <option value="Ambulância">Ambulância</option>
+                                             <option value="Outros">Outros</option>
                                           </select>
                                        </div>
                                        <!-- Campo Passagem, Estadia e Refeição -->
                                        <div class="form-group">
                                           <label for="passagem-estadia-refeicao">Passagem, Estadia e Refeição:</label>
                                           <select class="form-control" id="passagem-estadia-refeicao" name="passagem-estadia-refeicao" required>
-                                             <option value="menos-50">Menos que 50,00 Reais</option>
-                                             <option value="50-100">50,00 a 100,00 Reais</option>
-                                             <option value="mais-100">100,00 Reais ou mais</option>
+                                             <option value="Menos que 50,00 Reais">Menos que 50,00 Reais</option>
+                                             <option value="50,00 a 100,00 Reais">50,00 a 100,00 Reais</option>
+                                             <option value="100,00 Reais ou mais">100,00 Reais ou mais</option>
                                           </select>
                                        </div>
                                        <!-- Campo Cuidador -->
@@ -277,10 +277,10 @@
                                        <div class="form-group">
                                           <label for="forca-motora">Força Motora:</label>
                                           <select class="form-control" id="forca-motora" name="forca-motora" required>
-                                             <option value="ativo">Ativo</option>
-                                             <option value="passivo">Passivo</option>
-                                             <option value="acamado">Acamado</option>
-                                             <option value="cadeirante">Cadeirante</option>
+                                             <option value="Ativo">Ativo</option>
+                                             <option value="Passivo">Passivo</option>
+                                             <option value="Acamado">Acamado</option>
+                                             <option value="Cadeirante">Cadeirante</option>
                                           </select>
                                        </div>
                                        <!-- Adicione os outros campos do formulário da mesma forma -->

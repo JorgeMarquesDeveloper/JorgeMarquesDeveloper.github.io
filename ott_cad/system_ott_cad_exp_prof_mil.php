@@ -239,7 +239,7 @@
                      </div>
                   </div>
            
-                  <div class="col-xl-6 col-md-6 mb-4">
+                  <div class="col-xl-12 col-md-6 mb-4">
                      <div class="card border-left-warning shadow h-100 py-2">
                         <div class="card-body">
                            <div class="row no-gutters align-items-center">
@@ -250,26 +250,26 @@
                                  </div>
                               </div>
                            </div>
-                           <form>
+                           <form  method="post" action="system_ott_cad_exp_prof_mil_insert.php"  enctype="multipart/form-data">
                               <div class="mb-3">
                                  <label for="local" class="form-label">OM onde serviu:</label>
-                                 <input type="text" class="form-control" id="local" placeholder="Digite a Organização Militar (OM) onde serviu">
+                                 <input type="text" class="form-control" name="local" id="local" placeholder="Digite a Organização Militar (OM) onde serviu">
                               </div>
                               <div class="mb-3">
                                  <label for="funcao" class="form-label">Função Desempenhada:</label>
-                                 <input type="text" class="form-control" id="funcao" placeholder="Digite a função desempenhada">
+                                 <input type="text" class="form-control"  name="funcao" id="funcao" placeholder="Digite a função desempenhada">
                               </div>
                               <div class="mb-3">
                                  <label for="dataInicio" class="form-label">Data de Início do Serviço:</label>
-                                 <input type="date" class="form-control" id="dataInicio">
+                                 <input type="date" class="form-control"   name="dataInicio" id="dataInicio">
                               </div>
                               <div class="mb-3">
                                  <label for="dataFim" class="form-label">Data de Término do Serviço:</label>
-                                 <input type="date" class="form-control" id="dataFim">
+                                 <input type="date" class="form-control" name="dataFim" id="dataFim">
                               </div>
                               <div class="mb-3">
                                  <label for="anexo" class="form-label">Anexo (Documento que comprova a experiência militar):</label>
-                                 <input type="file" class="form-control" id="anexo">
+                                 <input type="file" class="form-control" name="anexo"  id="anexo">
                               </div>
                               <button type="submit" class="btn btn-block btn-outline-success">Cadastrar</button>
                            </form>
